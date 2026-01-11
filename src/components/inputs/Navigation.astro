@@ -1,0 +1,34 @@
+---
+import Link from "./Link.astro";
+
+interface NavLink {
+  text: string;
+  url: string;
+}
+
+interface Props {
+  links: NavLink[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav>
+  {links.map((link) => (
+    <Link href={link.url} class="nav-link">
+      {link.text}
+    </Link>
+  ))}
+</nav>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+  nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+</style>

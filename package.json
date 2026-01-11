@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.8"
+    "@fontsource-variable/host-grotesk": "^5.2.8",
+    "astro": "^5.16.8",
+    "sass": "^1.97.2"
   }
 }

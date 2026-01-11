@@ -1,0 +1,58 @@
+---
+import Navigation from "./inputs/Navigation.astro";
+
+const year = new Date().getFullYear();
+const links = [
+	{
+		text: "Email",
+		url: "briana.gude@gmail.com",
+	},
+	{
+		text: "Resume",
+		url: "https://docs.google.com/document/d/1QbvApriHSseBlM7wJf49vDoh7gLyCtT3aNepuKjwDLA/edit?usp=sharing",
+	},
+	{
+		text: "Linkedin",
+		url: "https://www.linkedin.com/in/brianagude/",
+	},
+	{
+		text: "Github",
+		url: "https://github.com/brianagude",
+	},
+	{
+		text: "Instagram",
+		url: "https://www.instagram.com/brianagude/",
+	},
+];
+---
+<footer>
+  <div class="container">
+    <p>&copy; {year} Briana Gude LLC</p>
+    <Navigation links={links} />
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+  footer {
+    width: 100%;
+  }
+
+  .container {
+    padding: 8px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px solid $black;
+
+    @include mq("sm") { 
+      flex-direction: row; 
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  p, a { line-height: 1; }
+</style>

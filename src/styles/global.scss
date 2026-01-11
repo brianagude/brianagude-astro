@@ -1,0 +1,109 @@
+/* Modern Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #fbf8f3;
+  --foreground: #191914;
+
+  --color-black: #191914;
+  --color-white: #fbf8f3;
+  --color-pure-white: #fff;
+  --color-gray: #f3f3f3;
+  --color-red: #e52b2f;
+  --color-text: #010101;
+  --color-primary: #ffcf00;
+  --color-secondary: #e72929;
+  --color-tertiary: #2ec0f9;
+  --color-accent: #ffebf5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fbf8f3;
+    --foreground: #191914;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+
+  font-family: "Host Grotesk Variable", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+mux-player {
+  --media-object-fit: cover;
+  --media-object-position: center;
+
+  /* Hide all controls at once */
+  --controls: none;
+
+  /* Hide the error dialog */
+  --dialog: none;
+
+  /* Hide the loading indicator */
+  --loading-indicator: none;
+
+  /* Target all sections by excluding the section prefix */
+  --play-button: none;
+  --live-button: none;
+  --seek-backward-button: none;
+  --seek-forward-button: none;
+  --mute-button: none;
+  --captions-button: none;
+  --airplay-button: none;
+  --pip-button: none;
+  --fullscreen-button: none;
+  --cast-button: none;
+  --playback-rate-button: none;
+  --volume-range: none;
+  --time-range: none;
+  --time-display: none;
+  --duration-display: none;
+  --rendition-menu-button: none;
+
+  /* Target a specific section by prefixing the CSS var with (top|center|bottom) */
+  --center-controls: none;
+  --bottom-play-button: none;
+}

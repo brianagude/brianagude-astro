@@ -1,0 +1,32 @@
+---
+import "@/styles/global.scss";
+import "@fontsource-variable/host-grotesk";
+import Footer from "@/components/Footer.astro";
+import Head from "@/components/Head.astro";
+import Header from "@/components/Header.astro"
+
+const {
+	metaTitle = "Briana Gude | Developer & Designer",
+	metaDescription = "Frontend Engineer & Product Designer",
+	metaImage = "/og-default.png",
+} = Astro.props;
+---
+
+<html lang="en">
+  <Head title={metaTitle} description={metaDescription} image={metaImage} />
+  <body>
+    <Header/>
+    <slot /> 
+    <Footer/>
+  </body>
+</html>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+  body {
+    max-width: 1280px;
+    margin: auto; 
+  }
+
+</style>

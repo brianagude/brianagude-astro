@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import avi from "@/images/briana.webp";
+import Navigation from "./inputs/Navigation.astro";
+
+const year = new Date().getFullYear();
+const links = [
+	{
+		text: "Work",
+		url: "/work",
+	},
+	{
+		text: "Sketchbook",
+		url: "https://sketchbook.brianagude.com/",
+	},
+	{
+		text: "Thoughts",
+		url: "/thoughts",
+	},
+	{
+		text: "Inquire",
+		url: "https://tally.so/r/woxEyX",
+	},
+];
+---
+<header>
+  <div class="container">
+    <a href="/" class="logo">
+      <Image src={avi} alt="" width="40"/>
+      <p>
+        <b>Briana Gude</b><br/>
+        Designer & Engineer
+      </p>
+    </a>
+    <Navigation links={links} />
+  </div>
+</header>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+  header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    img {
+      border: 1px solid $black;
+      border-radius: 8px;
+    }
+  }
+
+  .container {
+    padding: 8px 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid $black;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  p, a { line-height: 1; }
+  b { font-weight: 500; }
+</style>

@@ -1,0 +1,39 @@
+$primary-color: var(--color-primary);
+$secondary-color: var(--color-secondary);
+$tertiary-color: var(--color-tertiary);
+$accent-color: var(--color-accent);
+
+$black: var(--color-black);
+$white: var(--color-white);
+$pure-white: var(--color-pure-white);
+$gray: var(--color-gray);
+$red: var(--color-red);
+$text: var(--color-text);
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin glass($color: white, $opacity: 0.2) {
+  background: rgba($color, $opacity);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+$breakpoints: (
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px,
+  "3xl": 1720px
+);
+
+@mixin mq($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}

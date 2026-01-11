@@ -1,16 +1,20 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const metaTitle = "Helloooo"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout metaTitle={metaTitle}>
+	<section>
+
+		<h1>{metaTitle}</h1>
+		<h2>title</h2>
+	</section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+	h1 { color: $secondary-color; }
+	section { background-color: $primary-color; }
+</style>
