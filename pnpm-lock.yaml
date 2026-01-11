@@ -11,6 +11,9 @@ importers:
       '@fontsource-variable/host-grotesk':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/dm-mono':
+        specifier: ^5.2.7
+        version: 5.2.7
       astro:
         specifier: ^5.16.8
         version: 5.16.8(rollup@4.55.1)(sass@1.97.2)(typescript@5.9.3)
@@ -219,6 +222,9 @@ packages:
 
   '@fontsource-variable/host-grotesk@5.2.8':
     resolution: {integrity: sha512-9rZBY0DY6eFKVC6+lvYga4tGfYO4pV8gZH2/Zp37KDlyQdR3KfCvh4GvDHCbWQd93OuaaYiPVtd8BGtoMykNQg==}
+
+  '@fontsource/dm-mono@5.2.7':
+    resolution: {integrity: sha512-Ma1az2atTVgQWuOWwjuxx26p/6A6CU9HBNKq1CFV6YKpKhpswnf9ry9Ql4+T6bTZzkdtSfS6tjJvqZOljVzIFQ==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -1765,6 +1771,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/host-grotesk@5.2.8': {}
+
+  '@fontsource/dm-mono@5.2.7': {}
 
   '@img/colour@1.0.0':
     optional: true

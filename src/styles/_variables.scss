@@ -10,6 +10,9 @@ $gray: var(--color-gray);
 $red: var(--color-red);
 $text: var(--color-text);
 
+$font-sans: var(--font-sans);
+$font-mono: var(--font-mono);
+
 @mixin flex-center($direction: row) {
   display: flex;
   justify-content: center;
@@ -35,5 +38,14 @@ $breakpoints: (
 @mixin mq($size) {
   @media (min-width: map-get($breakpoints, $size)) {
     @content;
+  }
+}
+
+@mixin letter-hover-effect {
+  &:hover {
+    color: $primary-color;
+    transform: translateY(-5px) rotate(-10deg);
+    transition-delay: 0.01s;
+    // transition-delay: calc(var(--index) * 0.01s);
   }
 }

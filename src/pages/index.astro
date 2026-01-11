@@ -1,20 +1,39 @@
 ---
+import Link from "@/components/inputs/Link.astro";
+import SplitText from "@/components/inputs/SplitText.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const metaTitle = "Helloooo"
 ---
 
-<BaseLayout metaTitle={metaTitle}>
-	<section>
-
-		<h1>{metaTitle}</h1>
-		<h2>title</h2>
+<BaseLayout>
+	<section class="hero-section page-section">
+		<div class="container">
+			<div class="text-block">
+				<h1 class="h2">Hi, I'm Bri!</h1>
+				<h2 class="h5">~ * <SplitText text="Creative Engineer" /> * ~</h2>
+				<p>
+					I build headless Shopify eCommerce websites at <Link href="https://www.dianthe.studio">Dianthe Studio</Link>. Before that, I was at a growth agency designing and building landing pages for some pretty big startups.
+					<br/><br/>
+					Right now I'm exploring Three.js, 3D Modeling, and Shaders at <Link href="https://www.recurse.com/">Recurse Center</Link> (:
+				</p>
+			</div>
+		</div>
 	</section>
 </BaseLayout>
 
 <style lang="scss">
-  @use "@/styles/_variables.scss" as *;
+  @use "@/styles/_components.scss" as *;
 
-	h1 { color: $secondary-color; }
-	section { background-color: $primary-color; }
+	.page-section {
+		min-height: 60dvh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.text-block {
+		text-align: center;
+
+		p { margin: 16px auto 0; }
+
+	}
 </style>

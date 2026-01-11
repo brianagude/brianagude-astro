@@ -28,6 +28,9 @@ html {
   --color-secondary: #e72929;
   --color-tertiary: #2ec0f9;
   --color-accent: #ffebf5;
+
+  --font-sans: "Host Grotesk Variable", sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,7 +63,7 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
 
-  font-family: "Host Grotesk Variable", sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
@@ -72,38 +75,7 @@ a {
   font-size: 16px;
 }
 
-mux-player {
-  --media-object-fit: cover;
-  --media-object-position: center;
-
-  /* Hide all controls at once */
-  --controls: none;
-
-  /* Hide the error dialog */
-  --dialog: none;
-
-  /* Hide the loading indicator */
-  --loading-indicator: none;
-
-  /* Target all sections by excluding the section prefix */
-  --play-button: none;
-  --live-button: none;
-  --seek-backward-button: none;
-  --seek-forward-button: none;
-  --mute-button: none;
-  --captions-button: none;
-  --airplay-button: none;
-  --pip-button: none;
-  --fullscreen-button: none;
-  --cast-button: none;
-  --playback-rate-button: none;
-  --volume-range: none;
-  --time-range: none;
-  --time-display: none;
-  --duration-display: none;
-  --rendition-menu-button: none;
-
-  /* Target a specific section by prefixing the CSS var with (top|center|bottom) */
-  --center-controls: none;
-  --bottom-play-button: none;
+p a {
+  font-weight: 500;
+  font-size: inherit;
 }

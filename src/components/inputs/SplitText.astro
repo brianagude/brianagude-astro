@@ -1,0 +1,32 @@
+---
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+const letters = text.split("");
+---
+
+<span class={`split-text ${className}`}>
+  {letters.map((letter, index) => (
+    <span class="letter" style={`--index: ${index}`}>
+      {letter === " " ? "\u00A0" : letter}
+    </span>
+  ))}
+</span>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+  .split-text {
+    display: inline-block;
+    
+    .letter {
+      display: inline-block;
+      transition: transform 0.3s ease, color 0.3s ease;
+      
+      // Use the mixin here
+      @include letter-hover-effect;
+    }
+  }
+</style>
