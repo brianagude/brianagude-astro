@@ -9,10 +9,6 @@ const links = [
 		url: "/work",
 	},
 	{
-		text: "Sketchbook",
-		url: "https://sketchbook.brianagude.com/",
-	},
-	{
 		text: "Thoughts",
 		url: "/thoughts",
 	},
@@ -26,10 +22,10 @@ const links = [
   <div class="container">
     <a href="/" class="logo">
       <Image src={avi} alt="" width="40"/>
-      <p>
+      <!-- <p>
         <b>Briana Gude</b><br/>
         Designer & Engineer
-      </p>
+      </p> -->
     </a>
     <Navigation links={links} />
   </div>
@@ -46,7 +42,7 @@ const links = [
 
     img {
       border: 1px solid $black;
-      border-radius: 8px;
+      border-radius: 100%;
     }
   }
 
@@ -54,10 +50,11 @@ const links = [
     padding: 8px 16px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 16px;
-    border-bottom: 1px solid $black;
+    // border-bottom: 1px solid $black;
     max-width: $bp-xl;
     margin: 0 auto;
   }
@@ -66,6 +63,11 @@ const links = [
     display: flex;
     align-items: center;
     gap: 12px;
+    display: none;
+
+    @include mq("md") { 
+      display: inline-block;
+    }
   }
 
   p { line-height: 1.2; }

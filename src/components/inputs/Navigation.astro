@@ -13,7 +13,9 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<nav>
+<nav class="sliding-nav">
+  <div class="nav-indicator"></div>
+
   {links.map((link) => (
     <Link href={link.url} class="nav-link">
       {link.text}
@@ -21,14 +23,93 @@ const { links } = Astro.props;
   ))}
 </nav>
 
+<script>
+  // Find all navbars on the page
+  const navs = document.querySelectorAll('.sliding-nav');
+
+  navs.forEach((nav) => {
+    // Look for the indicator inside THIS specific nav
+    const indicator = nav.querySelector('.nav-indicator') as HTMLElement;
+    const links = nav.querySelectorAll('.nav-link') as NodeListOf<HTMLElement>;
+
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          const linkWidth = link.offsetWidth;
+          const linkOffset = link.offsetLeft;
+
+          indicator.style.width = `${linkWidth}px`;
+          indicator.style.transform = `translateX(${linkOffset}px) scale(1)`;
+          indicator.style.opacity = '1';
+        });
+      });
+
+      nav.addEventListener('mouseleave', () => {
+        indicator.style.opacity = '0';
+        const currentText = indicator.style.transform.split(' ')[0]; 
+        indicator.style.transform = `${currentText} scale(0)`;
+      });
+
+    // links.forEach(link => {
+    //   link.addEventListener('mouseenter', () => {
+    //     const linkWidth = link.offsetWidth;
+    //     const linkOffset = link.offsetLeft;
+
+    //     indicator.style.width = `${linkWidth}px`;
+    //     indicator.style.transform = `translateX(${linkOffset}px)`;
+    //     indicator.style.opacity = '1';
+    //   });
+    // });
+
+    // nav.addEventListener('mouseleave', () => {
+    //   indicator.style.opacity = '0';
+    // });
+  });
+</script>
+
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
 
-  nav {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  .sliding-nav {
+    display: inline-flex;
     flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    border: 1px solid $black;
+    padding: 4px;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+    // margin-bottom: 20px;
   }
 
+  .nav-indicator {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    background-color: $primary-color;
+    border-radius: 32px;
+    z-index: -1;
+    // transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    pointer-events: none;
+    transition: 
+      transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+      width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+      opacity 0.2s ease;
+    transform: translateX(0) scale(0.9); /* Start slightly smaller */
+  }
+
+  :global(.nav-link) {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 32px;
+    text-decoration: none;
+    color: inherit;
+    z-index: 2;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
 </style>
