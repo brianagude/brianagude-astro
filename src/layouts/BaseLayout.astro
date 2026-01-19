@@ -1,4 +1,5 @@
 ---
+import "@/styles/_typography.scss";
 import "@/styles/global.scss";
 import "@fontsource-variable/host-grotesk";
 import '@fontsource/dm-mono';
@@ -17,17 +18,20 @@ const {
   <Head title={metaTitle} description={metaDescription} image={metaImage} />
   <body>
     <Header/>
-    <slot /> 
+    <main>
+      <slot /> 
+    </main>
     <Footer/>
   </body>
 </html>
 
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
+  // @use "@/styles/_typography.scss" as *;
 
-  // body {
-  //   max-width: 1280px;
-  //   margin: auto; 
-  // }
+  main {
+    max-width: $bp-xl;
+    margin: auto; 
+  }
 
 </style>

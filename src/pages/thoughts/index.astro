@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Accordion from "@/components/Accordion.astro";
+import PostCard from "@/components/PostCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const allPosts = await getCollection("thoughts");
+const pageTitle = "My Astro Learning Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section class="page-section">
+    <div class="container">
+      <div>
+        <h1>.open(tabs)</h1>
+        <Accordion title="Welcome 2 my blog">
+          <p class="body-sm">I've always wanted to have a blog. As a child, my parents bought me blank hardback books because I wrote so many short stories. Language Arts was my favorite class, and then at some point I just...stopped.</p>
+          <p class="body-sm">I've worked as a designer, developer, studio owner, freelancer, product thinker, systems person—a multihyphenate with a lot of open tabs. I decided to nurture my authorial spark during Recurse, so here we are.</p>
+          <p class="body-sm">This is my little corner of the internet to drop findings and realizations, in hopes that someone on a similar path will resonate. I'll share what I'm building, reading, questioning, learning, or unlearning.</p>
+          <p class="body-sm signature">xoxo,<br/>Bri</p>
+        </Accordion>
+      </div>
+    
+      <ul>
+        {allPosts.map((post: any) => <PostCard url={`/thoughts/${post.id}/`} title={post.data.title} date={post.data.pubDate} />)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+  .container {
+    max-width: $bp-md !important;
+  }
+
+  .signature {
+    font-family: $font-mono !important;
+    font-weight: 500 !important;
+    opacity: 50%;
+  }
+
+  p + p { margin-top: 12px; }
+
+
+</style>
