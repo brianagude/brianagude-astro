@@ -1,0 +1,213 @@
+---
+import { Image } from "astro:assets";
+import babboon from "@/images/brands/babboon.svg";
+import lovevery from "@/images/brands/babboon.svg";
+import bonafide from "@/images/brands/bonafide.svg";
+import curlbox from "@/images/brands/curlbox.png";
+import elysium from "@/images/brands/elysium.svg";
+import forDays from "@/images/brands/for-days.png";
+import hairstory from "@/images/brands/hairstory.svg";
+import hbcu from "@/images/brands/hbcu.png";
+import hikeClerb from "@/images/brands/hike-clerb.svg";
+import kin from "@/images/brands/kin.svg";
+import milkCookies from "@/images/brands/milk-and-cookies.svg";
+import ollie from "@/images/brands/ollie.png";
+import oura from "@/images/brands/oura.svg";
+import owyn from "@/images/brands/owyn.svg";
+import parade from "@/images/brands/parade.svg";
+import prose from "@/images/brands/prose.svg";
+import solana from "@/images/brands/solana.svg";
+import speedo from "@/images/brands/speedo.svg";
+
+const images = [
+		{ url: "/brands/babboon.svg", width: 255, height: 16 },
+		{ url: "/brands/bonafide.svg", width: 167, height: 32 },
+		{ url: "/brands/curlbox.png", width: 185, height: 24 },
+		{ url: "/brands/elysium.svg", width: 185, height: 24 },
+		{ url: "/brands/for-days.png", width: 145, height: 24 },
+		{ url: "/brands/hairstory.svg", width: 170, height: 32 },
+		{ url: "/brands/hbcu.png", width: 167, height: 56 },
+		{ url: "/brands/hike-clerb.svg", width: 108, height: 32 },
+		{ url: "/brands/kin.svg", width: 65, height: 48 },
+		{ url: "/brands/lovevery.svg", width: 147, height: 16 },
+		{ url: "/brands/milk-and-cookies.svg", width: 93, height: 56 },
+		{ url: "/brands/ollie.png", width: 80, height: 40 },
+		{ url: "/brands/oura.svg", width: 129, height: 40 },
+		{ url: "/brands/owyn.svg", width: 118, height: 40 },
+		{ url: "/brands/parade.svg", width: 83, height: 40 },
+		{ url: "/brands/prose.svg", width: 128, height: 40 },
+		{ url: "/brands/solana.svg", width: 157, height: 24 },
+		{ url: "/brands/speedo.svg", width: 98, height: 48 },
+	];
+
+const brands = [
+	{
+		src: babboon,
+		name: "Baboon to the Moon",
+		width: 255, height: 16
+	},
+	{
+		src: bonafide,
+		name: "Bonafide",
+		width: 167, height: 32
+	},
+	{
+		src: curlbox,
+		name: "Curlbox",
+		width: 185, height: 24
+	},
+	{
+		src: elysium,
+		name: "Elysium",
+		width: 185, height: 24 
+	},
+	{
+		src: forDays,
+		name: "For Days",
+		width: 145, height: 24
+	},
+	{
+		src: hairstory,
+		name: "Hairstory",
+		width: 170, height: 32
+	},
+	{
+		src: hbcu,
+		name: "HBCUs Outside",
+		width: 167, height: 56
+	},
+	{
+		src: hikeClerb,
+		name: "Hike Clerb",
+		width: 108, height: 32
+	},
+	{
+		src: kin,
+		name: "Kin Euphorics",
+		width: 65, height: 48
+	},
+	{
+		src: lovevery,
+		name: "Lovevery",
+		width: 147, height: 16
+	},
+	{
+		src: milkCookies,
+		name: "Milk & Cookies",
+		width: 93, height: 56
+	},
+	{
+		src: ollie,
+		name: "Ollie",
+		width: 80, height: 40
+	},
+	{
+		src: oura,
+		name: "Oura Ring",
+		width: 129, height: 40
+	},
+	{
+		src: owyn,
+		name: "OWYN",
+		width: 118, height: 40
+	},
+	{
+		src: parade,
+		name: "Parade",
+		width: 83, height: 40
+	},
+	{
+		src: prose,
+		name: "Prose",
+		width: 128, height: 40
+	},
+	{
+		src: solana,
+		name: "Solana",
+		width: 157, height: 24
+	},
+	{
+		src: speedo,
+		name: "Speedo",
+		width: 98, height: 48
+	},
+];
+---
+
+<section class="brand-carousel page-section">
+  <div class="container">
+		<h4 class="caption">Brands I've Worked With</h4>
+    <div class="marquee-container">
+			<div class="marquee-content">
+				{
+					brands.map((brand)=>(
+						<Image src={brand.src} alt={`${brand.name} Brand Logo`} width={brand.width} height={brand.height} />
+					))
+				}
+			</div>
+
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+  @use "@/styles/_components.scss" as *;
+
+	.container {
+		gap: 32px !important; 
+	}
+
+  .marquee-container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		border-radius: 9999px;
+		border: 1px solid;
+		background-color: $gray;
+		padding: 1rem 2rem;
+
+		@media (min-width: 1024px) {
+			padding-inline: 4rem;
+		}
+	}
+
+	.marquee-content {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		animation: scroll 30s linear infinite;
+		flex-shrink: 0;
+		min-width: 100%;
+
+		&:hover {
+			animation-play-state: paused;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
+		padding-inline: 1rem;
+
+		@media (min-width: 640px) {
+			padding-inline: 1.5rem;
+			gap: 64px;
+		}
+
+		@media (min-width: 1024px) {
+			padding-inline: 2rem;
+		}
+	}
+
+	// img {
+	// 	max-height: 36px;
+	// 	width: auto;
+	// }
+
+	@keyframes scroll {
+		0% { transform: translateX(0%); }
+		100% { transform: translateX(-50%); }
+	}
+</style>

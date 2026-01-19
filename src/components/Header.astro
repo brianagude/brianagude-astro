@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import avi from "@/images/briana.webp";
 import Navigation from "./inputs/Navigation.astro";
 
-const year = new Date().getFullYear();
 const links = [
 	{
 		text: "Work",
@@ -59,6 +58,8 @@ const links = [
     align-items: center;
     gap: 16px;
     border-bottom: 1px solid $black;
+    max-width: $bp-xl;
+    margin: 0 auto;
   }
 
   .logo {
@@ -67,6 +68,7 @@ const links = [
     gap: 12px;
   }
 
-  p, a { line-height: 1; }
+  p { line-height: 1.2; }
+  a { line-height: 1; }
   b { font-weight: 500; }
 </style>

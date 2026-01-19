@@ -13,6 +13,13 @@ $text: var(--color-text);
 $font-sans: var(--font-sans);
 $font-mono: var(--font-mono);
 
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+$bp-3xl: 1720px;
+
 @mixin flex-center($direction: row) {
   display: flex;
   justify-content: center;
@@ -27,7 +34,7 @@ $font-mono: var(--font-mono);
 }
 
 $breakpoints: (
-  "sm": 640px,
+  "sm": $bp-sm,
   "md": 768px,
   "lg": 1024px,
   "xl": 1280px,

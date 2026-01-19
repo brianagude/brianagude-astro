@@ -8,16 +8,13 @@ interface Props extends HTMLAttributes<'a'> {
 
 const { href, class: className, ...rest } = Astro.props;
 
-// 1. Logic for Link Types
 const isEmail = href.includes('@') && !href.startsWith('mailto:');
 const isExternal = href.startsWith('http') || href.startsWith('//');
 
-// 2. Formatting URL and Security
 const finalHref = isEmail ? `mailto:${href}` : href;
 const target = isExternal ? "_blank" : undefined;
 const rel = isExternal ? "noopener noreferrer" : undefined;
 
-// 3. Active State Logic
 const { pathname } = Astro.url;
 const isActive = pathname === href || pathname === href + '/';
 ---
@@ -41,11 +38,9 @@ const isActive = pathname === href || pathname === href + '/';
   }
 
   a {
-    
     &:hover {
       font-weight: bold;
-      color: $primary-color;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
     }
   }
 </style>
