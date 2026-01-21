@@ -5,6 +5,10 @@ import Navigation from "./inputs/Navigation.astro";
 
 const links = [
 	{
+		text: "Home",
+		url: "/",
+	},
+	{
 		text: "Work",
 		url: "/work",
 	},
@@ -12,21 +16,17 @@ const links = [
 		text: "Thoughts",
 		url: "/thoughts",
 	},
-	{
-		text: "Inquire",
-		url: "https://tally.so/r/woxEyX",
-	},
 ];
 ---
 <header>
   <div class="container">
-    <a href="/" class="logo">
+    <!-- <a href="/" class="logo">
       <Image src={avi} alt="" width="36"/>
-      <!-- <p>
+      <p>
         <b>Briana Gude</b><br/>
         Designer & Engineer
-      </p> -->
-    </a>
+      </p>
+    </a> -->
     <Navigation links={links} />
   </div>
 </header>
@@ -51,7 +51,7 @@ const links = [
     padding: 8px 16px;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     // justify-content: space-between;
     justify-content: center;
     align-items: center;
@@ -65,11 +65,11 @@ const links = [
     display: flex;
     align-items: center;
     gap: 12px;
-    // display: none;
+    display: none;
 
-    // @include mq("md") { 
-    //   display: inline-block;
-    // }
+    @include mq("md") { 
+      display: inline-block;
+    }
   }
 
   p { line-height: 1.2; }

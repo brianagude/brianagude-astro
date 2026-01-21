@@ -32,6 +32,11 @@ const {
   main {
     max-width: $bp-xl;
     margin: auto; 
+    min-height: calc(100vh - 168px);
+
+    @media (min-width: 576px) {
+			min-height: calc(100vh - 136px);
+		}
   }
 
 </style>

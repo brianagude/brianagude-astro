@@ -129,6 +129,7 @@ p a {
   background: color-mix(in oklab, var(--color-black) 5%, transparent);
   backdrop-filter: blur(4px);
   transition: background ease 0.2s;
+  display: inline-block;
 
   &:hover {
     background-color: $primary-color;

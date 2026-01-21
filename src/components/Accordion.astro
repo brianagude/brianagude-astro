@@ -27,10 +27,10 @@ const { title } = Astro.props;
   @use "@/styles/_variables.scss" as *;
 
   .accordion-wrapper {
-    border-bottom: 1px solid color-mix(in oklab, var(--color-black) 10%, transparent);
+    // border-bottom: 1px solid color-mix(in oklab, var(--color-black) 10%, transparent);
     
     details {
-      padding: 1rem 0;
+      // padding: 1rem 0;
       
       // Remove the default arrow
       summary::-webkit-details-marker { display: none; }
@@ -40,12 +40,23 @@ const { title } = Astro.props;
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        font-weight: 600;
-        transition: color 0.2s ease;
+        // font-size: 1.25rem;
+        font-weight: 500;
+        font-size: 1.125rem;
+        line-height: 1.625;
 
-        &:hover {
-          color: $primary-color;
+        @include mq("sm") {
+          font-size: 1.25rem;
         }
+
+        // @include mq("lg") {
+        //   font-size: 1.5rem;
+        // }
+        // transition: color 0.2s ease;
+
+        // &:hover {
+        //   color: $primary-color;
+        // }
       }
     }
 
