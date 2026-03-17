@@ -1,5 +1,4 @@
 ---
-import FormattedDate from "@/components/inputs/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
 
@@ -11,11 +10,7 @@ const { frontmatter } = Astro.props;
     <div class="container">
       <div class="header">
         <h1>{frontmatter.title}</h1>
-        <div class="info">
-          <p class="body-sm">{frontmatter.role}<br/><FormattedDate date={frontmatter.pubDate} /></p>
-          <!-- <p class="pub-date body-sm"><FormattedDate date={frontmatter.pubDate} /></p> -->
-          <Link href={frontmatter.url}>View Project</Link>
-        </div>
+        <Link href={frontmatter.url}>View Project</Link>
       </div>
       <div class="prose">
         <slot />
@@ -34,23 +29,13 @@ const { frontmatter } = Astro.props;
   }
 
   .header {
-    // scroll-mt-2 py-10 gap-8 sm:py-12 lg:py-16
-    // border-bottom: 2px solid $black; 
-  }
-
-  .info {
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .pub-date {
-    font-family: $font-mono;
-    font-weight: 500;
-    opacity: 50%;
-  }
-
-  .info a {
+  .header a {
     display: block;
     height: fit-content;
     font-weight: 500;
@@ -65,6 +50,4 @@ const { frontmatter } = Astro.props;
       background-color: $primary-color;
     }
   }
-
-  
 </style>

@@ -1,0 +1,12 @@
+---
+const { playbackId, title } = Astro.props;
+---
+
+<mux-player
+  playback-id={playbackId}
+  metadata-video-title={title}
+  autoPlay="muted"
+  loop
+  muted
+  nohotkeys
+></mux-player>

@@ -14,7 +14,7 @@ const pageTitle = "Case Studies";
 <BaseLayout pageTitle={pageTitle}>
   <section class="page-section">
     <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={`/caseStudies/${post.id}/`} title={post.data.title} image={post.data.image} />)}
+      {sortedPosts.sort().map((post: any) => <Card url={`/case-studies/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>

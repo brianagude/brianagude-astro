@@ -1,10 +1,18 @@
 ---
-const { url, title, image } = Astro.props;
+const { url, title, image, video, date } = Astro.props;
+import Mux from "./Mux.astro";
+import FormattedDate from "./FormattedDate.astro";
 ---
 
 <a href={url}>
-  {image && <img src={image.url} alt={image.alt} />}
-  <span class="body-lg">{title}</span>
+  <div class="media">
+    {video && <Mux playbackId={video} title={title} />}
+    {image && !video && <img src={image.url} alt={image.alt} />}
+  </div>
+  <div class="content">
+    <span class="body-lg title">{title}</span>
+    {date && <span class="body-sm"><FormattedDate date={date} /></span>}
+  </div>
 </a>
 
 <style lang="scss">
@@ -21,49 +29,39 @@ const { url, title, image } = Astro.props;
     gap: 8px;
 
     &:hover {
-      img {
+      .media {
         transform: translate(-4px, -4px);
         box-shadow: 4px 4px 0px rgba(4,6,2,0.25);
         border-radius: 40px;
       }
 
-      span {
+      .title {
         font-weight: 700;
       }
     }
-
-    // display: block;
-    // padding: 16px 0;
-    // transition:
-    //   background 0.4s ease-in-out,
-    //   padding 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    // border-radius: 24px;
-    // &:hover {
-    //   padding: 16px 24px;
-
-    //   background: color-mix(in oklab, var(--color-black) 5%, transparent);
-    //   backdrop-filter: blur(4px);
-
-    //   .h4 {
-    //     text-decoration: underline;
-    //   }
-    // }
-    
   }
 
-  img {
+  .media {
     aspect-ratio: 16/9;
-    object-fit: cover;
     border-radius: 24px;
     border: 1px solid $black;
     transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  img, video {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    // gap: 8px;
+    text-align: center; 
   }
 
   span {
     transition: all 0.3s ease-in-out;
-    text-align: center; 
   }
 </style>
-
-
-<!-- border border-black rounded-3xl relative overflow-hidden aspect-video w-full bg-black transition-all duration-300 ease-out group-hover:-translate-x-[3px] group-hover:-translate-y-[3px] group-hover:shadow-[4px_4px_0px_rgba(4,6,2,0.25)]  -->

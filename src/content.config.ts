@@ -9,7 +9,7 @@ const objects = defineCollection({
 		pubDate: z.date(),
 		description: z.string(),
 		url: z.string(),
-		video: z.string().optional(),
+		mux_id: z.string().optional(),
 		image: z.object({
 			url: z.string(),
 			alt: z.string(),
@@ -26,7 +26,7 @@ const work = defineCollection({
 		description: z.string(),
 		role: z.string(),
 		url: z.string(),
-		video: z.string().optional(),
+		mux_id: z.string().optional(),
 		image: z.object({
 			url: z.string(),
 			alt: z.string(),
@@ -43,7 +43,7 @@ const caseStudies = defineCollection({
 		description: z.string(),
 		role: z.string(),
 		url: z.string(),
-		video: z.string().optional(),
+		mux_id: z.string().optional(),
 		image: z.object({
 			url: z.string(),
 			alt: z.string(),
