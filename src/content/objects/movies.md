@@ -1,5 +1,5 @@
 ---
-title: "Things To Watch"
+title: "Movies To Watch"
 pubDate: 2026-02-15
 description: "Movie recommendations app"
 url: "https://www.ashleecruz.com/"
