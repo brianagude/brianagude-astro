@@ -1,7 +1,7 @@
 ---
-title: "Recurse"
-pubDate: 2019-06-05
-description: "Projects from my batch at Recurse Center"
+title: "Things To Watch"
+pubDate: 2026-02-15
+description: "Movie recommendations app"
 url: "https://www.ashleecruz.com/"
 image: { url: "/src/images/bri.jpg", alt: "Photo of Briana" }
 ---

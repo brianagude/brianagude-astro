@@ -1,61 +1,38 @@
 ---
-import Link from "@/components/inputs/Link.astro";
-import SplitText from "@/components/inputs/SplitText.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+import Card from "@/components/inputs/Card.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const allPosts = await getCollection("objects");
+const sortedPosts = allPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const pageTitle = "Objects";
 ---
 
-<BaseLayout>
-	<section class="hero-section page-section">
-		<div class="container">
-			<div class="text-block">
-				<!-- <h1 class="h3">Hi, I'm Bri!</h1> -->
-				<h1 class="h5">~ * <SplitText text="Hi, I'm Bri!" /> * ~</h1>
-				<p>I design and I code. </p>
-				<p>I'm building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p>
-				<!-- <p>I started my career as a Frontend Engineer.</p>
-				<p>Then I got a job as a Growth Engineer / Product designer, </p> -->
-				<!-- <p><strike>Growth Engineer</strike> <strike>Product Designer</strike> Creative Engineer.
-				</p>
-				<p>
-					I started building landing pages and high-converting experiences for startups at a growth agency. That led me to design engineering and Shopify development—currently I work on headless commerce projects at Dianthe Studio.
-				</p>
-				<p>
-					But right now? I'm taking a break from client work to follow my curiosity at Recurse Center. I'm exploring Three.js, 3D modeling, and shaders—basically building things that make me excited to code. Check out my sketchbook to see what I'm making (:
-				</p> -->
-				<!-- <p>
-					I started my career as a front-end engineer.
-				</p>
-				<p>
-					My first job was at a marketing agency, so I became a Solutions/Growth/Design Engineer + Product Designer. <br/><small>(Yes, it was a start-up)</small>
-				</p>
-				<p>
-					After that, I launched <Link href="https://www.dianthe.studio">Dianthe Studio</Link> where I design and build Shopify websites.
-				</p>
-				<p>
-					Right now I'm taking a break from client work to explore Three.js, 3D modeling, and shaders at <Link href="https://www.recurse.com/">Recurse Center</Link> (:
-				</p> -->
-				<!-- <p>Then I attended Recurse Center where I rekindled my love of writing</p> -->
-			</div>
-		</div>
-	</section>
+<BaseLayout pageTitle={pageTitle}>
+  <section class="page-section">
+    <div class="container">
+      {sortedPosts.sort().map((post: any) => <Card url={`/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+    </div>
+  </section>
 </BaseLayout>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-	.page-section {
-		min-height: 60dvh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
 
-	.text-block {
-		// background: $primary-color;
-		text-align: center;
-		p { margin: 16px auto 0; }
+    @media (min-width: $bp-sm) {
+      grid-template-columns: 1fr 1fr;
+    }
 
-		// p { margin-top: 16px; }
-	}
+    @media (min-width: $bp-lg) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
 </style>
