@@ -4,6 +4,7 @@ pubDate: 2025-11-13
 description: "Why I joined Recurse Center"
 author: "Briana Gude"
 tags: ["recurse", "freelancing", "learning"]
+image: { url: "/src/images/bri.jpg", alt: "Picture of Bri" }
 ---
 
 ### Setting the Stage

@@ -1,0 +1,70 @@
+---
+import FormattedDate from "@/components/inputs/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Link from "@/components/inputs/Link.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description} image={frontmatter.image.url}>
+  <section class="project page-section">
+    <div class="container">
+      <div class="header">
+        <h1>{frontmatter.title}</h1>
+        <div class="info">
+          <p class="body-sm">{frontmatter.role}<br/><FormattedDate date={frontmatter.pubDate} /></p>
+          <!-- <p class="pub-date body-sm"><FormattedDate date={frontmatter.pubDate} /></p> -->
+          <Link href={frontmatter.url}>View Project</Link>
+        </div>
+      </div>
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+  @use "@/styles/_variables.scss" as *;
+
+  .container {
+    max-width: $bp-sm !important;
+    margin: 0 auto; 
+  }
+
+  .header {
+    // scroll-mt-2 py-10 gap-8 sm:py-12 lg:py-16
+    // border-bottom: 2px solid $black; 
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .pub-date {
+    font-family: $font-mono;
+    font-weight: 500;
+    opacity: 50%;
+  }
+
+  .info a {
+    display: block;
+    height: fit-content;
+    font-weight: 500;
+    font-size: inherit;
+    padding: 0 8px;
+    border-radius: 32px;
+    background: color-mix(in oklab, var(--color-black) 5%, transparent);
+    backdrop-filter: blur(4px);
+    transition: background ease 0.2s;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+
+  
+</style>

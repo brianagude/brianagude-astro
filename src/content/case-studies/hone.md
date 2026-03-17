@@ -2,8 +2,9 @@
 title: "Shaders, Baby!"
 pubDate: 2026-01-25
 description: "What I've learned about ~ shaders ~"
-author: "Briana Gude"
-tags: ["shaders", "learning"]
+role: "Briana Gude"
+url: "Briana Gude"
+image: { url: "/src/images/bri.jpg", alt: "Picture of Bri" }
 ---
 
 #### Preface

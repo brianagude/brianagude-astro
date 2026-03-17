@@ -3,40 +3,41 @@ import Navigation from "./inputs/Navigation.astro";
 
 const year = new Date().getFullYear();
 const links = [
-	{
-		text: "Inquire",
-		url: "https://tally.so/r/woxEyX",
+	// {
+	// 	text: "Inquire",
+	// 	url: "https://tally.so/r/woxEyX",
+	// },
+  {
+		text: "email",
+		url: "hi@brianagude.com",
 	},
   {
-		text: "Email",
-		url: "briana.gude@gmail.com",
-	},
-  {
-		text: "RSS",
+		text: "rss",
 		url: "/rss.xml",
 	},
 	{
-		text: "Linkedin",
+		text: "linkedin",
 		url: "https://www.linkedin.com/in/brianagude/",
 	},
 	{
-		text: "Github",
+		text: "github",
 		url: "https://github.com/brianagude",
 	},
 	{
-		text: "Instagram",
+		text: "instagram",
 		url: "https://www.instagram.com/brianagude/",
 	},
 	{
-		text: "Bsky",
+		text: "bsky",
 		url: "https://bsky.app/profile/brianagude.com",
 	},
 ];
 ---
+
 <footer>
   <div class="container">
-    <p>&copy; {year} Briana Gude LLC</p>
     <Navigation links={links} />
+    <p>&copy; {year} Briana Gude LLC</p>
   </div>
 </footer>
 
@@ -51,18 +52,12 @@ const links = [
     padding: 8px 16px;
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
 
     gap: 16px;
-    // border-top: 1px solid $black;
     max-width: $bp-xl;
     margin: 0 auto;
-
-    // @include mq("md") { 
-    //   flex-direction: row; 
-    //   justify-content: space-between;
-    // }
   }
 
   p, a { line-height: 1; }

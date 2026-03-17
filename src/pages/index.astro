@@ -10,6 +10,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			<div class="text-block">
 				<!-- <h1 class="h3">Hi, I'm Bri!</h1> -->
 				<h1 class="h5">~ * <SplitText text="Hi, I'm Bri!" /> * ~</h1>
+				<p>I design and I code. </p>
+				<p>I'm building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p>
 				<!-- <p>I started my career as a Frontend Engineer.</p>
 				<p>Then I got a job as a Growth Engineer / Product designer, </p> -->
 				<!-- <p><strike>Growth Engineer</strike> <strike>Product Designer</strike> Creative Engineer.
@@ -20,7 +22,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				<p>
 					But right now? I'm taking a break from client work to follow my curiosity at Recurse Center. I'm exploring Three.js, 3D modeling, and shaders—basically building things that make me excited to code. Check out my sketchbook to see what I'm making (:
 				</p> -->
-				<p>
+				<!-- <p>
 					I started my career as a front-end engineer.
 				</p>
 				<p>
@@ -31,7 +33,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</p>
 				<p>
 					Right now I'm taking a break from client work to explore Three.js, 3D modeling, and shaders at <Link href="https://www.recurse.com/">Recurse Center</Link> (:
-				</p>
+				</p> -->
 				<!-- <p>Then I attended Recurse Center where I rekindled my love of writing</p> -->
 			</div>
 		</div>
@@ -50,7 +52,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 
 	.text-block {
-		// text-align: center;
+		// background: $primary-color;
+		text-align: center;
 		p { margin: 16px auto 0; }
+
+		// p { margin-top: 16px; }
 	}
 </style>

@@ -3,30 +3,29 @@
 .page-section {
   scroll-margin-top: 0.5rem;
   padding: 2.5rem 0;
+  width: 100%;
 
   @include mq("sm") {
     padding: 3rem 0;
   }
 
   @include mq("lg") {
-    paccing: 4rem 0;
+    padding: 4rem 0;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
+  & >.container {
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    gap: 2rem;
     padding: 0 1rem;
+    gap: 2rem;
 
     @include mq("sm") {
-      gap: 2.5rem;
+      gap: 1rem;
       padding: 0 1.5rem;
     }
 
     @include mq("lg") {
-      gap: 3rem;
       padding: 0 2rem;
     }
   }

@@ -10,13 +10,7 @@ const { frontmatter } = Astro.props;
     <div class="container">
       <div class="blog-header">
         <h1>{frontmatter.title}</h1>
-        <p class="pub-date body-sm">{frontmatter.author} ~ <FormattedDate date={frontmatter.pubDate} /></p>
-
-        <div class="tags">
-          {frontmatter.tags.map((tag: string) => (
-            <a href={`/tags/${tag}`} class="tag">{tag}</a>
-          ))}
-        </div>
+        <p class="pub-date body-sm"><FormattedDate date={frontmatter.pubDate} /></p>
       </div>
       <div class="prose">
         <slot />

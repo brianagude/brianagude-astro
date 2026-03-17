@@ -3,30 +3,36 @@ const { url, title, date } = Astro.props;
 
 import FormattedDate from "@/components/inputs/FormattedDate.astro";
 ---
+
 <a href={url}>
-    <span class="body-sm"><FormattedDate date={date} /></span><br/>
-    <span class="h4">{title}</span>
+  <span class="body-sm"><FormattedDate date={date} /></span><br />
+  <span class="h4">{title}</span>
 </a>
 
 <style lang="scss">
-    @use "@/styles/_variables.scss" as *;
+  @use "@/styles/_variables.scss" as *;
 
-    .body-sm {
-        opacity: 0.5;
-    }
-    // span { display: block; }
+  .body-sm {
+    opacity: 0.5;
+  }
+  // span { display: block; }
 
   a {
     display: block;
     padding: 16px 0;
-    transition: background 0.4s ease-in-out, padding 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.2s ease-in-out;
+    transition:
+      background 0.4s ease-in-out,
+      padding 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 24px;
     &:hover {
       padding: 16px 24px;
-      border-radius: 24px;
+
       background: color-mix(in oklab, var(--color-black) 5%, transparent);
       backdrop-filter: blur(4px);
 
-      .h4 { text-decoration: underline; }
+      .h4 {
+        text-decoration: underline;
+      }
     }
   }
 </style>

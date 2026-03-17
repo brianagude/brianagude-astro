@@ -14,5 +14,10 @@
     "@fontsource/dm-mono": "^5.2.7",
     "astro": "^5.16.8",
     "sass": "^1.97.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.53.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0"
   }
 }
