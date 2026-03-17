@@ -4,31 +4,40 @@ import Navigation from "./inputs/Navigation.astro";
 const year = new Date().getFullYear();
 const links = [
 	{
-		text: "Email",
-		url: "briana.gude@gmail.com",
+		text: "work with me",
+		url: "https://tally.so/r/woxEyX",
+	},
+  {
+		text: "email",
+		url: "hi@brianagude.com",
 	},
 	{
-		text: "Resume",
-		url: "https://docs.google.com/document/d/1QbvApriHSseBlM7wJf49vDoh7gLyCtT3aNepuKjwDLA/edit?usp=sharing",
-	},
-	{
-		text: "Linkedin",
+		text: "linkedin",
 		url: "https://www.linkedin.com/in/brianagude/",
 	},
 	{
-		text: "Github",
+		text: "github",
 		url: "https://github.com/brianagude",
 	},
 	{
-		text: "Instagram",
+		text: "instagram",
 		url: "https://www.instagram.com/brianagude/",
+	},
+	{
+		text: "bsky",
+		url: "https://bsky.app/profile/brianagude.com",
+	},
+	{
+		text: "rss",
+		url: "/rss.xml",
 	},
 ];
 ---
+
 <footer>
   <div class="container">
+    <Navigation links={links} ariaLabel="Social and contact links" />
     <p>&copy; {year} Briana Gude LLC</p>
-    <Navigation links={links} />
   </div>
 </footer>
 
@@ -44,14 +53,11 @@ const links = [
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    border-top: 1px solid $black;
+    align-items: center;
 
-    @include mq("sm") { 
-      flex-direction: row; 
-      justify-content: space-between;
-      align-items: center;
-    }
+    gap: 16px;
+    max-width: $bp-xl;
+    margin: 0 auto;
   }
 
   p, a { line-height: 1; }

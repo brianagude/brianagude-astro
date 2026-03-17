@@ -1,0 +1,244 @@
+@use "./variables" as *;
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.caption-lg,
+.caption {
+  font-weight: bold;
+  font-family: $font-mono;
+}
+
+.h1 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+
+  @include mq("sm") {
+    font-size: 3rem;
+  }
+
+  @include mq("lg") {
+    font-size: 3.75rem;
+  }
+}
+
+.h2 {
+  font-size: 1.875rem;
+  line-height: 1.375;
+
+  @include mq("sm") {
+    font-size: 2.25rem;
+  }
+
+  @include mq("lg") {
+    font-size: 3rem;
+  }
+}
+
+.h3 {
+  font-size: 1.5rem;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.875rem;
+  }
+
+  @include mq("lg") {
+    font-size: 2.25rem;
+  }
+}
+
+.h4 {
+  font-size: 1.25rem;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.5rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.875rem;
+  }
+}
+
+.h5 {
+  font-size: 1.125rem;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.25rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.5rem;
+  }
+}
+
+.h6 {
+  font-size: 1rem;
+  line-height: 1.625;
+  text-transform: uppercase;
+
+  @include mq("sm") {
+    font-size: 1.125rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.25rem;
+  }
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.625;
+  max-width: 60ch;
+  text-wrap: pretty;
+
+  @include mq("sm") {
+    font-size: 1.25rem;
+  }
+}
+
+p, li {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 50ch;
+  text-wrap: pretty;
+
+  @include mq("sm") {
+    font-size: 1.125rem;
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+a {
+  color: $text;
+  text-decoration: none;
+}
+
+p a {
+  font-weight: 500;
+  font-size: inherit;
+  padding: 0 8px;
+  border-radius: 32px;
+  background: color-mix(in oklab, var(--color-black) 5%, transparent);
+  backdrop-filter: blur(4px);
+  transition: background ease 0.2s;
+  display: inline-block;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+.body-sm {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  max-width: 60ch;
+  text-wrap: pretty;
+
+  @include mq("sm") {
+    font-size: 1rem;
+  }
+}
+
+.caption-lg {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.5rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.875rem;
+  }
+}
+
+.caption {
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.25rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.5rem;
+  }
+}
+
+.caption-sm {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625;
+
+  @include mq("sm") {
+    font-size: 1.125rem;
+  }
+
+  @include mq("lg") {
+    font-size: 1.25rem;
+  }
+}
+
+.prose {
+  line-height: 1.7;
+  color: var(--color-black);
+
+  > :first-child {
+      margin-top: 0 !important;
+    }
+
+  // Text elements
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-black);
+    font-weight: 800;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  // Lists
+  ul,
+  ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.25rem;
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+  }
+
+  // Quotes
+  blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    font-style: italic;
+    margin: 2rem 0;
+    color: color-mix(in oklab, var(--color-black) 70%, transparent);
+  }
+
+  // Code (Inline)
+  :not(pre)>code {
+    background: color-mix(in oklab, var(--color-black) 5%, transparent);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: $font-mono;
+  }
+}

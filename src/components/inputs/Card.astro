@@ -1,0 +1,67 @@
+---
+const { url, title, image, video, date } = Astro.props;
+import Mux from "./Mux.astro";
+import FormattedDate from "./FormattedDate.astro";
+---
+
+<a href={url} aria-label={title}>
+  <div class="media">
+    {video && <Mux playbackId={video} title={title} />}
+    {image && !video && <img src={image.url} alt={image.alt} />}
+  </div>
+  <div class="content">
+    <span class="body-lg title">{title}</span>
+    {date && <span class="body-sm"><FormattedDate date={date} /></span>}
+  </div>
+</a>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+
+  .body-sm {
+    opacity: 0.5;
+  }
+
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &:hover {
+      .media {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0px rgba(4,6,2,0.25);
+        border-radius: 40px;
+      }
+
+      .title {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .media {
+    aspect-ratio: 16/9;
+    border-radius: 24px;
+    border: 1px solid $black;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  img, video {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    // gap: 8px;
+    text-align: center; 
+  }
+
+  span {
+    transition: all 0.3s ease-in-out;
+  }
+</style>

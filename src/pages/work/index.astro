@@ -4,17 +4,17 @@ import { getCollection } from "astro:content";
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const allPosts = await getCollection("objects");
+const allPosts = await getCollection("work");
 const sortedPosts = allPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const pageTitle = "Objects";
+const pageTitle = "My Work";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={pageTitle}>
   <section class="page-section">
     <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={`/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      {sortedPosts.sort().map((post: any) => <Card url={`/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>

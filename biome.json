@@ -1,0 +1,12 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+  	"ignore": ["**/*.astro", "**/*.glsl", "**/*.vert", "**/*.frag"]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	}
+}

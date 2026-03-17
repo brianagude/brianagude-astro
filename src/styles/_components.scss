@@ -3,228 +3,30 @@
 .page-section {
   scroll-margin-top: 0.5rem;
   padding: 2.5rem 0;
+  width: 100%;
 
   @include mq("sm") {
     padding: 3rem 0;
   }
 
   @include mq("lg") {
-    paccing: 4rem 0;
+    padding: 4rem 0;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
+  & >.container {
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    gap: 2rem;
     padding: 0 1rem;
+    gap: 2rem;
 
     @include mq("sm") {
-      gap: 2.5rem;
+      gap: 1rem;
       padding: 0 1.5rem;
     }
 
     @include mq("lg") {
-      gap: 3rem;
       padding: 0 2rem;
     }
   }
-}
-
-.h1, .h2, .h3, .h4, .h5, .h6, .captionLarge, .caption {
-  font-weight: bold;
-  font-family: $font-mono;
-}
-
-.h1 {
-  font-size: 2.25rem;
-  line-height: 1.25;
-
-  @include mq("sm") {
-    font-size: 3rem;
-  }
-
-  @include mq("lg") {
-    font-size: 3.75rem;
-  }
-}
-
-.h2 {
-  font-size: 1.875rem;
-  line-height: 1.375;
-
-  @include mq("sm") {
-    font-size: 2.25rem;
-  }
-
-  @include mq("lg") {
-    font-size: 3rem;
-  }
-}
-
-.h3 {
-  font-size: 1.5rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.875rem;
-  }
-
-  @include mq("lg") {
-    font-size: 2.25rem;
-  }
-}
-
-.h4 {
-  font-size: 1.25rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.5rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.875rem;
-  }
-}
-
-.h5 {
-  font-size: 1.125rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.25rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.5rem;
-  }
-}
-
-.h6 {
-  font-size: 1rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.125rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.25rem;
-  }
-}
-
-.bodyLarge {
-  font-size: 1.125rem;
-  line-height: 1.625;
-  max-width: 60ch;
-  text-wrap: pretty;
-
-  @include mq("sm") {
-    font-size: 1.25rem;
-  }
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5;
-  max-width: 60ch;
-  text-wrap: pretty;
-
-  @include mq("sm") {
-    font-size: 1.125rem;
-  }
-}
-
-.bodySmall {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  max-width: 60ch;
-  text-wrap: pretty;
-
-  @include mq("sm") {
-    font-size: 1rem;
-  }
-}
-
-.captionLarge {
-  text-transform: uppercase;
-  font-size: 1.25rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.5rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.875rem;
-  }
-}
-
-.caption {
-  text-transform: uppercase;
-  font-size: 1.125rem;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.25rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.5rem;
-  }
-}
-
-.captionSmall {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.625;
-
-  @include mq("sm") {
-    font-size: 1.125rem;
-  }
-
-  @include mq("lg") {
-    font-size: 1.25rem;
-  }
-}
-
-
-mux-player {
-  --media-object-fit: cover;
-  --media-object-position: center;
-
-  /* Hide all controls at once */
-  --controls: none;
-
-  /* Hide the error dialog */
-  --dialog: none;
-
-  /* Hide the loading indicator */
-  --loading-indicator: none;
-
-  /* Target all sections by excluding the section prefix */
-  --play-button: none;
-  --live-button: none;
-  --seek-backward-button: none;
-  --seek-forward-button: none;
-  --mute-button: none;
-  --captions-button: none;
-  --airplay-button: none;
-  --pip-button: none;
-  --fullscreen-button: none;
-  --cast-button: none;
-  --playback-rate-button: none;
-  --volume-range: none;
-  --time-range: none;
-  --time-display: none;
-  --duration-display: none;
-  --rendition-menu-button: none;
-
-  /* Target a specific section by prefixing the CSS var with (top|center|bottom) */
-  --center-controls: none;
-  --bottom-play-button: none;
 }

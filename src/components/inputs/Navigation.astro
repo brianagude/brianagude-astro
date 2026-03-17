@@ -8,12 +8,15 @@ interface NavLink {
 
 interface Props {
   links: NavLink[];
+  ariaLabel?: string;
 }
 
-const { links } = Astro.props;
+const { links, ariaLabel = "Navigation" } = Astro.props;
 ---
 
-<nav>
+<nav class="sliding-nav" aria-label={ariaLabel}>
+  <div class="nav-indicator"></div>
+
   {links.map((link) => (
     <Link href={link.url} class="nav-link">
       {link.text}
@@ -21,14 +24,95 @@ const { links } = Astro.props;
   ))}
 </nav>
 
+<script>
+  function updateActiveLinks() {
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach((link) => {
+      const href = link.getAttribute('href');
+      const isActive = href === currentPath || href + '/' === currentPath;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function initSlidingNavs() {
+    const navs = document.querySelectorAll('.sliding-nav:not([data-nav-init])');
+
+    navs.forEach((nav) => {
+      nav.setAttribute('data-nav-init', 'true');
+      const indicator = nav.querySelector('.nav-indicator') as HTMLElement;
+      const links = nav.querySelectorAll('.nav-link') as NodeListOf<HTMLElement>;
+
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          indicator.style.width = `${link.offsetWidth}px`;
+          indicator.style.transform = `translateX(${link.offsetLeft}px) scale(1)`;
+          indicator.style.opacity = '1';
+        });
+      });
+
+      nav.addEventListener('mouseleave', () => {
+        indicator.style.opacity = '0';
+        const currentX = indicator.style.transform.split(' ')[0];
+        indicator.style.transform = `${currentX} scale(0)`;
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSlidingNavs);
+  document.addEventListener('astro:page-load', updateActiveLinks);
+</script>
+
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
 
-  nav {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  .sliding-nav {
+    display: inline-flex;
     flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in oklab, var(--color-black) 5%, transparent);
+    backdrop-filter: blur(4px);
+    // background: $white;
+    // border: 1px solid $black;
+    padding: 4px;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
   }
 
+  .nav-indicator {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    // background-color: $primary-color;
+    background: color-mix(in oklab, var(--color-black) 5%, transparent);
+    backdrop-filter: blur(4px);
+    border-radius: 32px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: 
+      transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+      width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+      opacity 0.2s ease;
+    transform: translateX(0) scale(0.9);
+  }
+
+  :global(.nav-link) {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 32px;
+    text-decoration: none;
+    color: inherit;
+    z-index: 2;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
 </style>

@@ -1,15 +1,19 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  twitterImage?: string;
   canonicalURL?: URL;
 }
 
 const {
   title = "Briana Gude",
   description = "Frontend Engineer & Product Designer",
-  image = "/og-default.png", // Path to your default share image in /public
+  image = "/meta-og.jpg",
+  twitterImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 ---
@@ -37,5 +41,6 @@ const {
   <meta property="twitter:url" content={Astro.url} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+  <meta property="twitter:image" content={twitterImage ? new URL(twitterImage, Astro.url) : new URL(image, Astro.url)} />
+  <ViewTransitions />
 </head>

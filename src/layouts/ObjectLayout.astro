@@ -1,0 +1,59 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Link from "@/components/inputs/Link.astro";
+
+const { frontmatter } = Astro.props;
+const metaImage = frontmatter.mux_id
+  ? `https://image.mux.com/${frontmatter.mux_id}/thumbnail.jpg`
+  : frontmatter.image?.url;
+const twitterImage = frontmatter.mux_id
+  ? `https://image.mux.com/${frontmatter.mux_id}/animated.gif?width=600&start=0&end=4`
+  : undefined;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
+  <section class="project page-section">
+    <div class="container">
+      <div class="header">
+        <h1>{frontmatter.title}</h1>
+        <Link href={frontmatter.url}>View Project</Link>
+      </div>
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+  @use "@/styles/_variables.scss" as *;
+
+  .container {
+    max-width: $bp-sm !important;
+    margin: 0 auto; 
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header a {
+    display: block;
+    height: fit-content;
+    font-weight: 500;
+    font-size: inherit;
+    padding: 0 8px;
+    border-radius: 32px;
+    background: color-mix(in oklab, var(--color-black) 5%, transparent);
+    backdrop-filter: blur(4px);
+    transition: background ease 0.2s;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+</style>

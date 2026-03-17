@@ -1,0 +1,45 @@
+---
+import Link from "@/components/inputs/Link.astro";
+import SplitText from "@/components/inputs/SplitText.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import Headshot from "@/images/headshot.jpg"
+---
+
+<BaseLayout>
+	<section class="hero-section page-section">
+		<div class="container">
+			<Image src={Headshot} alt="headshot of briana" width={320} height={320} />
+			<div class="text-block">
+				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
+				<p>I design and I code. </p>
+				<p>I'm currently building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+	.page-section {
+		min-height: 60dvh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	img {
+		width: 120px;
+		height: 120px;
+		border-radius: 100%;
+		border: 1px solid $black;
+		margin: 0 auto;
+	}
+
+	.text-block {
+		text-align: center;
+		p { margin: 16px auto 0; }
+	}
+</style>
