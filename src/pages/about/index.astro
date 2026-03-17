@@ -9,8 +9,7 @@ import Headshot from "@/images/headshot.jpg"
 <BaseLayout>
 	<section class="hero-section page-section">
 		<div class="container">
-			<!-- <Image src="/images/briana.jpg" alt="headshot of briana"/> -->
-			<Image src={Headshot} alt="headshot of briana" width={80} height={80} />
+			<Image src={Headshot} alt="headshot of briana" width={320} height={320} />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
 				<p>I design and I code. </p>
@@ -32,9 +31,11 @@ import Headshot from "@/images/headshot.jpg"
 	}
 
 	img {
+		width: 120px;
+		height: 120px;
 		border-radius: 100%;
-		border: 1px solid $black; 
-		margin: 0 auto 24px;
+		border: 1px solid $black;
+		margin: 0 auto;
 	}
 
 	.text-block {

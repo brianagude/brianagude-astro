@@ -8,21 +8,23 @@ import Head from "@/components/Head.astro";
 import Header from "@/components/Header.astro"
 
 const {
-	metaTitle = "briana gude",
-	metaDescription = "creative technologist",
-	metaImage = "/og-default.png",
+	title = "briana gude",
+	description = "creative technologist",
+	image = "/og-default.png",
+	twitterImage,
 } = Astro.props;
 ---
 
 <html lang="en">
-  <Head title={metaTitle} description={metaDescription} image={metaImage} />
+  <Head title={title} description={description} image={image} twitterImage={twitterImage} />
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header/>
-    <main>
-      <slot /> 
+    <main id="main-content">
+      <slot />
     </main>
     <Footer/>
-    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" defer></script>
+    <script>import '@mux/mux-player';</script>
   </body>
 </html>
 
@@ -32,12 +34,28 @@ const {
 
   main {
     max-width: $bp-xl;
-    margin: auto; 
+    margin: auto;
     min-height: calc(100vh - 168px);
 
     @media (min-width: 576px) {
 			min-height: calc(100vh - 136px);
 		}
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-black);
+    padding: 8px 16px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+
+    &:focus {
+      top: 0;
+    }
   }
 
 </style>

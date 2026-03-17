@@ -4,7 +4,7 @@ import Mux from "./Mux.astro";
 import FormattedDate from "./FormattedDate.astro";
 ---
 
-<a href={url}>
+<a href={url} aria-label={title}>
   <div class="media">
     {video && <Mux playbackId={video} title={title} />}
     {image && !video && <img src={image.url} alt={image.alt} />}

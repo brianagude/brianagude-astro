@@ -3,17 +3,13 @@ import Navigation from "./inputs/Navigation.astro";
 
 const year = new Date().getFullYear();
 const links = [
-	// {
-	// 	text: "Inquire",
-	// 	url: "https://tally.so/r/woxEyX",
-	// },
+	{
+		text: "work with me",
+		url: "https://tally.so/r/woxEyX",
+	},
   {
 		text: "email",
 		url: "hi@brianagude.com",
-	},
-  {
-		text: "rss",
-		url: "/rss.xml",
 	},
 	{
 		text: "linkedin",
@@ -31,12 +27,16 @@ const links = [
 		text: "bsky",
 		url: "https://bsky.app/profile/brianagude.com",
 	},
+	{
+		text: "rss",
+		url: "/rss.xml",
+	},
 ];
 ---
 
 <footer>
   <div class="container">
-    <Navigation links={links} />
+    <Navigation links={links} ariaLabel="Social and contact links" />
     <p>&copy; {year} Briana Gude LLC</p>
   </div>
 </footer>

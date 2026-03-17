@@ -27,16 +27,16 @@ const links = [
 	},
 ];
 ---
-<header>
+<header transition:persist>
   <div class="container">
     <!-- <a href="/" class="logo">
       <Image src={avi} alt="" width="36"/>
       <p>
         <b>Briana Gude</b><br/>
-        Designer & Engineer
+        Creative Technologist
       </p>
     </a> -->
-    <Navigation links={links} />
+    <Navigation links={links} ariaLabel="Main navigation" />
   </div>
 </header>
 
@@ -72,6 +72,7 @@ const links = [
 
   .logo {
     display: flex;
+    flex-direction: column; 
     align-items: center;
     gap: 12px;
     display: none;

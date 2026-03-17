@@ -8,12 +8,13 @@ interface NavLink {
 
 interface Props {
   links: NavLink[];
+  ariaLabel?: string;
 }
 
-const { links } = Astro.props;
+const { links, ariaLabel = "Navigation" } = Astro.props;
 ---
 
-<nav class="sliding-nav">
+<nav class="sliding-nav" aria-label={ariaLabel}>
   <div class="nav-indicator"></div>
 
   {links.map((link) => (
@@ -24,30 +25,46 @@ const { links } = Astro.props;
 </nav>
 
 <script>
-  const navs = document.querySelectorAll('.sliding-nav');
+  function updateActiveLinks() {
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach((link) => {
+      const href = link.getAttribute('href');
+      const isActive = href === currentPath || href + '/' === currentPath;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
 
-  navs.forEach((nav) => {
-    // Look for the indicator inside THIS specific nav
-    const indicator = nav.querySelector('.nav-indicator') as HTMLElement;
-    const links = nav.querySelectorAll('.nav-link') as NodeListOf<HTMLElement>;
+  function initSlidingNavs() {
+    const navs = document.querySelectorAll('.sliding-nav:not([data-nav-init])');
+
+    navs.forEach((nav) => {
+      nav.setAttribute('data-nav-init', 'true');
+      const indicator = nav.querySelector('.nav-indicator') as HTMLElement;
+      const links = nav.querySelectorAll('.nav-link') as NodeListOf<HTMLElement>;
 
       links.forEach(link => {
         link.addEventListener('mouseenter', () => {
-          const linkWidth = link.offsetWidth;
-          const linkOffset = link.offsetLeft;
-
-          indicator.style.width = `${linkWidth}px`;
-          indicator.style.transform = `translateX(${linkOffset}px) scale(1)`;
+          indicator.style.width = `${link.offsetWidth}px`;
+          indicator.style.transform = `translateX(${link.offsetLeft}px) scale(1)`;
           indicator.style.opacity = '1';
         });
       });
 
       nav.addEventListener('mouseleave', () => {
         indicator.style.opacity = '0';
-        const currentText = indicator.style.transform.split(' ')[0]; 
-        indicator.style.transform = `${currentText} scale(0)`;
+        const currentX = indicator.style.transform.split(' ')[0];
+        indicator.style.transform = `${currentX} scale(0)`;
       });
-  });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSlidingNavs);
+  document.addEventListener('astro:page-load', updateActiveLinks);
 </script>
 
 <style lang="scss">

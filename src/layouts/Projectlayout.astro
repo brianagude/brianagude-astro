@@ -4,9 +4,15 @@ import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
 
 const { frontmatter } = Astro.props;
+const metaImage = frontmatter.mux_id
+  ? `https://image.mux.com/${frontmatter.mux_id}/thumbnail.jpg`
+  : frontmatter.image?.url;
+const twitterImage = frontmatter.mux_id
+  ? `https://image.mux.com/${frontmatter.mux_id}/animated.gif?width=600&start=0&end=4`
+  : undefined;
 ---
 
-<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
   <section class="project page-section">
     <div class="container">
       <div class="header">

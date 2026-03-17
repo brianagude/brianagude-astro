@@ -1,12 +1,56 @@
 ---
 const { playbackId, title } = Astro.props;
+const poster = `https://image.mux.com/${playbackId}/thumbnail.jpg`;
+const placeholder = `https://image.mux.com/${playbackId}/thumbnail.jpg?width=400&height=200&fit_mode=smartcrop&time=0`;
 ---
 
-<mux-player
-  playback-id={playbackId}
-  metadata-video-title={title}
-  autoPlay="muted"
-  loop
-  muted
-  nohotkeys
-></mux-player>
+<div class="mux-wrapper">
+  <img class="mux-placeholder" src={placeholder} alt="" aria-hidden="true" />
+  <mux-player
+    playback-id={playbackId}
+    metadata-video-title={title}
+    poster={poster}
+    autoPlay="muted"
+    loop
+    muted
+    nohotkeys
+  ></mux-player>
+</div>
+
+<script>
+  document.querySelectorAll('.mux-wrapper').forEach((wrapper) => {
+    const player = wrapper.querySelector('mux-player');
+    const placeholder = wrapper.querySelector('.mux-placeholder') as HTMLElement;
+
+    player?.addEventListener('playing', () => {
+      placeholder.style.opacity = '0';
+    }, { once: true });
+  });
+</script>
+
+<style>
+  .mux-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mux-placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    transform: scale(1.05);
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  mux-player {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+  }
+</style>
