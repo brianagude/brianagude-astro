@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $primary-color: var(--color-primary);
 $secondary-color: var(--color-secondary);
 $tertiary-color: var(--color-tertiary);
@@ -43,7 +45,7 @@ $breakpoints: (
 );
 
 @mixin mq($size) {
-  @media (min-width: map-get($breakpoints, $size)) {
+  @media (min-width: map.get($breakpoints, $size)) {
     @content;
   }
 }

@@ -8,7 +8,7 @@ const allPosts = await getCollection("work");
 const sortedPosts = allPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const pageTitle = "My Work";
+const pageTitle = "briana's work";
 ---
 
 <BaseLayout title={pageTitle}>

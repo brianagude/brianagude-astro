@@ -1,9 +1,9 @@
 ---
 title: "Recurse"
-pubDate: 2019-06-05
+pubDate: 2025-11-05
 description: "Projects from my batch at Recurse Center"
-url: "https://www.ashleecruz.com/"
-image: { url: "/src/images/bri.jpg", alt: "Photo of Briana" }
+url: "https://sketchbook.brianagude.com/"
+image: { url: "/src/images/recurse.jpg", alt: "Screenshot of homepage" }
 ---
 
-Things I built while at Recurse.
+Things I made while at Recurse.

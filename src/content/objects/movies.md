@@ -1,9 +1,13 @@
 ---
 title: "Movies To Watch"
-pubDate: 2026-02-15
+pubDate: 2026-02-20
 description: "Movie recommendations app"
-url: "https://www.ashleecruz.com/"
-image: { url: "/src/images/bri.jpg", alt: "Photo of Briana" }
+url: "https://movies.brianagude.com/"
+image:
+  {
+    url: "/src/images/man-on-fire.jpg",
+    alt: "Screen shot of man on fire recommendation",
+  }
 ---
 
-Things I built while at Recurse.
+I get really tired of searching for movies to watch, so I used the movie db to create a random movie generator with some filters that are relevant to me.
