@@ -5,7 +5,7 @@ description: "Movie recommendations app"
 url: "https://movies.brianagude.com/"
 image:
   {
-    url: "/src/images/man-on-fire.jpg",
+    url: "../../images/man-on-fire.jpg",
     alt: "Screen shot of man on fire recommendation",
   }
 ---

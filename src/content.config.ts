@@ -4,14 +4,14 @@ import { z } from "astro/zod";
 
 const objects = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/objects" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
 		description: z.string(),
 		url: z.string(),
 		mux_id: z.string().optional(),
 		image: z.object({
-			url: z.string(),
+			url: image(),
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
@@ -20,7 +20,7 @@ const objects = defineCollection({
 
 const work = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/work" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
 		description: z.string(),
@@ -28,7 +28,7 @@ const work = defineCollection({
 		url: z.string(),
 		mux_id: z.string().optional(),
 		image: z.object({
-			url: z.string(),
+			url: image(),
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
@@ -37,7 +37,7 @@ const work = defineCollection({
 
 const caseStudies = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/case-studies" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
 		description: z.string(),
@@ -45,7 +45,7 @@ const caseStudies = defineCollection({
 		url: z.string(),
 		mux_id: z.string().optional(),
 		image: z.object({
-			url: z.string(),
+			url: image(),
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
@@ -54,12 +54,12 @@ const caseStudies = defineCollection({
 
 const thoughts = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/thoughts" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
 		description: z.string(),
 		image: z.object({
-			url: z.string(),
+			url: image(),
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
