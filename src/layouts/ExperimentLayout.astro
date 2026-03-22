@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
+import FormattedDate from "@/components/inputs/FormattedDate.astro";
 
 const { frontmatter } = Astro.props;
 const metaImage = frontmatter.mux_id
@@ -15,8 +16,14 @@ const twitterImage = frontmatter.mux_id
   <section class="project page-section">
     <div class="container">
       <div class="header">
-        <h1>{frontmatter.title}</h1>
-        <Link href={frontmatter.url}>View Project</Link>
+        <h1 class="h2">{frontmatter.title}</h1>
+        <div class="info">
+          <p class="body-sm">
+            <FormattedDate date={frontmatter.pubDate} format="month-year" />
+            {frontmatter.endDate && <> &mdash; <FormattedDate date={frontmatter.endDate} format="month-year" /></>}
+          </p>
+          <Link href={frontmatter.url}>View Project</Link>
+        </div>
       </div>
       <div class="prose">
         <slot />
@@ -34,26 +41,36 @@ const twitterImage = frontmatter.mux_id
     margin: 0 auto; 
   }
 
-  .header {
+  .info {
     display: flex;
-    align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 8px; 
+
+    a {
+      display: block;
+      height: fit-content;
+      font-weight: 500;
+      font-size: inherit;
+      padding: 0 8px;
+      border-radius: 32px;
+      background: color-mix(in oklab, var(--color-black) 5%, transparent);
+      backdrop-filter: blur(4px);
+      transition: background ease 0.2s;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
   }
 
-  .header a {
-    display: block;
-    height: fit-content;
+  .pub-date {
+    font-family: $font-mono;
     font-weight: 500;
-    font-size: inherit;
-    padding: 0 8px;
-    border-radius: 32px;
-    background: color-mix(in oklab, var(--color-black) 5%, transparent);
-    backdrop-filter: blur(4px);
-    transition: background ease 0.2s;
+    opacity: 50%;
+  }
 
-    &:hover {
-      background-color: $primary-color;
-    }
+  .prose {
+    margin-top: 40px; 
   }
 </style>

@@ -36,7 +36,7 @@ const work = defineCollection({
 });
 
 const caseStudies = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/case-studies" }),
+	loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/case-studies" }),
 	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),

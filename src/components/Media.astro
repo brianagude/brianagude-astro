@@ -1,0 +1,101 @@
+---
+const { title, items } = Astro.props
+import Mux from "./inputs/Mux.astro"
+import Image from "astro/components/Image.astro"
+// items = [{ type: 'image' | 'video', src: string, caption?: string }]
+---
+
+<section class="media">
+  {title && <h3 class="h3 title">{title}</h3>}
+  <div class="items">
+    {items.map(item => (
+      <figure class={item.caption ? "has-caption" : ""}>
+        <div class="media-wrapper">
+          {item.video && <Mux playbackId={item.video} title={title} />}
+          {item.image && !item.video && <Image src={item.image.url} alt={item.image.alt} width={1080} height={608} />}
+        </div>
+        {item.caption && <figcaption class="body-sm">{item.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+</section>
+
+<style lang="scss">
+  @use "@/styles/_variables.scss" as *;
+  @use "@/styles/_components.scss" as *;
+
+  .title {
+    padding-top: 1rem;
+    border-top: 2px solid $black;
+    grid-column: 1/-1;
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    
+    @media (min-width: 640px) {
+      margin-top: 2.5rem;
+      gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      margin-top: 3rem;
+      gap: 2.5rem;
+    }
+  }
+
+  figure.has-caption {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px; 
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 0.4fr 1fr;
+    }
+  }
+
+  .media-wrapper {
+    border: 1px solid $black;
+    border-radius: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background-color: $black;
+
+    @media (min-width: 640px) {
+      border-radius: 48px;
+    }
+
+    @media (min-width: 1024px) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    // .media {
+    //   aspect-ratio: 16/9;
+    //   border-radius: 24px;
+    //   border: 1px solid $black;
+    //   transition: all 0.3s ease-in-out;
+    //   overflow: hidden;
+    // }
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  figcaption {
+    margin-top: 16px; 
+
+    @media (min-width: 1024px) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+</style>
