@@ -29,7 +29,7 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
     const currentPath = window.location.pathname;
     document.querySelectorAll('.nav-link').forEach((link) => {
       const href = link.getAttribute('href');
-      const isActive = href === currentPath || href + '/' === currentPath;
+      const isActive = currentPath === href || currentPath === href + '/' || currentPath.startsWith(href + '/');
       link.classList.toggle('active', isActive);
       if (isActive) {
         link.setAttribute('aria-current', 'page');
@@ -50,6 +50,8 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
       links.forEach(link => {
         link.addEventListener('mouseenter', () => {
           indicator.style.width = `${link.offsetWidth}px`;
+          indicator.style.height = `${link.offsetHeight}px`;
+          indicator.style.top = `${link.offsetTop}px`;
           indicator.style.transform = `translateX(${link.offsetLeft}px) scale(1)`;
           indicator.style.opacity = '1';
         });
@@ -78,30 +80,32 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
     justify-content: center;
     background: color-mix(in oklab, var(--color-black) 5%, transparent);
     backdrop-filter: blur(4px);
-    // background: $white;
-    // border: 1px solid $black;
     padding: 4px;
-    border-radius: 40px;
+    border-radius: 24px;
     position: relative;
     z-index: 1;
+
+    @media (min-width: 640px) {
+      border-radius: 40px;
+    }
   }
 
   .nav-indicator {
     position: absolute;
-    top: 4px;
-    // bottom: 4px;
+    top: 0;
     left: 0;
-    height: 28px;
-    // background-color: $primary-color;
+    height: 0;
     background: color-mix(in oklab, var(--color-black) 5%, transparent);
     backdrop-filter: blur(4px);
     border-radius: 32px;
     z-index: -1;
     opacity: 0;
     pointer-events: none;
-    transition: 
-      transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
-      width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+    transition:
+      transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      width 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      height 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      top 0.3s cubic-bezier(0.23, 1, 0.32, 1),
       opacity 0.2s ease;
     transform: translateX(0) scale(0.9);
   }
