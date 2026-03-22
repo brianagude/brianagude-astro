@@ -3,7 +3,7 @@ title: "Recurse"
 pubDate: 2025-11-05
 description: "Projects from my batch at Recurse Center"
 url: "https://sketchbook.brianagude.com/"
-image: { url: "../../images/recurse.jpg", alt: "Screenshot of homepage" }
+mux_id: "oG5c02IfbWXDyq0000L9DoCw00ZoUJVe65vRy39jJc6fq0200"
 ---
 
 Things I made while at Recurse.

@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const allPosts = await getCollection("objects");
+const allPosts = await getCollection("experiments");
 const sortedPosts = allPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -22,6 +22,12 @@ const pageTitle = "briana's experiments";
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
+
+  .container:has(:global(a:hover)) :global(a:not(:hover) .media img),
+  .container:has(:global(a:hover)) :global(a:not(:hover) .media video) {
+    filter: grayscale(1);
+    transition: filter 0.3s ease-in-out;
+  }
 
   .container {
     display: grid !important;

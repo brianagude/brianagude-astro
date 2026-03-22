@@ -23,6 +23,12 @@ const pageTitle = "briana's case studies";
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
+  .container:has(:global(a:hover)) :global(a:not(:hover) .media img),
+  .container:has(:global(a:hover)) :global(a:not(:hover) .media video) {
+    filter: grayscale(1);
+    transition: filter 0.3s ease-in-out;
+  }
+
   .container {
     display: grid;
     grid-template-columns: 1fr;

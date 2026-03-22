@@ -2,8 +2,8 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-const objects = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/objects" }),
+const experiments = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/experiments" }),
 	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
@@ -40,6 +40,7 @@ const caseStudies = defineCollection({
 	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
+		endDate: z.date().optional(),
 		description: z.string(),
 		role: z.string(),
 		url: z.string(),
@@ -66,4 +67,4 @@ const thoughts = defineCollection({
 	}),
 });
 
-export const collections = { objects, work, caseStudies, thoughts };
+export const collections = { experiments, work, caseStudies, thoughts };

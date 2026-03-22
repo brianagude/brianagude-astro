@@ -1,9 +1,11 @@
 ---
 interface Props {
   date: Date;
+  endDate?: Date;
+  format?: 'full' | 'year' | 'month-year';
 }
 
-const { date } = Astro.props;
+const { date, endDate, format = 'full' } = Astro.props;
 
 const getOrdinal = (day: number) => {
   if (day > 3 && day < 21) return 'th';
@@ -15,14 +17,27 @@ const getOrdinal = (day: number) => {
   }
 };
 
-const month = date.toLocaleDateString('en-US', { month: 'long' });
-const day = date.getDate();
-const year = date.getFullYear();
-const ordinal = getOrdinal(day);
+const formatSingle = (d: Date): string => {
+  if (format === 'year') {
+    return `${d.getFullYear()}`;
+  } else if (format === 'month-year') {
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  } else {
+    const month = d.toLocaleDateString('en-US', { month: 'long' });
+    const day = d.getDate();
+    const year = d.getFullYear();
+    return `${month} ${day}${getOrdinal(day)}, ${year}`;
+  }
+};
 
-const formattedDate = `${month} ${day}${ordinal}, ${year}`;
+const startStr = formatSingle(date);
+const endStr = endDate ? formatSingle(endDate) : null;
+const formattedDate = endStr ? `${startStr} – ${endStr}` : startStr;
+
+const isoStart = date.toISOString();
+const isoEnd = endDate ? endDate.toISOString() : null;
 ---
 
-<time datetime={date.toISOString()}>
+<time datetime={isoEnd ? `${isoStart}/${isoEnd}` : isoStart}>
   {formattedDate}
 </time>

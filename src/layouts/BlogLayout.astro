@@ -1,0 +1,127 @@
+---
+import FormattedDate from "@/components/inputs/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Link from "@/components/inputs/Link.astro";
+import { Image } from "astro:assets";
+import RSS from "@/images/rss.svg"
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <section class="blog-header page-section">
+    <div class="container">
+      <h1>{frontmatter.title}</h1>
+      <p class="pub-date body-sm"><FormattedDate date={frontmatter.pubDate} /></p>
+    </div>
+  </section>
+  <div class="blog-image container">
+    {
+      frontmatter.image.url && frontmatter.image.alt && <Image src={frontmatter.image.url} alt={frontmatter.image.alt} width={1080} height={608}  />
+    }
+  </div>
+  <section class="blog-post page-section">
+    <div class="container">
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </section>
+  <div class="rss-wrapper">
+    <Link href='/rss.xml' class="rss-link">
+      <Image src={RSS} alt="Arrow Icon" width={24} height={24}  />
+      Download My RSS Feed
+    </Link>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+  @use "@/styles/_variables.scss" as *;
+
+  .container {
+    max-width: $bp-sm !important;
+    margin: 0 auto; 
+  }
+
+  .pub-date {
+    // text-transform: uppercase;
+    font-family: $font-mono;
+    font-weight: 500;
+    opacity: 50%;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 16px;
+  }
+
+  .tag {
+		padding: 0 8px;
+		border-radius: 32px;
+		background: color-mix(in oklab, var(--color-black) 5%, transparent);
+  	backdrop-filter: blur(4px);
+
+		&:hover {
+			background-color: $primary-color;
+		}
+	}
+
+  .blog-header {
+    padding-bottom: 2.5rem;
+
+    @include mq("sm") {
+      padding-bottom: 2rem;
+    }
+  }
+
+  .blog-post {
+    padding-top: 2.5rem;
+
+    @include mq("sm") {
+      padding-top: 2rem;
+    }
+  }
+
+  .blog-image {
+    aspect-ratio: 16/9;
+    border-radius: 24px;
+    border: 1px solid $black;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .rss-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 16px;
+    width: 100%;
+  }
+
+  .rss-link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center; 
+    
+    padding: 6px 16px;
+    border-radius: 32px;
+    height: fit-content;
+    transition: all ease 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: color-mix(in oklab, var(--color-black) 5%, transparent);
+      font-weight: 500;
+    }
+  }
+</style>

@@ -4,18 +4,33 @@ import SplitText from "@/components/inputs/SplitText.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import Headshot from "@/images/headshot.jpg"
+import Arrow from "@/images/arrow.svg"
+import Recurse from "@/images/recurse.svg"
 ---
 
 <BaseLayout>
 	<section class="hero-section page-section">
 		<div class="container">
-			<Image src={Headshot} alt="headshot of briana" width={320} height={320} />
+			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
 				<p>I design and I code. </p>
 				<p>I'm currently building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p>
 			</div>
 		</div>
+	</section>
+	<section class="webring">
+		<a id="rc-ring-prev" href="https://ring.recurse.com/prev?id=63" class="arrow arrow-left">
+			<Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
+		</a>
+
+		<a id="rc-ring-rand" href="https://ring.recurse.com/rand">
+			<Image src={Recurse} alt="Arrow Icon" width={32} height={40} />
+		</a>
+
+		<a id="rc-ring-next" href="https://ring.recurse.com/next?id=63" class="arrow arrow-right">
+			<Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
+		</a>
 	</section>
 </BaseLayout>
 
@@ -30,7 +45,16 @@ import Headshot from "@/images/headshot.jpg"
 		align-items: center;
 	}
 
-	img {
+	.hero-section {
+		height: 100%;
+		flex-grow: 1;
+		
+		.container {
+			padding-bottom: 80px;
+		}
+	}
+
+	.headshot {
 		width: 120px;
 		height: 120px;
 		border-radius: 100%;
@@ -41,5 +65,39 @@ import Headshot from "@/images/headshot.jpg"
 	.text-block {
 		text-align: center;
 		p { margin: 16px auto 0; }
+	}
+	.webring {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		padding: 16px;
+	}
+
+	.arrow {
+		display: inline-block; 
+		font-weight: 500;
+		padding: 4px 16px;
+		border-radius: 32px;
+		height: fit-content;
+		background: color-mix(in oklab, var(--color-black) 5%, transparent);
+		backdrop-filter: blur(4px);
+		transition: all ease 0.2s;
+		&:hover {
+			transform: translateY(-2px);
+			background: color-mix(in oklab, var(--color-black) 15%, transparent);
+		}
+	}
+
+	.arrow-left {
+		img {
+			transform: rotate(-90deg)
+		}
+	}
+	.arrow-right {
+		img {
+			transform: rotate(90deg)
+		}
 	}
 </style>
