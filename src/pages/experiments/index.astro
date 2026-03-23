@@ -11,7 +11,7 @@ const sortedPosts = allPosts.sort((a, b) =>
 const pageTitle = "briana's experiments";
 ---
 
-<BaseLayout title={pageTitle}>
+<BaseLayout pageTitle={pageTitle}>
   <section class="page-section">
     <div class="container">
       {sortedPosts.sort().map((post: any) => <Card url={`/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
@@ -23,15 +23,10 @@ const pageTitle = "briana's experiments";
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-  .container:has(:global(a:hover)) :global(a:not(:hover) .media img),
-  .container:has(:global(a:hover)) :global(a:not(:hover) .media video) {
-    filter: grayscale(1);
-    transition: filter 0.3s ease-in-out;
-  }
-
   .container {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr;
+    grid-row-gap: 24px;
 
     @media (min-width: $bp-sm) {
       grid-template-columns: 1fr 1fr;

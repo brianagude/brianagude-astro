@@ -4,17 +4,28 @@ import { getCollection } from "astro:content";
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const allPosts = await getCollection("experiments");
+const workPosts = await getCollection("work");
+const caseStudyPosts = await getCollection("caseStudies");
+const experimentPosts = await getCollection("experiments");
+const allPosts = [...workPosts, ...caseStudyPosts, ...experimentPosts, ]
 const sortedPosts = allPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const pageTitle = "Objects";
+const pageTitle = "briana gude";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <section class="page-section">
+<BaseLayout title={pageTitle}>
+  <section class="page-section about-section">
     <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={`/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      <div>
+        <h1 class="body-lg">Briana Gude</h1>
+        <p>Creative Technologist</p>
+      </div>
+    </div>
+  </section>
+  <section class="page-section all-projects">
+    <div class="container">
+      {sortedPosts.sort().map((post: any) => <Card url={`/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>
@@ -23,16 +34,35 @@ const pageTitle = "Objects";
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-  .container {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    @media (min-width: $bp-sm) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (min-width: $bp-lg) {
-      grid-template-columns: 1fr 1fr 1fr;
+  .about-section {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center; 
     }
   }
+
+  .all-projects {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 24px;
+  
+      @media (min-width: $bp-sm) {
+        grid-template-columns: 1fr 1fr;
+      }
+  
+      @media (min-width: $bp-lg) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      &:has(:global(a:hover)) :global(a:not(:hover) .media img),
+      &:has(:global(a:hover)) :global(a:not(:hover) .media video) {
+        filter: grayscale(1);
+        transition: filter 0.3s ease-in-out;
+      }
+    }
+  }
+
 </style>
