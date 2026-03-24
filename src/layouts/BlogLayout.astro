@@ -3,7 +3,7 @@ import FormattedDate from "@/components/inputs/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
 import { Image } from "astro:assets";
-import RSS from "@/images/rss.svg"
+import RSS from "@/images/icons/rss.svg"
 
 const { frontmatter } = Astro.props;
 ---
@@ -29,7 +29,7 @@ const { frontmatter } = Astro.props;
   </section>
   <div class="rss-wrapper">
     <Link href='/rss.xml' class="rss-link">
-      <Image src={RSS} alt="Arrow Icon" width={24} height={24}  />
+      <Image src={RSS} alt="Arrow Icon" width={18} height={18}  />
       Download My RSS Feed
     </Link>
   </div>

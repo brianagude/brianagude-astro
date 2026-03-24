@@ -25,7 +25,7 @@ const pageTitle = "briana gude";
   </section>
   <section class="page-section all-projects">
     <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={`/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      {sortedPosts.sort().map((post: any) => <Card url={post.data.hide_content ? post.data.url : `/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>

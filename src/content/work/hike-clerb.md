@@ -5,4 +5,5 @@ description: "An online shop for Hike Clerb, a community-driven nonprofit reimag
 role: "Design & Development"
 url: "https://www.hikeclerb.org/"
 mux_id: "hV01EeVmhW91ZWud5eJy6003021TCYfp41zyHGN7nnKvHI"
+hide_content: true
 ---
