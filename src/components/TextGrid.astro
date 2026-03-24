@@ -6,7 +6,7 @@ const { title, items } = Astro.props
 <section class="text-grid">
   <div class="container">
     <div class="grid">
-      {title && <h3 class="h3 title">{title}</h3>}
+      {title && <h2 class="h3 title">{title}</h2>}
       {items.map(item => (
         <div class="text-block">
           <h6 class="caption-sm">{item.subtitle}</h6>
@@ -29,17 +29,17 @@ const { title, items } = Astro.props
 
   .grid {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    // display: grid;
+    // grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1.5rem;
 
-    @media (min-width: 640px) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    // @media (min-width: 640px) {
+    //   grid-template-columns: repeat(2, minmax(0, 1fr));
+    // }
 
     @media (min-width: 1280px) {
       gap: 3rem;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      // grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     p {

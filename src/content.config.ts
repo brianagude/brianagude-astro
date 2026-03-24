@@ -15,7 +15,7 @@ const experiments = defineCollection({
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
-		hide_content: z.boolean().default(false),
+		skip_content: z.boolean().default(false),
 	}),
 });
 
@@ -33,7 +33,7 @@ const work = defineCollection({
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
-		hide_content: z.boolean().default(false),
+		skip_content: z.boolean().default(false),
 	}),
 });
 

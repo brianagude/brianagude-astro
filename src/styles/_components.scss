@@ -30,3 +30,40 @@
     }
   }
 }
+
+@mixin pill-link {
+  display: block;
+  height: fit-content;
+  font-weight: 500;
+  font-size: inherit;
+  padding: 0 8px;
+  border-radius: 32px;
+  background: color-mix(in oklab, var(--color-black) 5%, transparent);
+  backdrop-filter: blur(4px);
+  transition: background ease 0.2s;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 24px !important;
+
+  @include mq("sm") {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mq("lg") {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

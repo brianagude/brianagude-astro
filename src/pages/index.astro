@@ -12,20 +12,30 @@ const sortedPosts = allPosts.sort((a, b) =>
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const pageTitle = "briana gude";
+
+function getPostUrl(post: any) {
+  if (post.data.skip_content) return post.data.url;
+  const prefixes: Record<string, string> = {
+    work: '/work',
+    caseStudies: '/case-studies',
+    experiments: '/experiments',
+  };
+  return `${prefixes[post.collection]}/${post.id}/`;
+}
 ---
 
 <BaseLayout title={pageTitle}>
-  <section class="page-section about-section">
-    <div class="container">
+  <section class="page-section text-section">
+    <div class="container centered">
       <div>
-        <h1 class="body-lg">Briana Gude</h1>
+        <h1 class="h6">Briana Gude</h1>
         <p>Creative Technologist</p>
       </div>
     </div>
   </section>
   <section class="page-section all-projects">
-    <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={post.data.hide_content ? post.data.url : `/experiments/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+    <div class="container grid">
+      {sortedPosts.map((post: any) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>
@@ -34,35 +44,5 @@ const pageTitle = "briana gude";
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-  .about-section {
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center; 
-    }
-  }
-
-  .all-projects {
-    .container {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-row-gap: 24px;
-  
-      @media (min-width: $bp-sm) {
-        grid-template-columns: 1fr 1fr;
-      }
-  
-      @media (min-width: $bp-lg) {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      &:has(:global(a:hover)) :global(a:not(:hover) .media img),
-      &:has(:global(a:hover)) :global(a:not(:hover) .media video) {
-        filter: grayscale(1);
-        transition: filter 0.3s ease-in-out;
-      }
-    }
-  }
-
+  .text-section { padding-bottom: 0; }
 </style>

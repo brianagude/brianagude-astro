@@ -12,34 +12,23 @@ const pageTitle = "briana's work";
 ---
 
 <BaseLayout title={pageTitle}>
+  <section class="page-section text-section">
+    <div class="container centered">
+      <div>
+        <h1 class="h6">Things I Made</h1>
+        <p>for other people.</p>
+      </div>
+    </div>
+  </section>
   <section class="page-section">
-    <div class="container">
-      {sortedPosts.sort().map((post: any) => <Card url={post.data.hide_content ? post.data.url : `/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+    <div class="container grid">
+      {sortedPosts.sort().map((post: any) => <Card url={post.data.skip_content ? post.data.url : `/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
-	@use "@/styles/_variables.scss" as *;
 
-  .container:has(:global(a:hover)) :global(a:not(:hover) .media img),
-  .container:has(:global(a:hover)) :global(a:not(:hover) .media video) {
-    filter: grayscale(1);
-    transition: filter 0.3s ease-in-out;
-  }
-
-  .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 24px;
-
-    @media (min-width: $bp-sm) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (min-width: $bp-lg) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
+  .text-section { padding-bottom: 0; }
 </style>

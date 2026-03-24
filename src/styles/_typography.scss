@@ -98,7 +98,7 @@
   text-wrap: pretty;
 
   @include mq("sm") {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -192,6 +192,8 @@ p a {
   }
 }
 
+.font-mono { font-family: $font-mono; }
+
 .prose {
   line-height: 1.7;
   color: var(--color-black);
@@ -204,6 +206,8 @@ p a {
   p {
     margin-bottom: 1.5rem;
   }
+
+ 
 
   h1,
   h2,
@@ -222,6 +226,12 @@ p a {
 
     li + li {
       margin-top: 0.5rem;
+    }
+
+    li {
+      p {
+        margin-bottom: 0;
+      }
     }
   }
 

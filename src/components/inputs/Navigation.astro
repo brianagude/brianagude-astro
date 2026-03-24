@@ -91,6 +91,7 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
   }
 
   .nav-indicator {
+    @media (hover: none) { display: none; }
     position: absolute;
     top: 0;
     left: 0;

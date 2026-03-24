@@ -5,5 +5,5 @@ description: "A custom website for a nonprofit connecting HBCU students, alumni,
 role: "Design & Development"
 url: "https://www.hbcusoutside.com/"
 mux_id: "DN7X1ZG029XOPWEcdFyoP97xLIgImupp8RV102LX3E6A4"
-hide_content: true
+skip_content: true
 ---

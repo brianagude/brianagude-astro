@@ -1,7 +1,7 @@
 ---
+import FormattedDate from "@/components/inputs/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
-import FormattedDate from "@/components/inputs/FormattedDate.astro";
 
 const { frontmatter } = Astro.props;
 const metaImage = frontmatter.mux_id
@@ -15,16 +15,21 @@ const twitterImage = frontmatter.mux_id
 <BaseLayout title={frontmatter.title} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
   <section class="project page-section">
     <div class="container">
-      <div class="header">
-        <h1 class="h2">{frontmatter.title}</h1>
-        <div class="info">
+      <h1 class="h1">{frontmatter.title}</h1>
+      <div class="info">
+        <div class="text-wrapper">
+          <p class="body">{frontmatter.role}</p>
           <p class="body-sm">
             <FormattedDate date={frontmatter.pubDate} format="month-year" />
             {frontmatter.endDate && <> &mdash; <FormattedDate date={frontmatter.endDate} format="month-year" /></>}
           </p>
-          <Link href={frontmatter.url}>View Project</Link>
         </div>
+        <Link href={frontmatter.url}>View Project</Link>
       </div>
+    </div>
+  </section>
+  <section class="project page-section">
+    <div class="container">
       <div class="prose">
         <slot />
       </div>
@@ -37,40 +42,32 @@ const twitterImage = frontmatter.mux_id
   @use "@/styles/_variables.scss" as *;
 
   .container {
-    max-width: $bp-sm !important;
-    margin: 0 auto; 
+    max-width: $bp-xl !important;
+    margin: 0 auto;
   }
 
   .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 8px; 
+    margin-top: 16px;
 
     a {
-      display: block;
-      height: fit-content;
-      font-weight: 500;
-      font-size: inherit;
-      padding: 0 8px;
-      border-radius: 32px;
-      background: color-mix(in oklab, var(--color-black) 5%, transparent);
-      backdrop-filter: blur(4px);
-      transition: background ease 0.2s;
-
-      &:hover {
-        background-color: $primary-color;
-      }
+      @include pill-link;
     }
   }
 
-  .pub-date {
-    font-family: $font-mono;
-    font-weight: 500;
-    opacity: 50%;
-  }
-
   .prose {
-    margin-top: 40px; 
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (min-width: 640px) {
+      gap: 48px;
+    }
+
+    @media (min-width: 1280px) {
+      gap: 64px;
+    }
   }
 </style>

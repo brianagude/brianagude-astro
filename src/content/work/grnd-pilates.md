@@ -9,5 +9,5 @@ image:
     url: "/src/images/grndpilates.jpg",
     alt: "Jharde from GRND. Pilates on a pilates ball",
   }
-hide_content: true
+skip_content: true
 ---
