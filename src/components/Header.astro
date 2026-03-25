@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import avi from "@/images/briana.webp";
 import Navigation from "./inputs/Navigation.astro";
 
 const links = [
@@ -9,17 +7,17 @@ const links = [
 		text: "everything",
 		url: "/",
 	},
-	{
-		text: "experiments",
-		url: "/experiments",
+  {
+		text: "case studies",
+		url: "/case-studies",
 	},
-	{
+  {
 		text: "work",
 		url: "/work",
 	},
 	{
-		text: "case studies",
-		url: "/case-studies",
+		text: "experiments",
+		url: "/experiments",
 	},
   // {
 	// 	text: "thoughts",
@@ -33,13 +31,6 @@ const links = [
 ---
 <header transition:persist>
   <div class="container">
-    <!-- <a href="/" class="logo">
-      <Image src={avi} alt="" width="36"/>
-      <p>
-        <b>Briana Gude</b><br/>
-        Creative Technologist
-      </p>
-    </a> -->
     <Navigation links={links} ariaLabel="Main navigation" />
   </div>
 </header>
@@ -64,12 +55,9 @@ const links = [
     padding: 8px 16px;
     width: 100%;
     display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
     justify-content: center;
     align-items: center;
     gap: 16px;
-    // border-bottom: 1px solid $black;
     max-width: $bp-xl;
     margin: 0 auto;
   }

@@ -4,13 +4,10 @@ import { getCollection } from "astro:content";
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const workPosts = await getCollection("work");
 const caseStudyPosts = await getCollection("caseStudies");
+const workPosts = await getCollection("work");
 const experimentPosts = await getCollection("experiments");
-const allPosts = [...workPosts, ...caseStudyPosts, ...experimentPosts, ]
-const sortedPosts = allPosts.sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts];
 const pageTitle = "briana gude";
 
 function getPostUrl(post: any) {
@@ -35,7 +32,7 @@ function getPostUrl(post: any) {
   </section>
   <section class="page-section all-projects">
     <div class="container grid">
-      {sortedPosts.map((post: any) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      {allPosts.map((post: any) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
     </div>
   </section>
 </BaseLayout>
