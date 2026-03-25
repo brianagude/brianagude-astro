@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import Headshot from "@/images/headshot.jpg"
 import Arrow from "@/images/icons/arrow.svg"
 import Recurse from "@/images/icons/recurse.svg"
+import BrandCarousel from "@/components/BrandCarousel.astro";
 ---
 
 <BaseLayout>
@@ -14,9 +15,15 @@ import Recurse from "@/images/icons/recurse.svg"
 			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
-				<p>I design and I code. </p>
-				<p>I'm currently building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p>
+				<p>I design and I code.</p>
+				<!-- <p>I work with health, wellness, and beauty brands and the agencies that support them on everything from full Shopify builds and design systems to conversion-focused landing pages and growth-minded UX. I recently finished a batch at Recurse Center where I focused on creative coding and interactive web experiences.</p>
+				<p>I'm open to e-commerce work, creative projects, and anything in between. Feel free to reach out.</p> -->
+				<!-- <p>I build bespoke e-commerce experiences for DTC brands and the agencies that support them ~ Shopify, design systems, landing pages, growth-minded UX. Recently finished a batch at <Link href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3">Recurse Center</Link> where I focused on creative coding and interactive web experiences.</p> -->
+				 <p>I specialize in Shopify and DTC e-commerce, working with brands and agencies on everything from full Shopify builds and design systems to conversion-focused landing pages and growth-minded UX.</p>
+				<p>Open to e-commerce work, creative projects, and anything in between. <Link href="mailto:hi@brianagude.com">Feel free to reach out</Link> (:</p> 
+				<!-- <p>I'm currently building <Link href="https://www.carostack.com">CARO</Link>, a conversion studio for DTC brands. I recently finished a batch at <Link href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3">Recurse</Link>. Sometimes I freelance, sometimes I experiment, sometimes I write.</p> -->
 			</div>
+			<!-- <BrandCarousel/> -->
 		</div>
 	</section>
 	<section class="webring">
@@ -91,17 +98,12 @@ rel="noopener noreferrer">
 	}
 
 	.arrow {
-		display: inline-block; 
-		font-weight: 500;
+		@include pill-link;
+		display: inline-block;
 		padding: 4px 16px;
-		border-radius: 32px;
-		height: fit-content;
-		background: color-mix(in oklab, var(--color-black) 5%, transparent);
-		backdrop-filter: blur(4px);
 		transition: all ease 0.2s;
 		&:hover {
 			transform: translateY(-2px);
-			background: color-mix(in oklab, var(--color-black) 15%, transparent);
 		}
 	}
 

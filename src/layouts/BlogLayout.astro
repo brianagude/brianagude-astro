@@ -59,14 +59,15 @@ const { frontmatter } = Astro.props;
   }
 
   .tag {
-		padding: 0 8px;
-		border-radius: 32px;
-		background: color-mix(in oklab, var(--color-black) 5%, transparent);
-  	backdrop-filter: blur(4px);
+    @include pill-link;
+		// padding: 0 8px;
+		// border-radius: 32px;
+		// background: $gray;
+  	// backdrop-filter: blur(4px);
 
-		&:hover {
-			background-color: $primary-color;
-		}
+		// &:hover {
+		// 	background-color: $secondary-color;
+		// }
 	}
 
   .blog-header {
@@ -125,7 +126,7 @@ const { frontmatter } = Astro.props;
 
     &:hover {
       transform: translateY(-2px);
-      background: color-mix(in oklab, var(--color-black) 5%, transparent);
+      background: $gray;
       font-weight: 500;
     }
   }

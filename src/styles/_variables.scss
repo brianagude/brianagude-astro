@@ -1,16 +1,13 @@
 @use 'sass:map';
 
 $primary-color: var(--color-primary);
+$primary-light-color: var(--color-primary-light);
 $secondary-color: var(--color-secondary);
 $tertiary-color: var(--color-tertiary);
-$accent-color: var(--color-accent);
 
 $black: var(--color-black);
 $white: var(--color-white);
-$pure-white: var(--color-pure-white);
 $gray: var(--color-gray);
-$red: var(--color-red);
-$text: var(--color-text);
 
 $font-sans: var(--font-sans);
 $font-mono: var(--font-mono);
@@ -56,5 +53,22 @@ $breakpoints: (
     transform: translateY(-5px) rotate(-10deg);
     transition-delay: 0.01s;
     // transition-delay: calc(var(--index) * 0.01s);
+  }
+}
+
+@mixin pill-link {
+  display: inline-block;
+  font-weight: 500;
+  font-size: inherit;
+  padding: 2px 8px;
+  border-radius: 32px;
+  height: fit-content;
+  background: $gray;
+  backdrop-filter: blur(4px);
+  transition: background ease 0.2s;
+  display: inline-block;
+
+  &:hover {
+    background-color: $primary-light-color;
   }
 }
