@@ -10,6 +10,8 @@ mux_id: "01u700uEYGU6CAYN9fsrIjTs4gQvwrEuQgISf3KKpoQuM"
 import TextGrid from "@/components/TextGrid.astro"
 import Media from "@/components/Media.astro"
 
+import hone from "@/images/content/hone-section.webp"
+
 <TextGrid title="Overview" items = {[
   { subtitle: "Context", text: "This was a design challenge for Hone Health. The task was to create a performance-focused landing page introducing Hone’s new line of supplements. The page needed to drive conversions from paid social traffic, highlight the “Subscribe & Save” option, and introduce the optional blood test in a way that felt natural and compelling." },
   { subtitle: "Problem", text: "Hone’s existing supplement store relied heavily on individual product pages, which could overwhelm new users and fail to emphasize higher-value options like bundles or subscriptions. The challenge was to create a single, streamlined landing page that simplified choices, built trust quickly, and increased AOV." },
@@ -36,7 +38,7 @@ import Media from "@/components/Media.astro"
     caption: "To reduce choice overload and guide users toward higher-value purchases, I introduced curated bundles grouped by symptoms or goals. The default emphasized “Subscribe & Save,” while One-Time remained optional. Savings were highlighted and selections simplified to make the decision easy and intuitive."
   },
   { 
-    image: { url: "/src/images/content/hone-section.webp", alt: "Product selector section in desktop, tablet, and mobile view" },
+    image: { url: hone, alt: "Product selector section in desktop, tablet, and mobile view" },
     caption: "This section not only simplifies user decisions but also subtly drives subscriptions. Future A/B tests could compare bundles vs. a traditional product filter layout, and geo-based personalization could optimize the blood test CTA messaging for better conversion."
   }
   ]} />

@@ -7,7 +7,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
 const experimentPosts = await getCollection("experiments");
-const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts];
+
+const sortedCaseStudies = caseStudyPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const sortedWork = workPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const allPosts = [...sortedCaseStudies, ...sortedWork, ...experimentPosts];
 const pageTitle = "briana gude";
 
 function getPostUrl(post: any) {

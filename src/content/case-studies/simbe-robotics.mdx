@@ -7,8 +7,13 @@ role: "Frontend / Design Engineer"
 url: "https://www.simberobotics.com/"
 mux_id: "pTZnw02hle9g7d00izq76gkilJ69IczcKRsx2Fjzg5yPk"
 ---
+
 import TextGrid from "@/components/TextGrid.astro"
 import Media from "@/components/Media.astro"
+
+import simbePageBuilder from "@/images/content/simbe-page-builder.webp"
+import simbeComponents from "@/images/content/simbe-components.webp"
+import simbeGlobalComponents from "@/images/content/simbe-global-components.webp"
 
 <TextGrid title="Overview" items = {[
   { subtitle: "Context", text: "Simbe Robotics is a leader in retail automation, offering AI-powered robots like Tally to enhance inventory management and store intelligence. I was brought in as the sole frontend developer, working directly with the creative agency Rocket Air, to build a scalable, high-performance website to showcase their retail robotics solutions." },
@@ -23,8 +28,8 @@ import Media from "@/components/Media.astro"
 
 <TextGrid title="Process" items = {[
   { subtitle: "Discovery & Planning", text: "I reviewed all available assets, designs, and content to understand the brand and user goals. I also checked in with the client to uncover CMS pain points and how they currently managed content. This informed a strategy to create a flexible, scalable system that would reduce repetitive tasks and simplify content updates." },
-  { subtitle: "CMS Architecture", text: "I built a modular Sanity CMS tailored to the client’s needs. This included reusable blocks, structured content relationships, and a content hub capable of referencing information across the site. The architecture made it easy for internal developers and non-technical team members to manage pages efficiently." },
-  { subtitle: "Component Design & Reusability", text: "I implemented a modular frontend with consistent props and strong typing. Components like brand carousels, FAQs, case study cards, and contact forms were built once and reused across the site. The reusable contact form component minimized repetitive work, especially given HubSpot’s finicky integrations." },
+  { subtitle: "CMS Architecture", text: "I built a modular Sanity CMS tailored to the client's needs. This included reusable blocks, structured content relationships, and a content hub capable of referencing information across the site. The architecture made it easy for internal developers and non-technical team members to manage pages efficiently." },
+  { subtitle: "Component Design & Reusability", text: "I implemented a modular frontend with consistent props and strong typing. Components like brand carousels, FAQs, case study cards, and contact forms were built once and reused across the site. The reusable contact form component minimized repetitive work, especially given HubSpot's finicky integrations." },
   { subtitle: "Performance & Rendering", text: "Performance was a major focus, particularly for content-heavy pages. I optimized image loading, preloaded hero assets, and carefully balanced caching strategies using static generation (SSG) and server-side rendering (SSR) where appropriate. Trade-offs were made to preserve image resolution while maintaining page speed." },
   { subtitle: "Collaboration & Iteration", text: "I worked closely with designers and the PM, providing daily updates and weekly summaries on progress, blockers, and priorities. Mid-project changes were carefully assessed for impact on timelines, other pages, and component relationships to keep expectations transparent with the client." },
   { subtitle: "Testing & Launch", text: "The final build was rigorously tested across devices and browsers for responsiveness, performance, and CMS functionality. I ensured smooth handoff and usability for the client team while meeting performance goals — including achieving Lighthouse scores above 90." },
@@ -32,21 +37,21 @@ import Media from "@/components/Media.astro"
 
 <Media title="The CMS" items = {[
   { 
-    image: { url: "/src/images/content/simbe-page-builder.webp", alt: "Screenshot of page builder inside of sanity studio" },
+    image: { url: simbePageBuilder, alt: "Screenshot of page builder inside of sanity studio" },
     caption: "The CMS was designed to balance flexibility with structure, giving the client full control without overwhelming them."
   },
   { 
-    image: { url: "/src/images/content/simbe-components.webp", alt: "Screenshot of component selection inside of sanity studio" },
+    image: { url: simbeComponents, alt: "Screenshot of component selection inside of sanity studio" },
     caption: "Editors can choose from a curated library of components when creating new pages, ensuring brand consistency while still leaving room for customization."
   },
   { 
-    image: { url: "/src/images/content/simbe-global-components.webp", alt: "Screenshot of global components inside of sanity studio" },
+    image: { url: simbeGlobalComponents, alt: "Screenshot of global components inside of sanity studio" },
     caption: "The system also supports global components—elements like case studies, Contact Forms, and FAQs—that can be updated once and reflected sitewide. This structure reduced the need for developer intervention and gave the client the confidence to manage content independently."
   }
   ]} />
 
-  <TextGrid title="Reflection & Opportunities" items = {[
-  { subtitle: "System Architecture", text: "Creating a flexible CMS and modular frontend was a success, but in the future, I would plan for more support given the site’s scale." },
+<TextGrid title="Reflection & Opportunities" items = {[
+  { subtitle: "System Architecture", text: "Creating a flexible CMS and modular frontend was a success, but in the future, I would plan for more support given the site's scale." },
   { subtitle: "Performance Optimization", text: "Preloading images and caching improved speed, but deeper performance auditing and handling at scale remain areas for improvement." },
   { subtitle: "Component Reuse", text: "Reusable components simplified maintenance and reduced repetitive work. Future projects could benefit from even more standardized patterns across teams." },
   { subtitle: "Collaboration & Communication", text: "Daily check-ins and weekly updates were effective, though tighter initial scoping would have reduced some mid-project clarifications." },

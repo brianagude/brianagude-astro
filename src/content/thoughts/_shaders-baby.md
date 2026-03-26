@@ -4,7 +4,7 @@ pubDate: 2026-01-25
 description: "What I've learned about ~ shaders ~"
 author: "Briana Gude"
 tags: ["shaders", "learning"]
-image: { url: "/src/images/bri.jpg", alt: "Picture of Bri" }
+image: { url: "/src/images/headshot.jpg", alt: "Picture of Bri" }
 ---
 
 #### Preface
