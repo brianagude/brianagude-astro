@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 import Mux from "./Mux.astro";
 import FormattedDate from "./FormattedDate.astro";
 import OutboundIcon from "@/images/icons/outbound.svg"
+import Link from "@/components/inputs/Link.astro"
 ---
 
-<a href={url} aria-label={title} class="card-wrapper">
+<Link href={url} aria-label={title} class="card-wrapper">
   <div class="media">
     {video && <Mux playbackId={video} title={title} class="main-video" />}
     {image && !video && <Image src={image.url} alt={image.alt} class="main-img" />}
@@ -16,7 +17,7 @@ import OutboundIcon from "@/images/icons/outbound.svg"
     <span class="body-lg title">{title}</span>
     {date && <span class="body-sm"><FormattedDate date={date} /></span>}
   </div>
-</a>
+</Link>
 
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;

@@ -7,6 +7,7 @@ const experiments = defineCollection({
 	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
+		endDate: z.date().optional(),
 		description: z.string(),
 		url: z.string(),
 		mux_id: z.string().optional(),
@@ -24,6 +25,7 @@ const work = defineCollection({
 	schema: ({ image }) => z.object({
 		title: z.string(),
 		pubDate: z.date(),
+		endDate: z.date().optional(),
 		description: z.string(),
 		role: z.string(),
 		url: z.string(),
