@@ -1,5 +1,5 @@
 ---
-const { url, title, image, video, date } = Astro.props;
+const { url, title, image, video, date, index = 0 } = Astro.props;
 import { Image } from "astro:assets";
 import Mux from "./Mux.astro";
 import FormattedDate from "./FormattedDate.astro";
@@ -7,7 +7,7 @@ import OutboundIcon from "@/images/icons/outbound.svg"
 import Link from "@/components/inputs/Link.astro"
 ---
 
-<Link href={url} aria-label={title} class="card-wrapper">
+<Link href={url} aria-label={title} class="card-wrapper" style={`--index: ${index}`}>
   <div class="media">
     {video && <Mux playbackId={video} title={title} class="main-video" />}
     {image && !video && <Image src={image.url} alt={image.alt} class="main-img" />}
@@ -26,12 +26,26 @@ import Link from "@/components/inputs/Link.astro"
     opacity: 0.5;
   }
 
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   a {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
     transition: all 0.3s ease-in-out;
+    opacity: 0;
+    animation: card-in 0.4s ease-out forwards;
+    animation-delay: calc(var(--index, 0) * 80ms);
 
     &:hover {
       .media {

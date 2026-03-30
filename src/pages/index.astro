@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import SplitText from "@/components/inputs/SplitText.astro";
 
 const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
@@ -32,14 +33,14 @@ function getPostUrl(post: any) {
   <section class="page-section text-section">
     <div class="container centered">
       <div>
-        <h1 class="h6">Briana Gude</h1>
+        <h1 class="h6"><SplitText text="Briana Gude" /></h1>
         <p>Creative Technologist</p>
       </div>
     </div>
   </section>
   <section class="page-section all-projects">
     <div class="container grid">
-      {allPosts.map((post: any) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      {allPosts.map((post: any, i: number) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} index={i} />)}
     </div>
   </section>
 </BaseLayout>

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import SplitText from "@/components/inputs/SplitText.astro";
 
 const allPosts = await getCollection("work");
 const sortedPosts = allPosts.sort((a, b) => 
@@ -15,20 +16,19 @@ const pageTitle = "briana's work";
   <section class="page-section text-section">
     <div class="container centered">
       <div>
-        <h1 class="h6">Things I Made</h1>
+        <h1 class="h6"><SplitText text="Things I Made" /></h1>
         <p>for other people.</p>
       </div>
     </div>
   </section>
   <section class="page-section">
     <div class="container grid">
-      {sortedPosts.sort().map((post: any) => <Card url={post.data.skip_content ? post.data.url : `/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} />)}
+      {sortedPosts.sort().map((post: any, i: number) => <Card url={post.data.skip_content ? post.data.url : `/work/${post.id}/`} title={post.data.title} image={post.data.image} video={post.data.mux_id} index={i} />)}
     </div>
   </section>
 </BaseLayout>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
-
   .text-section { padding-bottom: 0; }
 </style>
