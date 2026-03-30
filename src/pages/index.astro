@@ -14,7 +14,7 @@ const sortedCaseStudies = caseStudyPosts.sort((a, b) =>
 const sortedWork = workPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const allPosts = [...sortedCaseStudies, ...sortedWork, ...experimentPosts];
+const allPosts = [...experimentPosts, ...sortedCaseStudies, ...sortedWork];
 const pageTitle = "briana gude";
 
 function getPostUrl(post: any) {
