@@ -1,43 +1,51 @@
-# Astro Starter Kit: Minimal
+# brianagude.com
 
-```sh
-pnpm create astro@latest -- --template minimal
+Personal portfolio and creative showcase for Briana Gude — creative technologist. Migrated from Next.js to Astro 5.
+
+Live site: **[brianagude.com](https://brianagude.com)**
+
+## What it is
+
+A portfolio organized into four content collections:
+
+- **Work** — client and freelance projects
+- **Case Studies** — deep-dive write-ups with embedded components (MDX)
+- **Experiments** — personal side projects and explorations
+- **Thoughts** — blog-style writing
+
+## What it looks like
+
+Warm cream background (`#FCFCF8`), soft pastel accents, three custom fonts (Host Grotesk, Instrument Serif, DM Mono), staggered card grid on the homepage, smooth hover animations. No CSS framework — hand-written SCSS with a custom design token system.
+
+See it live at [brianagude.com](https://brianagude.com).
+
+## Running locally
+
+```bash
+pnpm install
+pnpm dev        # dev server at localhost:4321
+pnpm build      # production build → ./dist/
+pnpm preview    # preview the production build locally
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech stack
 
-## 🚀 Project Structure
+- [Astro 5](https://astro.build) — static site framework
+- SCSS — custom design system, no Tailwind
+- TypeScript — strict mode, `@/*` path aliases
+- MDX — rich content for case studies
+- [Mux](https://mux.com) — video player for project pages
+- sharp — image optimization
+- pnpm — package manager
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+src/
+  content/     # four collections: case-studies, work, experiments, thoughts
+  pages/       # routes mirror collections + about, index
+  components/  # Card, Navigation, Mux, and layout variants
+  styles/      # global SCSS and CSS variables
+  layouts/     # BaseLayout, CaseStudyLayout, ProjectLayout, BlogLayout
+public/        # static assets
+```
