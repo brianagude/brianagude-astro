@@ -19,6 +19,7 @@ const twitterImage = frontmatter.mux_id
     <div class="container">
       <div class="header">
         <h1>{frontmatter.title}</h1>
+        <!-- <p class="subtitle">{frontmatter.description}</p> -->
         <div class="info">
           <p class="body-sm">
             <FormattedDate date={frontmatter.pubDate} format="month-year" />
@@ -50,27 +51,33 @@ const twitterImage = frontmatter.mux_id
     gap: 24px;
   }
 
+  .subtitle {
+    // font-family: $font-mono;
+    font-size: 16px;
+    // color: $tertiary-color;
+  }
+
   .media {
     aspect-ratio: 16/9;
     border-radius: 24px;
     border: 1px solid $black;
     transition: all 0.2s ease-in-out;
     overflow: hidden;
-    // margin-top: 24px;
+    margin-top: 12px;
   }
 
   .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 8px;
+    // margin-top: 8px;
 
     a {
       @include pill-link;
     }
   }
 
-  // .prose {
-  //   margin-top: 24px;
-  // }
+  .prose {
+    margin-top: 24px;
+  }
 </style>

@@ -1,17 +1,25 @@
 import { getCollection } from "astro:content";
+import { getPostUrl } from "@/utils"
 import rss from "@astrojs/rss";
 
 export async function GET(context) {
-	const posts = await getCollection("thoughts");
+	const experiments = await getCollection("experiments");
+	const thoughts = await getCollection("thoughts");
+	const posts = [...experiments, ...thoughts]
+
+	const sortedPosts = posts.sort((a, b) => 
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	);
+
 	return rss({
-		title: "Briana's Thoughts | .open(tabs)",
+		title: "Briana's World | .open(tabs)",
 		description: "My little corner of the internet (:",
 		site: context.site,
-		items: posts.map((post) => ({
+		items: sortedPosts.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			link: `/thoughts/${post.id}/`,
+			link: getPostUrl(post),
 		})),
 		customData: `<language>en-us</language>`,
 	});

@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Card from "@/components/inputs/Card.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SplitText from "@/components/inputs/SplitText.astro";
+import { getPostUrl } from "@/utils"
 
 const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
@@ -15,18 +16,13 @@ const sortedCaseStudies = caseStudyPosts.sort((a, b) =>
 const sortedWork = workPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const allPosts = [...experimentPosts, ...sortedCaseStudies, ...sortedWork];
+const sortedExperiments = experimentPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const allPosts = [...sortedExperiments];
 const pageTitle = "briana gude";
 
-function getPostUrl(post: any) {
-  if (post.data.skip_content) return post.data.url;
-  const prefixes: Record<string, string> = {
-    work: '/work',
-    caseStudies: '/case-studies',
-    experiments: '/experiments',
-  };
-  return `${prefixes[post.collection]}/${post.id}/`;
-}
+
 ---
 
 <BaseLayout title={pageTitle}>
