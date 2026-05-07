@@ -19,7 +19,7 @@ const sortedWork = workPosts.sort((a, b) =>
 const sortedExperiments = experimentPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const allPosts = [...sortedExperiments];
+const allPosts = [...sortedCaseStudies, ...sortedWork, ...sortedExperiments,];
 const pageTitle = "briana gude";
 
 
@@ -30,7 +30,8 @@ const pageTitle = "briana gude";
     <div class="container centered">
       <div>
         <h1 class="h6"><SplitText text="Briana Gude" /></h1>
-        <p>Creative Technologist</p>
+        <p>Design Engineer</p>
+        <!-- <p>Creative Technologist</p> -->
       </div>
     </div>
   </section>
