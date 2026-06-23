@@ -85,10 +85,6 @@
   @include mq("sm") {
     font-size: 1.125rem;
   }
-
-  @include mq("lg") {
-    font-size: 1.25rem;
-  }
 }
 
 .body-lg {

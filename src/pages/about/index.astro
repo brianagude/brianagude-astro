@@ -14,27 +14,76 @@ import Recurse from "@/images/icons/recurse.svg"
 			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
-				<p>Design engineer with six years running an independent studio serving DTC and e-commerce brands, building bespoke headless Shopify experiences for independent brand and agency clients.</p>
-				<p>I've also built conversion-focused landing pages and paid ad creative for brands like Oura Ring, Ritual, Prose, Speedo, Lovevery, Kin Euphorics, and Hone Health.</p>
-
-				<p>Most recently I completed a batch at Recurse Center, where I focused on creative coding and 3D web experiences.</p>
-
-				<p>Currently open to design engineering, frontend, and growth-focused roles.</p>
-				<!-- <p>I build things that I want to see exist. Sometimes I have a very specific version of something in my head and I need to get it out. Sometimes I just want to understand how something works, and building it is the only way to find out.</p>
-
-				<p>
-					Either way, I'm constantly thinking about how it'll be experienced. Not just what it looks like, but what it feels like to move through it. I look at heatmaps on my personal projects, I build with my future self and other engineers in mind, and I design with the user in mind.
-				</p>
-
-				<p>
-					Right now I'm exploring creative coding and 3D web work. My latest is a Windows 98-style desktop environment where the first app is a paintbox that renders in RYB ~ the painter's color space ~ instead of how a computer sees color. It makes me happy to build, and I think it'll make people happy to use.
-				</p>
-				
-				-->
+				<p>A creative technologist and Shopify developer based in Atlanta.</p>
+				<p>I help agencies, nonprofits, and founders create marketing & ecommerce experiences that are conversion-focused, technically considered, and feel like a natural extension of their brand.</p>
+				<!-- <p>I build bespoke websites and conversion-focused landing pages that feel like an extension of your brand, and a natural meeting place for your community.</p> -->
+				<p>My work is a product of design, engineering, and creative curiosity, and I'm at my best on projects with room to actually think.</p>
+				<p>The best way to know if I'm the right fit is to reach out and tell me what you're building. I'm also open to full time and contract remote roles in UX design, frontend, design engineering, or creative technology.</p>
 				<p>Interested in working with me? <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
+			</div>
+			<div class="accordion">
+			<details>
+				<summary><h3 class="h6">What I Can Help With</h3></summary>
+				<div class="accordion-body">
+					<ul>
+						<li>
+							<b>Web design and UX:</b> sitemaps, wireframes, full-fidelity comps, design systems, component libraries, etc all with a strong foundation in visual hierarchy, and content strategy. I can own the design end-to-end or slot in wherever you need me.
+						</li>
+						<li>
+							<b>Custom Shopify builds:</b> full design and development, both custom themes and headless, built mobile-first and shaped around your brand.
+						</li>
+						<li>
+							<b>Website refreshes:</b> reworking layout, flow, and visual presentation to sharpen what's already there and convert better while doing it.
+						</li>
+						<li>
+							<b>Conversion-focused landing pages:</b> standalone pages built around a single goal, with a focus on hierarchy, narrative, and friction.
+						</li>
+						<li>
+							<b>Light CRO audits and eCommerce consulting:</b> a practical pass through your site flagging friction points and quick wins, or a broader conversation about what's working and what isn't.
+						</li>
+						<li>
+							<b>Creative and interactive web experiences:</b> a completely bespoke experience shaped around your brand's personality.
+						</li>
+						<li>
+							<b>Ongoing support and retainers:</b> post-launch ownership scoped to what you actually need.
+						</li>
+					</ul>
+				</div>
+			</details>
 			</div>
 		</div>
 	</section>
+	<!-- <section class="accordion-section page-section">
+		<div class="container">
+			<details>
+				<summary><h3>Who I Work With</h3></summary>
+				<div class="accordion-body">
+					<p>
+						I work with agencies, studios, and founders who care about the little details.
+					</p>
+					<p>
+						If you're an agency looking for a creative technical partner, a founder building something exciting, or a studio that needs someone who thinks across design and engineering, <Link href="mailto:work@brianagude.com">I'd love to talk</Link>.
+					</p>
+					<p>
+						Also open to full time and contract remote roles where my skills are a fit.
+					</p>
+				</div>
+			</details>
+			<details>
+				<summary><h3>What I Can Help With</h3></summary>
+				<div class="accordion-body">
+					<ul>
+						<li>Custom Shopify Builds</li>
+						<li>Website Refreshes</li>
+						<li>Light CRO Audits</li>
+						<li>Ongoing Support & Retainers</li>
+						<li>Conversion-Focused Landing Pages</li>
+						<li>Creative & Interactive Web Experiences</li>
+					</ul>
+				</div>
+			</details>
+		</div>
+	</section> -->
 	<section class="webring">
 		<a 
 			id="rc-ring-prev" 
@@ -76,7 +125,7 @@ rel="noopener noreferrer">
 	@use "@/styles/_variables.scss" as *;
 
 	.page-section {
-		min-height: 60dvh;
+		min-height: 90svh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -135,6 +184,101 @@ rel="noopener noreferrer">
 	.arrow-right {
 		img {
 			transform: rotate(90deg)
+		}
+	}
+
+	.accordion-section {
+		.container {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+
+	.accordion {
+		margin-top: 40px;
+	}
+
+	details {
+		max-width: 500px;
+		margin: 0 auto;
+		border-bottom: 2px solid $black;
+		interpolate-size: allow-keywords;
+		
+		@include mq("sm") {
+			max-width: 560px;
+		}
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1.25rem 0;
+		cursor: pointer;
+		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		h3 {
+			margin: 0;
+		}
+
+		&::after {
+			content: '+';
+			font-size: 1.5rem;
+			line-height: 1;
+			flex-shrink: 0;
+		}
+	}
+
+	details[open] summary::after {
+		content: '−';
+	}
+
+	::details-content {
+		height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: height 0.35s ease, opacity 0.35s ease, content-visibility 0.35s allow-discrete;
+	}
+
+	details[open]::details-content {
+		height: auto;
+		opacity: 1;
+	}
+
+	@starting-style {
+		details[open]::details-content {
+			height: 0;
+			opacity: 0;
+		}
+	}
+
+	.accordion-body {
+		padding-bottom: 1.25rem;
+
+		p, ul {
+			margin-top: 0;
+			margin-bottom: 0.75rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		ul {
+			padding-left: 1.25rem;
+
+			// @include mq("lg") {
+			// 	display: grid;
+			// 	grid-template-columns: 1fr 1fr;
+			// }
+		}
+
+		li + li {
+			margin-top: 0.75rem;
 		}
 	}
 </style>
