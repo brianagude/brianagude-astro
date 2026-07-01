@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+
+import Card from "@/components/inputs/Card.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SplitText from "@/components/inputs/SplitText.astro";
+import Tags from "@/components/Tags.astro";
+import { getPostUrl } from "@/utils"
+
+export async function getStaticPaths() {
+  const caseStudyPosts = await getCollection("caseStudies");
+  const workPosts = await getCollection("work");
+  const experimentPosts = await getCollection("experiments");
+  const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts].sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);;
+
+  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.data.tags ?? []))];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.data.tags?.includes(tag));
+    return { params: { tag }, props: { posts: filteredPosts } };
+  });
+}
+
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+---
+
+<BaseLayout title={tag.replaceAll('-', ' ')}>
+  <section class="page-section text-section">
+    <div class="container centered">
+      <div>
+        <h1 class="h6"><SplitText text="Briana Gude" /></h1>
+        <p>Design & Technology</p>
+        <!-- <p>Creative Technologist</p> -->
+      </div>
+    </div>
+  </section>
+  <section class="page-section all-projects">
+    <Tags/>
+    <div class="container grid">
+      {posts.map((post: any, i: number) => <Card url={getPostUrl(post)} title={post.data.title} image={post.data.image} video={post.data.mux_id} index={i} />)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+  .text-section { padding-bottom: 0; }
+</style>

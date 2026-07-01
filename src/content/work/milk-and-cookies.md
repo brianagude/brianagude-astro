@@ -6,4 +6,5 @@ role: "Design & Development"
 url: "https://www.milkandcookiesfestival.com/"
 mux_id: "HbGePnUsTdqK008YeJ5YedAM802XKENbcUajhjsto3QvI"
 skip_content: true
+tags: ["marketing"]
 ---

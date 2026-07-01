@@ -1,0 +1,101 @@
+---
+import { getCollection } from "astro:content";
+
+const caseStudyPosts = await getCollection("caseStudies");
+const workPosts = await getCollection("work");
+const experimentPosts = await getCollection("experiments");
+
+const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts,].sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const tags = [...new Set(allPosts.flatMap((post: any) => post.data.tags ?? []))].sort();
+
+const currentPath = Astro.url.pathname;
+---
+
+<section>
+  <div class="link-list">
+    <a href='/' class:list={["font-mono", { selected: currentPath === '/' }]}>
+      <div class="dot">
+        <div class="inner-dot"/>
+      </div>
+      All
+    </a>
+
+    {tags.map((tag) => {
+      const href = `/tags/${tag}`;
+      const isActive = currentPath === href;
+      return (
+        <a href={href} class:list={["font-mono", { selected: isActive }]}>
+          <div class="dot">
+            <div class="inner-dot"/>
+          </div>
+          {tag.replaceAll('-', ' ')}
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  .link-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0 1rem;
+
+    @include mq("sm") {
+      padding: 0 1.5rem;
+    }
+
+    @include mq("lg") {
+      padding: 0 2rem;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: capitalize;
+    
+    &:hover, &.selected {
+      font-weight: bold;
+      .inner-dot { opacity: 100% !important; }
+    }
+  }
+
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border: 1px solid $black;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+
+    
+  }
+
+  .inner-dot {
+    width: 100%;
+    height: 100%;
+    background: $black;
+    border-radius: 100%;
+    opacity: 0;
+  }
+
+
+</style>

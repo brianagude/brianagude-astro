@@ -6,4 +6,5 @@ role: "Frontend Development"
 url: "https://onchain.holiday/"
 mux_id: "7AP4pfzNtU9iM4MP8mFDmkLIawbzZPF77eUkQr01DVuc"
 skip_content: true
+tags: ["marketing"]
 ---

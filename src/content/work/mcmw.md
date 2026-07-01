@@ -6,4 +6,5 @@ role: "Design & Development"
 url: "https://www.mcmw.global/"
 mux_id: "xmiy80001R600MuDYov1xAmVDT01D5Qqi3D00iEpWoAQkmhU"
 skip_content: true
+tags: ["marketing"]
 ---

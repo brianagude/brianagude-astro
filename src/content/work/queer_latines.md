@@ -10,4 +10,5 @@ image:
     alt: "Queer Latines community gathering at a pakr with caption 'Community for & by us'",
   }
 skip_content: true
+tags: ["shopify"]
 ---

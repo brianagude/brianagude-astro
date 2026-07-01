@@ -6,6 +6,7 @@ role: "Design & Development"
 url: "https://www.ashleecruz.com/"
 mux_id: "hQetbTy2S6GAUqb01r7xp01J2ylJOm1ivbMYdzbiiO8xs"
 skip_content: true
+tags: ["marketing"]
 ---
 
 This was (one of) my very first freelance projects ((: It's aged very nicely!
