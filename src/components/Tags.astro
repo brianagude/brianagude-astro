@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
 
     {tags.map((tag) => {
       const href = `/tags/${tag}`;
-      const isActive = currentPath === href;
+      const isActive = currentPath.includes(href);
       return (
         <a href={href} class:list={["font-mono", { selected: isActive }]}>
           <div class="dot">
