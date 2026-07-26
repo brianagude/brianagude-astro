@@ -17,7 +17,6 @@ const work = defineCollection({
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
-		inProgress: z.boolean().optional(),
 	}),
 });
 

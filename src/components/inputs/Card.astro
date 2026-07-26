@@ -1,18 +1,17 @@
 ---
-const { url, title, image, video, date, index = 0, inProgress } = Astro.props;
+const { url, title, image, video, date, index = 0 } = Astro.props;
 import { Image } from "astro:assets";
 import Mux from "./Mux.astro";
 import FormattedDate from "./FormattedDate.astro";
 import Link from "@/components/inputs/Link.astro"
-import Placeholder from "@/images/placeholder.gif"
+import placeholderSrc from "@/images/placeholder.gif?url"
 ---
 
 <Link href={url} aria-label={title} class="card-wrapper" style={`--index: ${index}`}>
   <div class="media">
+    <img src={placeholderSrc} alt="" aria-hidden="true" class="placeholder-img" loading="eager" decoding="sync" />
     {video && <Mux playbackId={video} title={title} class="main-video" />}
     {image && !video && <Image src={image.url} alt={image.alt} class="main-img" width={1200} height={680} />}
-    <!-- <Image src={Placeholder} alt="image placeholder" class="placeholder-img" /> -->
-    <!-- {inProgress && <p class="sticker">ongoing</p>} -->
   </div>
   <div class="content">
     <span class="body-lg title">{title}</span>
@@ -23,9 +22,9 @@ import Placeholder from "@/images/placeholder.gif"
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
 
-  .body-sm {
-    opacity: 0.5;
-  }
+  // .body-sm {
+  //   opacity: 0.5;
+  // }
 
   @keyframes card-in {
     from {
@@ -71,20 +70,14 @@ import Placeholder from "@/images/placeholder.gif"
     position: relative;
   }
 
-  .sticker {
+  .placeholder-img {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    color: $white;
-    background: $primary-color;
-    z-index: 5;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  
-  // @media (hover: hover) {
-  //   :global(.container):has(a:hover) a:not(:hover) {
-  //       filter: blur(4px);
-  //     }
-  // }
 
   img, video {
     width: 100%;
