@@ -10,8 +10,7 @@ import { getPostUrl } from "@/utils"
 export async function getStaticPaths() {
   const caseStudyPosts = await getCollection("caseStudies");
   const workPosts = await getCollection("work");
-  const experimentPosts = await getCollection("experiments");
-  const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts].sort((a, b) => 
+  const allPosts = [...caseStudyPosts, ...workPosts].sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );;
 
@@ -23,13 +22,12 @@ export async function getStaticPaths() {
   });
 }
 
-
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 
 ---
 
-<BaseLayout title={tag.replaceAll('-', ' ')}>
+<BaseLayout title={`${tag.replaceAll('-', ' ')} | briana gude`}>
   <section class="page-section text-section">
     <div class="container centered">
       <div>

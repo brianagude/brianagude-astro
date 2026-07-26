@@ -5,5 +5,4 @@ description: "A custom website for a creative agency specializing in building br
 role: "Design & Development"
 url: "https://www.dianthe.studio/"
 mux_id: "cmXpZ9inOW1FZgWrRkwEYeIACUluJbwCDVu4jemEtHg"
-skip_content: true
 ---

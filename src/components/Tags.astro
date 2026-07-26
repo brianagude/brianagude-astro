@@ -3,9 +3,8 @@ import { getCollection } from "astro:content";
 
 const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
-const experimentPosts = await getCollection("experiments");
 
-const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts,].sort((a, b) => 
+const allPosts = [...caseStudyPosts, ...workPosts].sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
@@ -51,8 +50,12 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    column-gap: 16px;
+    row-gap: 8px;
     padding: 0 1rem;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
 
     @include mq("sm") {
       padding: 0 1.5rem;

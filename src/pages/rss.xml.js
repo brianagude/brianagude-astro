@@ -3,11 +3,9 @@ import { getPostUrl } from "@/utils"
 import rss from "@astrojs/rss";
 
 export async function GET(context) {
-	const experiments = await getCollection("experiments");
 	const thoughts = await getCollection("thoughts");
-	const posts = [...experiments, ...thoughts]
 
-	const sortedPosts = posts.sort((a, b) => 
+	const sortedPosts = thoughts.sort((a, b) => 
 		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 	);
 
