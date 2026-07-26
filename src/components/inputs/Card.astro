@@ -1,15 +1,18 @@
 ---
-const { url, title, image, video, date, index = 0 } = Astro.props;
+const { url, title, image, video, date, index = 0, inProgress } = Astro.props;
 import { Image } from "astro:assets";
 import Mux from "./Mux.astro";
 import FormattedDate from "./FormattedDate.astro";
 import Link from "@/components/inputs/Link.astro"
+import Placeholder from "@/images/placeholder.gif"
 ---
 
 <Link href={url} aria-label={title} class="card-wrapper" style={`--index: ${index}`}>
   <div class="media">
     {video && <Mux playbackId={video} title={title} class="main-video" />}
-    {image && !video && <Image src={image.url} alt={image.alt} class="main-img" />}
+    {image && !video && <Image src={image.url} alt={image.alt} class="main-img" width={1200} height={680} />}
+    <!-- <Image src={Placeholder} alt="image placeholder" class="placeholder-img" /> -->
+    <!-- {inProgress && <p class="sticker">ongoing</p>} -->
   </div>
   <div class="content">
     <span class="body-lg title">{title}</span>
@@ -65,6 +68,16 @@ import Link from "@/components/inputs/Link.astro"
     border: 1px solid $black;
     transition: all 0.2s ease-in-out;
     overflow: hidden;
+    position: relative;
+  }
+
+  .sticker {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: $white;
+    background: $primary-color;
+    z-index: 5;
   }
   
   // @media (hover: hover) {
