@@ -9,7 +9,7 @@ import Head from "@/components/Head.astro";
 import Header from "@/components/Header.astro"
 
 const {
-	title = "briana gude",
+	title = "briana's portfolio",
 	description = "creative technologist",
 	image = "/og-default.png",
 	twitterImage,
@@ -19,7 +19,7 @@ const {
 <html lang="en">
   <Head title={title} description={description} image={image} twitterImage={twitterImage} />
   <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- <a href="#main-content" class="skip-link">Skip to main content</a> -->
     <Header/>
     <main id="main-content">
       <slot />
@@ -31,7 +31,6 @@ const {
 
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
-  // @use "@/styles/_typography.scss" as *;
 
   main {
     max-width: $bp-xl;
