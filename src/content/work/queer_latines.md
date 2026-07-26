@@ -9,6 +9,5 @@ image:
     url: "/src/images/content/queer-latines.webp",
     alt: "Queer Latines community gathering at a pakr with caption 'Community for & by us'",
   }
-skip_content: true
-tags: ["shopify"]
+tags: ["client-work", "shopify"]
 ---
