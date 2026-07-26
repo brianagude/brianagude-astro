@@ -1,0 +1,69 @@
+---
+import Link from "@/components/inputs/Link.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+	<section class="page-section">
+		<div class="container">
+			<ul>
+				<li>
+					<p class="caption-sm">my stuff</p>
+				</li>
+				<li>
+<Link href="/tags/experiments">experiments</Link>
+				</li>
+				<li>
+<Link href="/">my portfolio</Link>
+				</li>
+				<li>
+<Link href="https://brianagude.substack.com/">my blog</Link>
+				</li>
+				
+				
+				
+				
+			</ul>
+			<ul>
+				<li><p class="caption-sm">recources</p></li>
+				<li><Link href="https://thebookofshaders.com">the book of shaders</Link></li>
+				<li><Link href="https://natureofcode.com/">nature of code</Link></li>
+				<li><Link href="https://threejs-journey.com/">three js journey</Link></li>
+				
+				
+				
+			</ul>
+		</div>
+	</section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+	ul {
+		list-style-type: none;
+		text-align: center; 
+		margin: 0 auto;
+
+		
+
+		& + ul {
+			margin-top: 40px;
+		}
+	}
+
+	li {
+		margin: 0 auto;
+
+		& + li {
+			margin-top: 12px;
+		}
+	}
+
+
+	
+	a {
+		@include pill-link;
+	}
+</style>
