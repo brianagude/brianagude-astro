@@ -7,31 +7,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 	<section class="page-section">
 		<div class="container">
 			<ul>
-				<li>
-					<p class="caption-sm">my stuff</p>
-				</li>
-				<li>
-<Link href="/tags/experiments">experiments</Link>
-				</li>
-				<li>
-<Link href="/">my portfolio</Link>
-				</li>
-				<li>
-<Link href="https://brianagude.substack.com/">my blog</Link>
-				</li>
-				
-				
-				
-				
+				<li><p class="caption-sm">my stuff</p></li>
+				<li><Link href="/tags/experiments">experiments</Link></li>
+				<li><Link href="/">my portfolio</Link></li>
+				<li><Link href="https://brianagude.substack.com/">my blog</Link></li>
 			</ul>
 			<ul>
 				<li><p class="caption-sm">recources</p></li>
 				<li><Link href="https://thebookofshaders.com">the book of shaders</Link></li>
 				<li><Link href="https://natureofcode.com/">nature of code</Link></li>
 				<li><Link href="https://threejs-journey.com/">three js journey</Link></li>
-				
-				
-				
+				<li><Link href="https://www.youtube.com/watch?v=AwKgrjHrpcY">just do it</Link></li>
+				<li><Link href="https://newincreative.notion.site/The-Vault-Nguyen-s-Design-Resource-stash-dd710673638a4c16a571574ff72d05f9">design vault</Link></li>
 			</ul>
 		</div>
 	</section>
@@ -46,8 +33,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 		text-align: center; 
 		margin: 0 auto;
 
-		
-
 		& + ul {
 			margin-top: 40px;
 		}
@@ -61,8 +46,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 		}
 	}
 
-
-	
 	a {
 		@include pill-link;
 	}

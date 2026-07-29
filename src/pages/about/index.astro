@@ -14,11 +14,22 @@ import Recurse from "@/images/icons/recurse.svg"
 			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
-				<p>A designer, engineer, and Shopify developer based in Atlanta.</p>
-				<p>I help agencies, nonprofits, and founders create marketing & ecommerce experiences that are conversion-focused, technically considered, and feel like a natural extension of their brand.</p>
-				<p>My work is a product of design, engineering, and creative curiosity, and I'm at my best on projects with room to actually think.</p>
-				<p>Right now, I'm studying computational media, and building my first Shopify Theme to submit to the theme library! I'm also open to freelance / contract remote roles in design, engineering, and creative technology.</p>
-				<p>If you're interested in working with me, or just want to chat, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
+				<p>I design and build things for the web, mostly commerce and brand experiences that don't look or feel like templates.</p>
+				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands, work with real conversion and revenue results across major DTC brands.</p>
+				<p>Most recently I co-founded CARO Stack, a conversion studio for DTC brands, where I owned the technical architecture end to end, including a multi-tenant Shopify app that makes merchant catalogs readable by AI agents.</p>
+				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, GLSL shaders, and physics simulations, and running the weekly creative coding group there. That work lives in my <Link href="/work/recurse/">sketchbook</Link>. It's where the direction I'm building toward now started to take shape: bespoke commerce work built with the same care and curiosity as an art piece.</p>
+				<p>I'm open to freelance and select agency work right now. If something feels like a fit, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
+			</div>
+		</div>
+	</section>
+	<section class="experience-section page-section">
+		<div class="container">
+			<div class="text-block">
+				<h1 class="h5"><SplitText text="Experience" /></h1>
+				<p><b>Recurse Center</b>, <span class="body-sm">Participant — Nov 2025 to Feb 2026</span><br/>Creative coding and immersive 3D web, Three.js, React Three Fiber, GLSL, Rapier physics. Ran the weekly creative coding group.</p>
+				<p><b>CARO Stack</b>, <span class="body-sm">Co-Founder / CTO — Dec 2025 to April 2026</span><br/>Conversion studio for DTC brands. Owned all technical architecture and product development.</p>
+				<p><b>Dianthe Studio</b>, <span class="body-sm">Founder / Design Engineer — Jan 2019 to Nov 2025</span><br/>Independent studio for brands and agencies across health, wellness, beauty, and culture, discovery through launch.</p>
+				<p><b>Thesis Testing</b>, <span class="body-sm">Design Engineer — July 2019 to May 2024</span><br/>Conversion-focused landing pages and paid ad creative, managing 10 to 15 active clients at a time.</p>
 			</div>
 		</div>
 	</section>
@@ -63,7 +74,7 @@ rel="noopener noreferrer">
 	@use "@/styles/_variables.scss" as *;
 
 	.page-section {
-		min-height: 90svh;
+		// min-height: 90svh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -71,10 +82,10 @@ rel="noopener noreferrer">
 
 	.hero-section {
 		height: 100%;
-		flex-grow: 1;
+		// flex-grow: 1;
 		
 		.container {
-			padding-bottom: 80px;
+			// padding-bottom: 80px;
 			display: flex;
 			flex-direction: column;
 		}

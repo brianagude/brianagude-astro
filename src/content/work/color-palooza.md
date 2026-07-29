@@ -15,6 +15,6 @@ This started as curiosity about historical color spaces and turned into somethin
 
 However, each one has its own logic, its own vibe, and it reminds me of so many other aspects of life.
 
-While Color Palooza is just a rough exploration, we’ve evolved our idea into something much bigger called Paint Palooza, which aims to hone in more on the understanding of the connection and disconnection of color.
+While Color Palooza is just a rough exploration, we’ve evolved our idea into something much bigger called [Paint Palooza](/work/paint-palooza), which aims to hone in more on the understanding of the connection and disconnection of color.
 
 In collaboration with [Iris](https://www.iris-fernandez.com) <3.
