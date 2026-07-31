@@ -5,6 +5,5 @@ description: "The official website for Milk and Cookies Festival as they launche
 role: "Design & Development"
 url: "https://www.milkandcookiesfestival.com/"
 mux_id: "HbGePnUsTdqK008YeJ5YedAM802XKENbcUajhjsto3QvI"
-skip_content: true
-tags: ["marketing"]
+tags: ["client-work", "festivals"]
 ---

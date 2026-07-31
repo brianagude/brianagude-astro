@@ -4,7 +4,7 @@ pubDate: 2026-02-20
 description: "Movie recommendations app"
 url: "https://movies.brianagude.com/"
 mux_id: "1KN9K7TGB1VVkt4zfCJmkPZQ8j4Bcsec3ReCT6kvmvs"
-tags: ["personal"]
+tags: ["experiments"]
 ---
 
 I watch a lot of movies and I got tired of flipping through streaming platforms one by one trying to find something new worth watching.

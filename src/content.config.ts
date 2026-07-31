@@ -2,24 +2,6 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-const experiments = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/experiments" }),
-	schema: ({ image }) => z.object({
-		title: z.string(),
-		pubDate: z.date(),
-		endDate: z.date().optional(),
-		description: z.string(),
-		url: z.string(),
-		mux_id: z.string().optional(),
-		image: z.object({
-			url: image(),
-			alt: z.string(),
-		}).optional(),
-		tags: z.array(z.string()).optional(),
-		skip_content: z.boolean().default(false),
-	}),
-});
-
 const work = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/work" }),
 	schema: ({ image }) => z.object({
@@ -27,7 +9,7 @@ const work = defineCollection({
 		pubDate: z.date(),
 		endDate: z.date().optional(),
 		description: z.string(),
-		role: z.string(),
+		role: z.string().optional(),
 		url: z.string(),
 		mux_id: z.string().optional(),
 		image: z.object({
@@ -35,7 +17,6 @@ const work = defineCollection({
 			alt: z.string(),
 		}).optional(),
 		tags: z.array(z.string()).optional(),
-		skip_content: z.boolean().default(false),
 	}),
 });
 
@@ -71,4 +52,4 @@ const thoughts = defineCollection({
 	}),
 });
 
-export const collections = { experiments, work, caseStudies, thoughts };
+export const collections = { work, caseStudies, thoughts };

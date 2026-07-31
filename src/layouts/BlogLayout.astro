@@ -8,7 +8,7 @@ import RSS from "@/images/icons/rss.svg"
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+<BaseLayout title={`${frontmatter.title} | briana gude`} description={frontmatter.description}>
   <section class="blog-header page-section">
     <div class="container">
       <h1>{frontmatter.title}</h1>

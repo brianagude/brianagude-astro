@@ -14,76 +14,25 @@ import Recurse from "@/images/icons/recurse.svg"
 			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
-				<p>A creative technologist and Shopify developer based in Atlanta.</p>
-				<p>I help agencies, nonprofits, and founders create marketing & ecommerce experiences that are conversion-focused, technically considered, and feel like a natural extension of their brand.</p>
-				<!-- <p>I build bespoke websites and conversion-focused landing pages that feel like an extension of your brand, and a natural meeting place for your community.</p> -->
-				<p>My work is a product of design, engineering, and creative curiosity, and I'm at my best on projects with room to actually think.</p>
-				<p>The best way to know if I'm the right fit is to reach out and tell me what you're building. I'm also open to full time and contract remote roles in UX design, frontend, design engineering, or creative technology.</p>
-				<p>Interested in working with me? <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
-			</div>
-			<div class="accordion">
-			<details>
-				<summary><h3 class="h6">What I Can Help With</h3></summary>
-				<div class="accordion-body">
-					<ul>
-						<li>
-							<b>Web design and UX:</b> sitemaps, wireframes, full-fidelity comps, design systems, component libraries, etc all with a strong foundation in visual hierarchy, and content strategy. I can own the design end-to-end or slot in wherever you need me.
-						</li>
-						<li>
-							<b>Custom Shopify builds:</b> full design and development, both custom themes and headless, built mobile-first and shaped around your brand.
-						</li>
-						<li>
-							<b>Website refreshes:</b> reworking layout, flow, and visual presentation to sharpen what's already there and convert better while doing it.
-						</li>
-						<li>
-							<b>Conversion-focused landing pages:</b> standalone pages built around a single goal, with a focus on hierarchy, narrative, and friction.
-						</li>
-						<li>
-							<b>Light CRO audits and eCommerce consulting:</b> a practical pass through your site flagging friction points and quick wins, or a broader conversation about what's working and what isn't.
-						</li>
-						<li>
-							<b>Creative and interactive web experiences:</b> a completely bespoke experience shaped around your brand's personality.
-						</li>
-						<li>
-							<b>Ongoing support and retainers:</b> post-launch ownership scoped to what you actually need.
-						</li>
-					</ul>
-				</div>
-			</details>
+				<p>I design and build things for the web, mostly commerce and brand experiences that don't look or feel like templates.</p>
+				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands, work with real conversion and revenue results across major DTC brands.</p>
+				<p>Most recently I co-founded CARO Stack, a conversion studio for DTC brands, where I owned the technical architecture end to end, including a multi-tenant Shopify app that makes merchant catalogs readable by AI agents.</p>
+				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, GLSL shaders, and physics simulations, and running the weekly creative coding group there. That work lives in my <Link href="/work/recurse/">sketchbook</Link>. It's where the direction I'm building toward now started to take shape: bespoke commerce work built with the same care and curiosity as an art piece.</p>
+				<p>I'm open to freelance and select agency work right now. If something feels like a fit, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
 			</div>
 		</div>
 	</section>
-	<!-- <section class="accordion-section page-section">
+	<section class="experience-section page-section">
 		<div class="container">
-			<details>
-				<summary><h3>Who I Work With</h3></summary>
-				<div class="accordion-body">
-					<p>
-						I work with agencies, studios, and founders who care about the little details.
-					</p>
-					<p>
-						If you're an agency looking for a creative technical partner, a founder building something exciting, or a studio that needs someone who thinks across design and engineering, <Link href="mailto:work@brianagude.com">I'd love to talk</Link>.
-					</p>
-					<p>
-						Also open to full time and contract remote roles where my skills are a fit.
-					</p>
-				</div>
-			</details>
-			<details>
-				<summary><h3>What I Can Help With</h3></summary>
-				<div class="accordion-body">
-					<ul>
-						<li>Custom Shopify Builds</li>
-						<li>Website Refreshes</li>
-						<li>Light CRO Audits</li>
-						<li>Ongoing Support & Retainers</li>
-						<li>Conversion-Focused Landing Pages</li>
-						<li>Creative & Interactive Web Experiences</li>
-					</ul>
-				</div>
-			</details>
+			<div class="text-block">
+				<h1 class="h5"><SplitText text="Experience" /></h1>
+				<p><b>Recurse Center</b>, <span class="body-sm">Participant — Nov 2025 to Feb 2026</span><br/>Creative coding and immersive 3D web, Three.js, React Three Fiber, GLSL, Rapier physics. Ran the weekly creative coding group.</p>
+				<p><b>CARO Stack</b>, <span class="body-sm">Co-Founder / CTO — Dec 2025 to April 2026</span><br/>Conversion studio for DTC brands. Owned all technical architecture and product development.</p>
+				<p><b>Dianthe Studio</b>, <span class="body-sm">Founder / Design Engineer — Jan 2019 to Nov 2025</span><br/>Independent studio for brands and agencies across health, wellness, beauty, and culture, discovery through launch.</p>
+				<p><b>Thesis Testing</b>, <span class="body-sm">Design Engineer — July 2019 to May 2024</span><br/>Conversion-focused landing pages and paid ad creative, managing 10 to 15 active clients at a time.</p>
+			</div>
 		</div>
-	</section> -->
+	</section>
 	<section class="webring">
 		<a 
 			id="rc-ring-prev" 
@@ -125,7 +74,7 @@ rel="noopener noreferrer">
 	@use "@/styles/_variables.scss" as *;
 
 	.page-section {
-		min-height: 90svh;
+		// min-height: 90svh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -133,10 +82,10 @@ rel="noopener noreferrer">
 
 	.hero-section {
 		height: 100%;
-		flex-grow: 1;
+		// flex-grow: 1;
 		
 		.container {
-			padding-bottom: 80px;
+			// padding-bottom: 80px;
 			display: flex;
 			flex-direction: column;
 		}

@@ -1,9 +1,12 @@
 ---
+import { getCollection } from "astro:content";
+
 import BaseLayout from "./BaseLayout.astro";
 import Link from "@/components/inputs/Link.astro";
 import FormattedDate from "@/components/inputs/FormattedDate.astro";
 import { Image } from "astro:assets";
 import Mux from "@/components/inputs/Mux.astro";
+import Arrow from "@/images/icons/arrow.svg"
 
 const { frontmatter } = Astro.props;
 const metaImage = frontmatter.mux_id
@@ -12,6 +15,20 @@ const metaImage = frontmatter.mux_id
 const twitterImage = frontmatter.mux_id
   ? `https://image.mux.com/${frontmatter.mux_id}/animated.gif?width=600&start=0&end=4`
   : undefined;
+
+const workPosts = await getCollection("work");
+const sortedWork = workPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const currentIdx = sortedWork.findIndex(item => item.data.title === frontmatter.title);
+const prevIdx = currentIdx === 0 
+  ? sortedWork[sortedWork.length - 1] 
+  : sortedWork[currentIdx - 1];
+
+const nextIdx = currentIdx === sortedWork.length - 1 
+  ? sortedWork[0] 
+  : sortedWork[currentIdx + 1];
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
@@ -19,13 +36,13 @@ const twitterImage = frontmatter.mux_id
     <div class="container">
       <div class="header">
         <h1>{frontmatter.title}</h1>
-        <!-- <p class="subtitle">{frontmatter.description}</p> -->
+        {frontmatter.description && <p class="subtitle">{frontmatter.description}</p>}
         <div class="info">
           <p class="body-sm">
             <FormattedDate date={frontmatter.pubDate} format="month-year" />
             {frontmatter.endDate && <> &mdash; <FormattedDate date={frontmatter.endDate} format="month-year" /></>}
           </p>
-          <Link href={frontmatter.url}>View Project</Link>
+          <Link href={`${frontmatter.url}?utm_source=brianagude.com`}>View Project</Link>
         </div>
       </div>
       <div class="media">
@@ -37,6 +54,15 @@ const twitterImage = frontmatter.mux_id
       </div>
     </div>
   </section>
+  <div class="navigation">
+    <Link href={`/work/${prevIdx.id}`} class="arrow arrow-left">
+      <Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
+    </Link>
+    <p class="body-sm">{currentIdx + 1} / {sortedWork.length}</p>
+    <Link href={`/work/${nextIdx.id}`} class="arrow arrow-right">
+      <Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
+    </Link>
+  </div>
 </BaseLayout>
 
 <style lang="scss">
@@ -52,9 +78,9 @@ const twitterImage = frontmatter.mux_id
   }
 
   .subtitle {
-    // font-family: $font-mono;
     font-size: 16px;
-    // color: $tertiary-color;
+    margin-top: 0;
+    margin-bottom: 8px;
   }
 
   .media {
@@ -66,11 +92,16 @@ const twitterImage = frontmatter.mux_id
     margin-top: 12px;
   }
 
+  .main-img {
+    object-fit: contain;
+    height: auto;
+    width: 100%;
+  }
+
   .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    // margin-top: 8px;
 
     a {
       @include pill-link;
@@ -80,4 +111,39 @@ const twitterImage = frontmatter.mux_id
   .prose {
     margin-top: 24px;
   }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    max-width: $bp-sm !important;
+    width: 100%;
+    margin: auto auto 24px;
+
+    // a {
+    //   @include pill-link;
+    // }
+  }
+
+  .arrow {
+		@include pill-link;
+		display: inline-block;
+		padding: 4px 16px;
+		transition: all ease 0.2s;
+		&:hover {
+			transform: translateY(-2px);
+		}
+	}
+
+	.arrow-left {
+		img {
+			transform: rotate(-90deg)
+		}
+	}
+	.arrow-right {
+		img {
+			transform: rotate(90deg)
+		}
+	}
 </style>

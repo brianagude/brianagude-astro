@@ -6,11 +6,10 @@ Live site: **[brianagude.com](https://brianagude.com)**
 
 ## What it is
 
-A portfolio organized into four content collections:
+A portfolio organized into three content collections:
 
-- **Work** — client and freelance projects
+- **Work** — client and freelance projects + personal side projects and explorations
 - **Case Studies** — deep-dive write-ups with embedded components (MDX)
-- **Experiments** — personal side projects and explorations
 - **Thoughts** — blog-style writing
 
 ## What it looks like
@@ -42,7 +41,7 @@ pnpm preview    # preview the production build locally
 
 ```
 src/
-  content/     # four collections: case-studies, work, experiments, thoughts
+  content/     # four collections: case-studies, work, thoughts
   pages/       # routes mirror collections + about, index
   components/  # Card, Navigation, Mux, and layout variants
   styles/      # global SCSS and CSS variables

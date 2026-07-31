@@ -9,7 +9,6 @@ import Tags from "@/components/Tags.astro";
 
 const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
-const experimentPosts = await getCollection("experiments");
 
 const sortedCaseStudies = caseStudyPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,19 +16,15 @@ const sortedCaseStudies = caseStudyPosts.sort((a, b) =>
 const sortedWork = workPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const sortedExperiments = experimentPosts.sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const allPosts = [...caseStudyPosts, ...workPosts, ...experimentPosts,];
+const allPosts = [...caseStudyPosts, ...workPosts,];
 const sortedPosts = allPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const pageTitle = "briana gude";
 
 
 ---
 
-<BaseLayout title={pageTitle}>
+<BaseLayout>
   <section class="page-section text-section">
     <div class="container centered">
       <div>
