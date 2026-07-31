@@ -31,7 +31,7 @@ const nextIdx = currentIdx === sortedWork.length - 1
   : sortedWork[currentIdx + 1];
 ---
 
-<BaseLayout title={`${frontmatter.title} | briana's gude`} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} image={metaImage} twitterImage={twitterImage}>
   <section class="project page-section">
     <div class="container">
       <div class="header">
@@ -42,7 +42,7 @@ const nextIdx = currentIdx === sortedWork.length - 1
             <FormattedDate date={frontmatter.pubDate} format="month-year" />
             {frontmatter.endDate && <> &mdash; <FormattedDate date={frontmatter.endDate} format="month-year" /></>}
           </p>
-          <Link href={frontmatter.url}>View Project</Link>
+          <Link href={`${frontmatter.url}?utm_source=brianagude.com`}>View Project</Link>
         </div>
       </div>
       <div class="media">
