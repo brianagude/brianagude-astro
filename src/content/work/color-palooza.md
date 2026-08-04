@@ -4,7 +4,7 @@ pubDate: 2026-04-15
 description: "Exploring color as a construct"
 url: "https://color-palooza.pages.dev/"
 mux_id: "nKKn01W9ZpvRYN2yNu1lAi4XCFL501Ze5VVc8VifR9Hto"
-tags: ["experiments", "collaborations"]
+tags: ["experiments"]
 ---
 
 After finishing Recurse, my friend, [Iris](https://www.iris-fernandez.com?utm_source=brianagude.com), and I set out to pair on a project together, and landed on the shared interest of _color_.

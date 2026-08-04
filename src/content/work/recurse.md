@@ -8,7 +8,9 @@ mux_id: "oG5c02IfbWXDyq0000L9DoCw00ZoUJVe65vRy39jJc6fq0200"
 tags: ["experiments"]
 ---
 
-A collection of the creative coding work I made during my batch at [Recurse Center](https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3).<br/><br/>I spent most of my time exploring Three.js, shaders, and interactive web experiences, plus smaller experiments in p5.js, some game-making in Godot, and a lot of pair programming on other people's projects. It's best experienced on desktop (:
+A collection of the creative coding work I made during my batch at [Recurse Center](https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3).<br/><br/>I spent most of my time exploring Three.js, shaders, and interactive web, with smaller detours into p5.js, Godot, and a lot of pair programming on other people's work.
+
+Please note that this site is more of a brain dump / exploration than a final project, and is not currently optimized for mobile.
 
 **Impossible Stuff Day**<br/>A live webcam feed with a GLSL shader layered over it that reacts to sound in real time. The louder your room gets, the more visual noise appears in your camera feed. Built for Impossible Stuff Day, a day where you attempt something you're convinced you can't do.
 

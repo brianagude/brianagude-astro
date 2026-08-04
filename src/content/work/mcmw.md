@@ -5,5 +5,5 @@ description: "A website for an Atlanta-based festival celebrating music, culture
 role: "Design & Development"
 url: "https://www.mcmw.global/"
 mux_id: "xmiy80001R600MuDYov1xAmVDT01D5Qqi3D00iEpWoAQkmhU"
-tags: ["client-work", "festivals", "collaborations", "micro-sites"]
+tags: ["client-work"]
 ---

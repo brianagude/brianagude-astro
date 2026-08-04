@@ -68,6 +68,7 @@ const nextIdx = currentIdx === sortedWork.length - 1
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
   @use "@/styles/_variables.scss" as *;
+  @use "@/styles/_typography" as *;
 
   .container {
     max-width: $bp-sm !important;
@@ -110,6 +111,13 @@ const nextIdx = currentIdx === sortedWork.length - 1
 
   .prose {
     margin-top: 24px;
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.625;
+      max-width: 60ch;
+      text-wrap: pretty;
+    }
   }
 
   .navigation {

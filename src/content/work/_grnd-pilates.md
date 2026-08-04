@@ -9,4 +9,5 @@ image:
     url: "/src/images/content/grndpilates.jpg",
     alt: "Jharde from GRND. Pilates on a pilates ball",
   }
+tags: ["client-work"]
 ---

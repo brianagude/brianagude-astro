@@ -5,7 +5,7 @@ description: "A custom website for for Atlanta’s #1 Anime & Music festival."
 role: "Design & Development"
 url: "https://www.atlanimefest.com/"
 mux_id: "cqwtBbX6RyCKCH01aFKaYzF016FMOv1KNI00y2rW01bzcqU"
-tags: ["client-work", "festivals"]
+tags: ["client-work", "case-studies"]
 ---
 
 **Client:**

@@ -5,7 +5,7 @@ description: "A custom website for a nonprofit connecting HBCU students, alumni,
 role: "Design & Development"
 url: "https://www.hbcusoutside.com/"
 mux_id: "DN7X1ZG029XOPWEcdFyoP97xLIgImupp8RV102LX3E6A4"
-tags: ["client-work", "nonprofits", "shopify", "collaborations"]
+tags: ["client-work", "case-studies"]
 ---
 
 **Client:**
@@ -16,9 +16,6 @@ The original site didn't reflect their brand and made it hard for people to unde
 
 **What I did:**
 Lead Designer & Developer — interaction design, UX/UI, and frontend. Mapped user journeys for students, alumni, and supporters. Explored two creative directions (clean/minimal vs. outdoorsy/scrapbook-inspired) through weekly workshops with their main stakeholders, landed on the scrapbook direction with layered textures and rich imagery. Built the site with Shopify integration, so when they're ready to sell merch they can surface product pages, a cart, and collection pages, and hide that part of the site entirely when they're not. Built a modular CMS letting the client build new pages independently. Redesigned the mobile menu after usability testing showed the original was too bare, adding optional submenus and clearer CTAs.
-
-**Team:**
-Sophia Kemi (Project Management), [Tariq Sokkarie](https://tariq.design?utm_source=brianagude.com) (Initial design iteration), [Yosi Galeano](https://yosigalistudio.net?utm_source=brianagude.com) (Graphic Designer)
 
 **Stack:**
 Figma, Next.js, TypeScript, Tailwind, Sanity CMS, Shopify API
