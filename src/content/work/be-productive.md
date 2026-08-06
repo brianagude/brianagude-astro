@@ -7,8 +7,8 @@ mux_id: "IjUWpGVpxCzkdOmZKx00gTv6c7FMytdNmEZaJJLH1Tm8"
 tags: ["experiments"]
 ---
 
-A suuuuper simple to-do list and pomodoro tracker I vibe coded for myself.
+A suuuuper simple to-do list and pomodoro tracker I vibe coded for myself with Claude Code.
 
-I'd been keeping physical to-do lists for a while, kept losing them, kept losing track of what I actually needed to do and when I had time to do it. So I built something simple to hold onto it instead, mostly with Claude Code, so I could move fast without overthinking the build.
+I'd been keeping physical to-do lists for a while, but I kept losing them or rewriting the same few items everyday. I wanted something that I could easily just jot down ideas and tasks without having too much noise around it so I built this to solve that problem.
 
-I'm using it daily, watching my own patterns before deciding what it actually needs next. I added PostHog to track usage and noticed other people were actually using it too. For now it's mostly just my brain, but maybe it grows into something bigger.
+I use it almost daily, and I've added PostHog to track usage because I learned some other people were finding it helpful too. For now it's mostly just a response to how my brain works, but maybe soon it grows into something bigger (:
