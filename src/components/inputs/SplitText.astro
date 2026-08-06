@@ -8,9 +8,9 @@ const { text, class: className } = Astro.props;
 const letters = text.split("");
 ---
 
-<span class={`split-text ${className}`}>
+<span class={`split-text ${className}`} aria-label={text}>
   {letters.map((letter, index) => (
-    <span class="letter" style={`--index: ${index}`}>
+    <span class="letter" style={`--index: ${index}`} aria-hidden="true">
       {letter === " " ? "\u00A0" : letter}
     </span>
   ))}

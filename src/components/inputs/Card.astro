@@ -17,7 +17,7 @@ import Link from "@/components/inputs/Link.astro"
     )}
   </div>
   <div class="content">
-    <span class="body-lg title">{title}</span>
+    <h2 class="body-lg title">{title}</h2>
     {date && <span class="body-sm"><FormattedDate date={date} /></span>}
   </div>
 </Link>
@@ -67,6 +67,7 @@ import Link from "@/components/inputs/Link.astro"
     transition: all 0.2s ease-in-out;
     overflow: hidden;
     position: relative;
+    isolation: isolate;
   }
 
   .placeholder-img {

@@ -16,7 +16,6 @@ import Recurse from "@/images/icons/recurse.svg"
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
 				<p>I design and build things for the web, mostly bespoke commerce and brand experiences.</p>
 				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands.</p>
-				<!-- <p>Most recently I co-founded CARO Stack, a conversion studio for DTC brands, where I owned the technical architecture end to end, including a multi-tenant Shopify app that makes merchant catalogs readable by AI agents.</p> -->
 				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, GLSL shaders, and physics simulations, and running the weekly creative coding group there. That work lives in my <Link href="/work/recurse/">sketchbook</Link>, and is where the direction I'm building toward now started to take shape: bespoke commerce work built with the same care and curiosity as an art piece.</p>
 				<p>I'm open to contract and select agency work right now. If something feels like a fit, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
 			</div>
@@ -25,7 +24,7 @@ import Recurse from "@/images/icons/recurse.svg"
 	<section class="experience-section page-section">
 		<div class="container">
 			<div class="text-block">
-				<h1 class="h5"><SplitText text="Experience" /></h1>
+				<h2 class="h5"><SplitText text="Experience" /></h2>
 				<p><b>Recurse Center</b>, <span class="body-sm">Participant — Nov 2025 to Feb 2026</span><br/>Creative coding and immersive 3D web, Three.js, React Three Fiber, GLSL, Rapier physics. Ran the weekly creative coding group.</p>
 				<p><b>CARO Stack</b>, <span class="body-sm">Co-Founder / CTO — Dec 2025 to April 2026</span><br/>Conversion studio for DTC brands. Owned all technical architecture and product development.</p>
 				<p><b>Dianthe Studio</b>, <span class="body-sm">Founder / Design Engineer — May 2024 to Nov 2025</span><br/>Independent studio for brands and agencies across health, wellness, beauty, and culture, discovery through launch.</p>
@@ -34,39 +33,38 @@ import Recurse from "@/images/icons/recurse.svg"
 		</div>
 	</section>
 	<section class="webring">
-		<a 
-			id="rc-ring-prev" 
-			href="https://ring.recurse.com/prev?id=63" 
-			target="_blank"
-			rel="noopener noreferrer" 
-			class="arrow arrow-left"
-		>
-			<Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
-		</a>
-
-		<a 
-			href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3" 
+		<a
+			id="rc-ring-prev"
+			href="https://ring.recurse.com/prev?id=63"
 			target="_blank"
 			rel="noopener noreferrer"
+			class="arrow arrow-left"
+			aria-label="Previous site in the Recurse Center webring (opens in a new tab)"
 		>
-			<Image src={Recurse} alt="Arrow Icon" width={32} height={40} />
+			<Image src={Arrow} alt="" width={24} height={24}  />
 		</a>
-<!-- 
-		<a id="rc-ring-rand" href="https://ring.recurse.com/rand" target="_blank"
-rel="noopener noreferrer">
-			<Image src={Recurse} alt="Arrow Icon" width={32} height={40} />
-		</a> -->
 
-		<a 
-			id="rc-ring-next" 
-			href="https://ring.recurse.com/next?id=63" 
+		<a
+			href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3"
 			target="_blank"
-			rel="noopener noreferrer" 
-			class="arrow arrow-right"
+			rel="noopener noreferrer"
+			aria-label="Recurse Center (opens in a new tab)"
 		>
-			<Image src={Arrow} alt="Arrow Icon" width={24} height={24}  />
+			<Image src={Recurse} alt="" width={32} height={40} />
+		</a>
+
+		<a
+			id="rc-ring-next"
+			href="https://ring.recurse.com/next?id=63"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="arrow arrow-right"
+			aria-label="Next site in the Recurse Center webring (opens in a new tab)"
+		>
+			<Image src={Arrow} alt="" width={24} height={24}  />
 		</a>
 	</section>
+	<script is:inline defer src="https://raw.githack.com/Qwuke/recurse-ring/main/static/ring.js"></script>
 </BaseLayout>
 
 <style lang="scss">
@@ -96,14 +94,15 @@ rel="noopener noreferrer">
 		height: 120px;
 		border-radius: 100%;
 		border: 1px solid $black;
-		margin: 0 auto;
+		margin-inline: auto;
 	}
 
 	.text-block {
 		text-align: center;
-		p { 
-			margin: 16px auto 0; 
-			text-align: left; 
+		p {
+			margin-block: 16px 0;
+			margin-inline: auto;
+			text-align: start;
 		}
 	}
 	.webring {
@@ -118,7 +117,8 @@ rel="noopener noreferrer">
 	.arrow {
 		@include pill-link;
 		display: inline-block;
-		padding: 4px 16px;
+		padding-block: 4px;
+		padding-inline: 16px;
 		transition: all ease 0.2s;
 		&:hover {
 			transform: translateY(-2px);
@@ -133,101 +133,6 @@ rel="noopener noreferrer">
 	.arrow-right {
 		img {
 			transform: rotate(90deg)
-		}
-	}
-
-	.accordion-section {
-		.container {
-			flex-direction: column;
-			gap: 0;
-		}
-	}
-
-	.accordion {
-		margin-top: 40px;
-	}
-
-	details {
-		max-width: 500px;
-		margin: 0 auto;
-		border-bottom: 2px solid $black;
-		interpolate-size: allow-keywords;
-		
-		@include mq("sm") {
-			max-width: 560px;
-		}
-	}
-
-	summary {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 1.25rem 0;
-		cursor: pointer;
-		list-style: none;
-
-		&::-webkit-details-marker {
-			display: none;
-		}
-
-		h3 {
-			margin: 0;
-		}
-
-		&::after {
-			content: '+';
-			font-size: 1.5rem;
-			line-height: 1;
-			flex-shrink: 0;
-		}
-	}
-
-	details[open] summary::after {
-		content: '−';
-	}
-
-	::details-content {
-		height: 0;
-		overflow: hidden;
-		opacity: 0;
-		transition: height 0.35s ease, opacity 0.35s ease, content-visibility 0.35s allow-discrete;
-	}
-
-	details[open]::details-content {
-		height: auto;
-		opacity: 1;
-	}
-
-	@starting-style {
-		details[open]::details-content {
-			height: 0;
-			opacity: 0;
-		}
-	}
-
-	.accordion-body {
-		padding-bottom: 1.25rem;
-
-		p, ul {
-			margin-top: 0;
-			margin-bottom: 0.75rem;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
-		ul {
-			padding-left: 1.25rem;
-
-			// @include mq("lg") {
-			// 	display: grid;
-			// 	grid-template-columns: 1fr 1fr;
-			// }
-		}
-
-		li + li {
-			margin-top: 0.75rem;
 		}
 	}
 </style>

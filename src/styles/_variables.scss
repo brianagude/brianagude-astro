@@ -20,19 +20,6 @@ $bp-xl: 1280px;
 $bp-2xl: 1536px;
 $bp-3xl: 1720px;
 
-@mixin flex-center($direction: row) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
-}
-
-@mixin glass($color: white, $opacity: 0.2) {
-  background: rgba($color, $opacity);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 $breakpoints: (
   "sm": $bp-sm,
   "md": 768px,
@@ -61,7 +48,8 @@ $breakpoints: (
   display: inline-block;
   font-weight: 500;
   font-size: inherit;
-  padding: 2px 8px;
+  padding-block: 2px;
+  padding-inline: 8px;
   border-radius: 32px;
   height: fit-content;
   background: $gray;

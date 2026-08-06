@@ -6,11 +6,7 @@ Live site: **[brianagude.com](https://brianagude.com)**
 
 ## What it is
 
-A portfolio organized into three content collections:
-
-- **Work** — client and freelance projects + personal side projects and explorations
-- **Case Studies** — deep-dive write-ups with embedded components (MDX)
-- **Thoughts** — blog-style writing
+A portfolio built around a single **Work** content collection — client and freelance projects plus personal side projects and explorations.
 
 ## What it looks like
 
@@ -32,7 +28,6 @@ pnpm preview    # preview the production build locally
 - [Astro 5](https://astro.build) — static site framework
 - SCSS — custom design system, no Tailwind
 - TypeScript — strict mode, `@/*` path aliases
-- MDX — rich content for case studies
 - [Mux](https://mux.com) — video player for project pages
 - sharp — image optimization
 - pnpm — package manager
@@ -41,10 +36,10 @@ pnpm preview    # preview the production build locally
 
 ```
 src/
-  content/     # four collections: case-studies, work, thoughts
-  pages/       # routes mirror collections + about, index
+  content/     # one collection: work
+  pages/       # routes mirror collections + about, resources, index
   components/  # Card, Navigation, Mux, and layout variants
   styles/      # global SCSS and CSS variables
-  layouts/     # BaseLayout, CaseStudyLayout, ProjectLayout, BlogLayout
+  layouts/     # BaseLayout, ProjectLayout
 public/        # static assets
 ```

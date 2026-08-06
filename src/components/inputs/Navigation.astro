@@ -93,8 +93,8 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
   .nav-indicator {
     @media (hover: none) { display: none; }
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     height: 0;
     background: $gray;
     backdrop-filter: blur(4px);
@@ -113,7 +113,8 @@ const { links, ariaLabel = "Navigation" } = Astro.props;
 
   :global(.nav-link) {
     display: inline-block;
-    padding: 2px 12px;
+    padding-block: 2px;
+    padding-inline: 12px;
     border-radius: 32px;
     text-decoration: none;
     color: inherit;

@@ -7,20 +7,10 @@ import SplitText from "@/components/inputs/SplitText.astro";
 import { getPostUrl } from "@/utils"
 import Tags from "@/components/Tags.astro";
 
-const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
-
-const sortedCaseStudies = caseStudyPosts.sort((a, b) => 
+const sortedPosts = workPosts.sort((a, b) =>
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const sortedWork = workPosts.sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const allPosts = [...caseStudyPosts, ...workPosts,];
-const sortedPosts = allPosts.sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
 
 ---
 
@@ -30,7 +20,6 @@ const sortedPosts = allPosts.sort((a, b) =>
       <div>
         <h1 class="h6"><SplitText text="Briana Gude" /></h1>
         <p>Design & Technology</p>
-        <!-- <p>Creative Technologist</p> -->
       </div>
     </div>
   </section>
@@ -46,5 +35,5 @@ const sortedPosts = allPosts.sort((a, b) =>
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-  .text-section { padding-bottom: 0; }
+  .text-section { padding-block-end: 0; }
 </style>

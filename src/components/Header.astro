@@ -2,24 +2,11 @@
 import Navigation from "./inputs/Navigation.astro";
 
 const links = [
-  
 	{
 		text: "work",
 		url: "/",
 	},
-  // {
-	// 	text: "case studies",
-	// 	url: "/case-studies",
-	// },
-  // {
-	// 	text: "work",
-	// 	url: "/work",
-	// },
-  // {
-	// 	text: "thoughts",
-	// 	url: "/thoughts",
-	// },
-  {
+	{
 		text: "about",
 		url: "/about",
 	},
@@ -36,8 +23,8 @@ const links = [
 
   header {
     position: sticky;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     width: 100%;
     z-index: 50;
 
@@ -48,14 +35,15 @@ const links = [
   }
 
   .container {
-    padding: 8px 16px;
+    padding-block: 8px;
+    padding-inline: 16px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 16px;
     max-width: $bp-xl;
-    margin: 0 auto;
+    margin-inline: auto;
   }
 
   .logo {

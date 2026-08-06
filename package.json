@@ -9,8 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.2",
-    "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.1",
     "@fontsource-variable/host-grotesk": "^5.2.8",
     "@fontsource/dm-mono": "^5.2.7",
@@ -21,8 +19,10 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@typescript-eslint/parser": "^8.53.1",
     "eslint": "^9.39.2",
-    "eslint-plugin-astro": "^1.5.0"
+    "eslint-plugin-astro": "^1.5.0",
+    "typescript": "^6.0.3"
   }
 }

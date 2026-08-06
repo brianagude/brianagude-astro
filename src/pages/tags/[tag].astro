@@ -8,11 +8,9 @@ import Tags from "@/components/Tags.astro";
 import { getPostUrl } from "@/utils"
 
 export async function getStaticPaths() {
-  const caseStudyPosts = await getCollection("caseStudies");
-  const workPosts = await getCollection("work");
-  const allPosts = [...caseStudyPosts, ...workPosts].sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);;
+  const allPosts = (await getCollection("work")).sort((a, b) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
 
   const uniqueTags = [...new Set(allPosts.flatMap((post) => post.data.tags ?? []))];
 
@@ -33,7 +31,6 @@ const { posts } = Astro.props;
       <div>
         <h1 class="h6"><SplitText text="Briana Gude" /></h1>
         <p>Design & Technology</p>
-        <!-- <p>Creative Technologist</p> -->
       </div>
     </div>
   </section>
@@ -49,5 +46,5 @@ const { posts } = Astro.props;
   @use "@/styles/_components.scss" as *;
 	@use "@/styles/_variables.scss" as *;
 
-  .text-section { padding-bottom: 0; }
+  .text-section { padding-block-end: 0; }
 </style>

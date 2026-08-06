@@ -1,14 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 
-const caseStudyPosts = await getCollection("caseStudies");
 const workPosts = await getCollection("work");
 
-const allPosts = [...caseStudyPosts, ...workPosts].sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
-const tags = [...new Set(allPosts.flatMap((post: any) => post.data.tags ?? []))].sort();
+const tags = [...new Set(workPosts.flatMap((post: any) => post.data.tags ?? []))].sort();
 
 const currentPath = Astro.url.pathname;
 ---
@@ -42,7 +37,7 @@ const currentPath = Astro.url.pathname;
 	@use "@/styles/_variables.scss" as *;
 
   section {
-    margin-bottom: 40px;
+    margin-block-end: 40px;
   }
 
   .link-list {
@@ -52,17 +47,17 @@ const currentPath = Astro.url.pathname;
     flex-wrap: wrap;
     column-gap: 16px;
     row-gap: 8px;
-    padding: 0 1rem;
+    padding-inline: 1rem;
     width: 100%;
     max-width: 640px;
-    margin: 0 auto;
+    margin-inline: auto;
 
     @include mq("sm") {
-      padding: 0 1.5rem;
+      padding-inline: 1.5rem;
     }
 
     @include mq("lg") {
-      padding: 0 2rem;
+      padding-inline: 2rem;
     }
   }
 

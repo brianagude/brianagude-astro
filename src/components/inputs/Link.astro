@@ -19,15 +19,16 @@ const { pathname } = Astro.url;
 const isActive = pathname === href || pathname === href + '/';
 ---
 
-<a 
-  href={finalHref} 
-  target={target} 
-  rel={rel} 
-  class:list={[className, { active: isActive }]} 
+<a
+  href={finalHref}
+  target={target}
+  rel={rel}
+  class:list={[className, { active: isActive }]}
   aria-current={isActive ? 'page' : undefined}
   {...rest}
 >
   <slot />
+  {isExternal && <span class="sr-only"> (opens in a new tab)</span>}
 </a>
 
 <style lang="scss">

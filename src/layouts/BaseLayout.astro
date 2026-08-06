@@ -11,14 +11,13 @@ import Header from "@/components/Header.astro"
 const {
 	title = "briana's portfolio",
 	description = "creative technologist",
-	image = "/og-default.png",
-	twitterImage,
 } = Astro.props;
 ---
 
 <html lang="en">
-  <Head title={title} description={description} image={image} twitterImage={twitterImage} />
+  <Head title={title} description={description} />
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <Header/>
     <main id="main-content">
       <slot />
@@ -45,17 +44,18 @@ const {
 
   .skip-link {
     position: absolute;
-    top: -100%;
-    left: 0;
+    inset-block-start: -100%;
+    inset-inline-start: 0;
     background: var(--color-primary);
     color: var(--color-black);
-    padding: 8px 16px;
+    padding-block: 8px;
+    padding-inline: 16px;
     font-weight: 600;
     text-decoration: none;
     z-index: 9999;
 
     &:focus {
-      top: 0;
+      inset-block-start: 0;
     }
   }
 
