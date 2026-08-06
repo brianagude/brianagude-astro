@@ -4,13 +4,15 @@ import rss from "@astrojs/rss";
 
 export async function GET(context) {
 	const thoughts = await getCollection("thoughts");
+	const buildLogs = await getCollection("buildLogs");
+	const allPosts = [...thoughts, ...buildLogs]
 
-	const sortedPosts = thoughts.sort((a, b) => 
+	const sortedPosts = allPosts.sort((a, b) => 
 		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 	);
 
 	return rss({
-		title: "Briana's World | .open(tabs)",
+		title: "Written by Briana Gude",
 		description: "My little corner of the internet (:",
 		site: context.site,
 		items: sortedPosts.map((post) => ({

@@ -8,18 +8,22 @@ import RSS from "@/images/icons/rss.svg"
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title={`${frontmatter.title} | briana gude`} description={frontmatter.description}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description ?? frontmatter.title}>
   <section class="blog-header page-section">
     <div class="container">
-      <h1>{frontmatter.title}</h1>
+      <h1 class="h5">{frontmatter.title}</h1>
+      <!-- <p class="">{frontmatter.description}</p> -->
       <p class="pub-date body-sm"><FormattedDate date={frontmatter.pubDate} /></p>
     </div>
   </section>
-  <div class="blog-image container">
-    {
-      frontmatter.image.url && frontmatter.image.alt && <Image src={frontmatter.image.url} alt={frontmatter.image.alt} width={1080} height={608}  />
-    }
-  </div>
+  
+  {
+    frontmatter.image && frontmatter.image.url && 
+    <div class="blog-image container">
+      <Image src={frontmatter.image.url} alt={frontmatter.image.alt ?? 'image of project'} width={1080} height={608}  />
+    </div>
+  }
+  
   <section class="blog-post page-section">
     <div class="container">
       <div class="prose">
@@ -49,6 +53,7 @@ const { frontmatter } = Astro.props;
     font-family: $font-mono;
     font-weight: 500;
     opacity: 50%;
+    // margin-top: 8px;
   }
 
   .tags {
@@ -111,6 +116,7 @@ const { frontmatter } = Astro.props;
     justify-content: center; 
     padding: 16px;
     width: 100%;
+    margin-top: auto;
   }
 
   .rss-link {

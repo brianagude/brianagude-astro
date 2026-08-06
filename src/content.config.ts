@@ -52,4 +52,14 @@ const thoughts = defineCollection({
 	}),
 });
 
-export const collections = { work, caseStudies, thoughts };
+const buildLogs = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/build-logs" }),
+	schema: ({ image }) => z.object({
+		title: z.string(),
+		pubDate: z.date(),
+		description: z.string(),
+		tags: z.array(z.string()).optional(),
+	}),
+});
+
+export const collections = { work, caseStudies, thoughts, buildLogs };

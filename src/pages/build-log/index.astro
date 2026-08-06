@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FormattedDate from "@/components/inputs/FormattedDate.astro";
+
+const allPosts = await getCollection("buildLogs");
+const sortedPosts = allPosts.sort((a, b) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title='build log | briana gude'>
+  <section class="page-section">
+    <div class="container">
+      {sortedPosts.sort().map((post: any) => <a href={`/build-log/${post.id}/`} class="log-link">
+        <span class="h6 log-title">{post.data.title}</span>
+        {/* <span class="body-sm log-desc">{post.data.description}</span> */}
+        <span class="body log-date"><FormattedDate date={post.data.pubDate} /></span>
+      </a>)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
+
+  .page-section {
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+	}
+
+  .container {
+    // margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .log-link {
+    @include pill-link;
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background: transparent;
+    // border: 1px solid $black;
+    // border: 1px solid color-mix(in oklab, var(--color-black) 70%, var(--color-white));
+
+    @media (min-width: 640px) {
+      padding: 4px 16px;
+    }
+
+  }
+
+  // .log-link {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  // }
+
+  // .log-title {
+  //   grid-column: 1 / -1;
+  // }
+
+  .log-date {
+    font-weight: 400;
+  }
+</style>
