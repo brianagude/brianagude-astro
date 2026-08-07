@@ -1,9 +1,10 @@
 ---
 const { url, title, image, video, date, index = 0 } = Astro.props;
+
 import { Image } from "astro:assets";
-import Mux from "./Mux.astro";
+import Link from "@/components/inputs/Link.astro";
 import FormattedDate from "./FormattedDate.astro";
-import Link from "@/components/inputs/Link.astro"
+import Mux from "./Mux.astro";
 ---
 
 <Link href={url} aria-label={title} class="card-wrapper" style={`--index: ${index}`}>
@@ -17,7 +18,7 @@ import Link from "@/components/inputs/Link.astro"
     )}
   </div>
   <div class="content">
-    <h2 class="body-lg title">{title}</h2>
+    <p class="body-lg title">{title}</p>
     {date && <span class="body-sm"><FormattedDate date={date} /></span>}
   </div>
 </Link>

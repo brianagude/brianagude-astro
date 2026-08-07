@@ -1,11 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Link from "@/components/inputs/Link.astro";
 import SplitText from "@/components/inputs/SplitText.astro";
+import Headshot from "@/images/headshot.jpg";
+import Arrow from "@/images/icons/arrow.svg";
+import Recurse from "@/images/icons/recurse.svg";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import Headshot from "@/images/headshot.jpg"
-import Arrow from "@/images/icons/arrow.svg"
-import Recurse from "@/images/icons/recurse.svg"
 ---
 
 <BaseLayout>
@@ -15,8 +15,9 @@ import Recurse from "@/images/icons/recurse.svg"
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
 				<p>I design and build things for the web, mostly bespoke commerce and brand experiences.</p>
+				<!-- <p>I'm currently building a <Link href="https://brianagude.substack.com/p/im-building-an-official-shopify-theme">Shopify theme</Link> to submit to teh theme store.</p> -->
 				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands.</p>
-				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, GLSL shaders, and physics simulations, and running the weekly creative coding group there. That work lives in my <Link href="/work/recurse/">sketchbook</Link>, and is where the direction I'm building toward now started to take shape: bespoke commerce work built with the same care and curiosity as an art piece.</p>
+				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, and shaders. Some of that work now lives in my <Link href="/work/recurse/">sketchbook</Link>. I also run the weekly creative coding group there.</p>
 				<p>I'm open to contract and select agency work right now. If something feels like a fit, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
 			</div>
 		</div>
@@ -26,7 +27,7 @@ import Recurse from "@/images/icons/recurse.svg"
 			<div class="text-block">
 				<h2 class="h5"><SplitText text="Experience" /></h2>
 				<p><b>Recurse Center</b>, <span class="body-sm">Participant — Nov 2025 to Feb 2026</span><br/>Creative coding and immersive 3D web, Three.js, React Three Fiber, GLSL, Rapier physics. Ran the weekly creative coding group.</p>
-				<p><b>CARO Stack</b>, <span class="body-sm">Co-Founder / CTO — Dec 2025 to April 2026</span><br/>Conversion studio for DTC brands. Owned all technical architecture and product development.</p>
+				<p><b>CARO Stack</b>, <span class="body-sm">Technical Co-Founder — Dec 2025 to April 2026</span><br/>Conversion studio for DTC brands. Owned all technical architecture and product development.</p>
 				<p><b>Dianthe Studio</b>, <span class="body-sm">Founder / Design Engineer — May 2024 to Nov 2025</span><br/>Independent studio for brands and agencies across health, wellness, beauty, and culture, discovery through launch.</p>
 				<p><b>Thesis Testing</b>, <span class="body-sm">Design Engineer — July 2019 to May 2024</span><br/>Designed and built conversion-focused landing pages and paid ad creative, managing 20+ active clients at a time.</p>
 			</div>
