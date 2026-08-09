@@ -15,13 +15,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
 				<p>I design and build things for the web, mostly bespoke commerce and brand experiences.</p>
-				<!-- <p>I'm currently building a <Link href="https://brianagude.substack.com/p/im-building-an-official-shopify-theme">Shopify theme</Link> to submit to teh theme store.</p> -->
 				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands.</p>
 				<p>I spent the winter at Recurse Center building fluency in Three.js, React Three Fiber, and shaders. Some of that work now lives in my <Link href="/work/recurse/">sketchbook</Link>. I also run the weekly creative coding group there.</p>
 				<p>I'm open to contract and select agency work right now. If something feels like a fit, <Link href="mailto:work@brianagude.com">say hi</Link> (:</p>
 			</div>
 		</div>
 	</section>
+	<div class="build-link">
+		<p>
+			Working with a studio? <Link href="https://build.brianagude.com">click here</Link>
+		</p>
+	</div>
 	<section class="experience-section page-section">
 		<div class="container">
 			<div class="text-block">
@@ -33,6 +37,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 			</div>
 		</div>
 	</section>
+	
 	<section class="webring">
 		<a
 			id="rc-ring-prev"
@@ -106,6 +111,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 			text-align: start;
 		}
 	}
+
+	.build-link {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		margin: 0 auto;
+	}
+
 	.webring {
 		display: flex;
 		flex-wrap: wrap;
