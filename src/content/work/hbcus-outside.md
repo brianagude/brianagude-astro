@@ -5,7 +5,7 @@ description: "A custom website for a nonprofit connecting HBCU students, alumni,
 role: "Design & Development"
 url: "https://hbcus-outside.vercel.app/"
 mux_id: "DN7X1ZG029XOPWEcdFyoP97xLIgImupp8RV102LX3E6A4"
-tags: ["client-work", "case-studies", "shopify-work"]
+tags: ["client-work", "case-studies"]
 ---
 
 **Client:**
