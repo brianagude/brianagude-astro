@@ -14,8 +14,18 @@ HBCUs Outside is a nonprofit connecting HBCU students, alumni, and supporters to
 **What they needed:**
 The original site didn't reflect their brand and made it hard for people to understand who they were, find events, or get involved. The navigation was confusing and event registration was fragmented with no unified flow.
 
-**What I did:**
-Lead Designer & Developer — interaction design, UX/UI, and frontend. Mapped user journeys for students, alumni, and supporters. Explored two creative directions (clean/minimal vs. outdoorsy/scrapbook-inspired) through weekly workshops with their main stakeholders, landed on the scrapbook direction with layered textures and rich imagery. Built the site with Shopify integration, so when they're ready to sell merch they can surface product pages, a cart, and collection pages, and hide that part of the site entirely when they're not. Built a modular CMS letting the client build new pages independently. Redesigned the mobile menu after usability testing showed the original was too bare, adding optional submenus and clearer CTAs.
+**My role:**
+Lead Designer & Developer, interaction design, UX/UI, and frontend.
+* Mapped user journeys for students, alumni, and supporters.
+* Explored two creative directions (clean/minimal vs. outdoorsy/scrapbook-inspired) through weekly workshops with their main stakeholders, landed on the scrapbook direction with layered textures and rich imagery.
+* Built the site with Shopify integration, so when they're ready to sell merch they can surface product pages, a cart, and collection pages, and hide that part of the site entirely when they're not. 
+* Built a modular CMS letting the client build new pages independently. 
+* Redesigned the mobile menu after usability testing showed the original was too bare, adding optional submenus and clearer CTAs.
+
+**Team:**
+* [Sophia Kemi](https://www.linkedin.com/in/sophiakemi/), Project Management
+* [Tariq Sokkarie](https://tariq.design/?utm_source=brianagude.com), Some initial design iterations
+* [Yosi Galeano](https://yosigalistudio.net/?utm_source=brianagude.com), Graphic Designer
 
 **Stack:**
 Figma, Next.js, TypeScript, Tailwind, Sanity CMS, Shopify API
