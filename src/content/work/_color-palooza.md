@@ -4,7 +4,7 @@ pubDate: 2026-04-15
 description: "Exploring color as a construct"
 url: "https://color-palooza.pages.dev/"
 mux_id: "nKKn01W9ZpvRYN2yNu1lAi4XCFL501Ze5VVc8VifR9Hto"
-tags: ["experiments"]
+tags: ["personal"]
 ---
 
 After finishing Recurse, my friend, [Iris](https://www.iris-fernandez.com?utm_source=brianagude.com), and I set out to pair on a project together, and landed on the shared interest of _color_.
@@ -19,6 +19,6 @@ In React Three Fiber, we built a 3D grid where every point in the cube is colore
 
 When you switch models, the underlying color value doesn't actually change. What changes is which historical model is doing the translating. The same starting point gets pushed to a different spot in the cube depending on whose RYB you're using, which is exactly the distortion the RYB-in-RGB mode is built to show.
 
-While Color Palooza is just a rough exploration, we’ve evolved our idea into something much bigger called [Paint Palooza](/work/paint-palooza), which aims to hone in more on the understanding of the connection and disconnection of color through actual mini projects visualized on a retro Windows desktop format.
+While Color Palooza is just a rough exploration, we’ve evolved our idea into something much bigger called [Paint Palooza](https://paint-palooza.pages.dev/), which is still a work in progress, but aims to hone in more on the understanding of the connection and disconnection of color through actual mini projects visualized on a retro Windows desktop format.
 
 Overall, this project has broadened my understanding of color outside the RGB spectrum, how color functions inside mathematical equations, and the difference between how artists have historically experienced and communicated color versus how computers visualize it.

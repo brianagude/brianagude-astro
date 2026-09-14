@@ -8,7 +8,7 @@ image:
     url: "/src/images/content/paint-palooza.webp",
     alt: "Screenshot of Paint Palooza desktop",
   }
-tags: ["experiments"]
+tags: ["personal"]
 ---
 
 An ongoing project, and extension of [Color Palooza](/work/color-palooza). After finishing that exploration, we had a bunch of small project ideas for visualizing what we'd found and sharing it with others, both creatively and literally. Paint Palooza is where those ideas are getting built out.
