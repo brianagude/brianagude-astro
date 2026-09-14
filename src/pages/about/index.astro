@@ -68,16 +68,20 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 			if (button.dataset.bound) return;
 			button.dataset.bound = "true";
 
-			const originalText = button.textContent ?? "";
 			const email = button.dataset.email ?? "";
 			let resetTimeout: ReturnType<typeof setTimeout>;
+
+			// Cloudflare's email obfuscation can rewrite the button's rendered
+			// text to a placeholder; data-email is untouched, so use it as the
+			// source of truth for display too.
+			button.textContent = email;
 
 			button.addEventListener("click", async () => {
 				await navigator.clipboard.writeText(email);
 				clearTimeout(resetTimeout);
 				button.textContent = "copied!";
 				resetTimeout = setTimeout(() => {
-					button.textContent = originalText;
+					button.textContent = email;
 				}, 2000);
 			});
 		});
