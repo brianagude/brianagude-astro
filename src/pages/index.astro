@@ -11,12 +11,6 @@ const workPosts = await getCollection("work");
 const sortedWork = workPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-// const hasClientWork = (post: any) => post.data.tags?.includes("client-work") ?? false;
-// const sortedPosts = workPosts.sort((a, b) => {
-//   const clientDiff = Number(hasClientWork(b)) - Number(hasClientWork(a));
-//   if (clientDiff !== 0) return clientDiff;
-//   return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
-// });
 ---
 
 <BaseLayout>

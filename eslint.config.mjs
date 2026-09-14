@@ -13,6 +13,7 @@ export default [
 		},
 		rules: {
 			"astro/no-set-html-directive": "error",
+			"no-unused-vars": "error",
 		},
 	},
 ];
