@@ -7,7 +7,7 @@ const links = [
 	// 	text: "work with me",
 	// 	url: "https://tally.so/r/woxEyX",
 	// },
-  {
+	{
 		text: "email",
 		url: "work@brianagude.com",
 	},
@@ -23,19 +23,19 @@ const links = [
 		text: "instagram",
 		url: "https://www.instagram.com/brianagude/",
 	},
-	{
-		text: "substack",
-		url: "https://brianagude.substack.com/",
-	},
-	{
-		text: "twitter",
-		url: "https://x.com/briana__gude",
-	},
-	{
-		text: "bsky",
-		url: "https://bsky.app/profile/brianagude.com",
-	},
-	
+	// {
+	// 	text: "substack",
+	// 	url: "https://brianagude.substack.com/",
+	// },
+	// {
+	// 	text: "twitter",
+	// 	url: "https://x.com/briana__gude",
+	// },
+	// {
+	// 	text: "bsky",
+	// 	url: "https://bsky.app/profile/brianagude.com",
+	// },
+
 	// {
 	// 	text: "rss",
 	// 	url: "/rss.xml",
@@ -44,31 +44,34 @@ const links = [
 ---
 
 <footer>
-  <div class="container">
-    <Navigation links={links} ariaLabel="Social and contact links" />
-    <p>&copy; {year} Briana Gude LLC</p>
-  </div>
+	<div class="container">
+		<Navigation links={links} ariaLabel="Social and contact links" />
+		<p>&copy; {year} Briana Gude LLC</p>
+	</div>
 </footer>
 
 <style lang="scss">
-  @use "@/styles/_variables.scss" as *;
+	@use "@/styles/_variables.scss" as *;
 
-  footer {
-    width: 100%;
-  }
+	footer {
+		width: 100%;
+	}
 
-  .container {
-    padding-block: 8px;
-    padding-inline: 16px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	.container {
+		padding-block: 8px;
+		padding-inline: 16px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-    gap: 16px;
-    max-width: $bp-xl;
-    margin-inline: auto;
-  }
+		gap: 16px;
+		max-width: $bp-xl;
+		margin-inline: auto;
+	}
 
-  p, a { line-height: 1; }
+	p,
+	a {
+		line-height: 1;
+	}
 </style>

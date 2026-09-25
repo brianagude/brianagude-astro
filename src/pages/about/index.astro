@@ -11,169 +11,209 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 <BaseLayout>
 	<section class="hero-section page-section">
 		<div class="container">
-			<Image src={Headshot} alt="headshot of briana" width={320} height={320} class="headshot" />
+			<Image
+				src={Headshot}
+				alt="headshot of briana"
+				width={320}
+				height={320}
+				class="headshot"
+			/>
 			<div class="text-block">
 				<h1 class="h5"><SplitText text="Hi, I'm Bri" /></h1>
-				<p>I'm a creative engineer working with studios and agencies to build playfully bespoke marketing and ecommerce websites.</p>
-				<p>For over five years I ran my own studio, taking projects from strategy through launch for brands across health, wellness, beauty, and culture. Before that and alongside it, I built conversion-focused <Link href="/work/landing-pages">landing pages</Link> and design systems for DTC brands.</p>
-				<p>I spent the winter at Recurse Center building fluency in Three.js, R3F, motion design, and shaders. Some of that work now lives in my <Link href="/work/recurse/">sketchbook</Link>. I also run the weekly creative coding group there.</p>
-				<p>I'm open to contract and select agency work right now. If something feels like a fit, say hi at <button type="button" class="copy-email" data-email="work@brianagude.com">work@brianagude.com</button> (:</p>
-			</div>
-			<div class="build-link">
 				<p>
-					Working with a studio? <Link href="https://build.brianagude.com">click here</Link>
+					I'm a creative engineer working with studios and agencies to build
+					playfully bespoke marketing, micro- and ecommerce websites.
 				</p>
+				<p>
+					For over five years I ran my own studio, taking projects from strategy
+					through launch for brands across health, wellness, beauty, and
+					culture. Before that and alongside it, I built conversion-focused <Link
+						href="/work/landing-pages">landing pages</Link
+					> and design systems for DTC brands.
+				</p>
+				<p>
+					I spent the winter at Recurse Center building fluency in Three.js,
+					R3F, motion design, and shaders. Some of that work now lives in my <Link
+						href="/work/recurse/">sketchbook</Link
+					>. I also run a weekly creative coding group there.
+				</p>
+				<p>
+					I'm open to contract and select agency work right now. If something
+					feels like a fit:
+				</p>
+				<p>
+					Say hi at <button
+						type="button"
+						class="copy-email"
+						data-email="work@brianagude.com">work@brianagude.com</button
+					> or <Link href="https://tally.so/r/ODRGLY">send an inquiry</Link> and I'll
+					be in touch soon (:
+				</p>
+
+				<!-- <div class="build-link">
+				<p>
+					Working with a studio? <Link href="https://build.brianagude.com"
+						>click here</Link
+					>
+				</p>
+			</div> -->
 			</div>
+
+			<section class="webring">
+				<a
+					id="rc-ring-prev"
+					href="https://ring.recurse.com/prev?id=63"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="arrow arrow-left"
+					aria-label="Previous site in the Recurse Center webring (opens in a new tab)"
+				>
+					<Image src={Arrow} alt="" width={24} height={24} />
+				</a>
+
+				<a
+					href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Recurse Center (opens in a new tab)"
+				>
+					<Image src={Recurse} alt="" width={32} height={40} />
+				</a>
+
+				<a
+					id="rc-ring-next"
+					href="https://ring.recurse.com/next?id=63"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="arrow arrow-right"
+					aria-label="Next site in the Recurse Center webring (opens in a new tab)"
+				>
+					<Image src={Arrow} alt="" width={24} height={24} />
+				</a>
+			</section>
+			<script
+				is:inline
+				defer
+				src="https://raw.githack.com/Qwuke/recurse-ring/main/static/ring.js"
+			></script>
 		</div>
-	</section>
-	
-	<section class="webring">
-		<a
-			id="rc-ring-prev"
-			href="https://ring.recurse.com/prev?id=63"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="arrow arrow-left"
-			aria-label="Previous site in the Recurse Center webring (opens in a new tab)"
-		>
-			<Image src={Arrow} alt="" width={24} height={24}  />
-		</a>
 
-		<a
-			href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3"
-			target="_blank"
-			rel="noopener noreferrer"
-			aria-label="Recurse Center (opens in a new tab)"
-		>
-			<Image src={Recurse} alt="" width={32} height={40} />
-		</a>
+		<script>
+			function initCopyEmail() {
+				document
+					.querySelectorAll<HTMLButtonElement>(".copy-email")
+					.forEach((button) => {
+						if (button.dataset.bound) return;
+						button.dataset.bound = "true";
 
-		<a
-			id="rc-ring-next"
-			href="https://ring.recurse.com/next?id=63"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="arrow arrow-right"
-			aria-label="Next site in the Recurse Center webring (opens in a new tab)"
-		>
-			<Image src={Arrow} alt="" width={24} height={24}  />
-		</a>
-	</section>
-	<script is:inline defer src="https://raw.githack.com/Qwuke/recurse-ring/main/static/ring.js"></script>
-</BaseLayout>
+						const email = button.dataset.email ?? "";
+						let resetTimeout: ReturnType<typeof setTimeout>;
 
-<script>
-	function initCopyEmail() {
-		document.querySelectorAll<HTMLButtonElement>(".copy-email").forEach((button) => {
-			if (button.dataset.bound) return;
-			button.dataset.bound = "true";
+						// Cloudflare's email obfuscation can rewrite the button's rendered
+						// text to a placeholder; data-email is untouched, so use it as the
+						// source of truth for display too.
+						button.textContent = email;
 
-			const email = button.dataset.email ?? "";
-			let resetTimeout: ReturnType<typeof setTimeout>;
+						button.addEventListener("click", async () => {
+							await navigator.clipboard.writeText(email);
+							clearTimeout(resetTimeout);
+							button.textContent = "copied!";
+							resetTimeout = setTimeout(() => {
+								button.textContent = email;
+							}, 2000);
+						});
+					});
+			}
 
-			// Cloudflare's email obfuscation can rewrite the button's rendered
-			// text to a placeholder; data-email is untouched, so use it as the
-			// source of truth for display too.
-			button.textContent = email;
+			initCopyEmail();
+			document.addEventListener("astro:page-load", initCopyEmail);
+		</script>
 
-			button.addEventListener("click", async () => {
-				await navigator.clipboard.writeText(email);
-				clearTimeout(resetTimeout);
-				button.textContent = "copied!";
-				resetTimeout = setTimeout(() => {
-					button.textContent = email;
-				}, 2000);
-			});
-		});
-	}
+		<style lang="scss">
+			@use "@/styles/_components.scss" as *;
+			@use "@/styles/_variables.scss" as *;
 
-	initCopyEmail();
-	document.addEventListener("astro:page-load", initCopyEmail);
-</script>
+			.page-section {
+				// min-height: 90svh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 
-<style lang="scss">
-  @use "@/styles/_components.scss" as *;
-	@use "@/styles/_variables.scss" as *;
+			.hero-section {
+				height: 100%;
+				// flex-grow: 1;
 
-	.page-section {
-		// min-height: 90svh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+				.container {
+					// padding-bottom: 80px;
+					display: flex;
+					flex-direction: column;
+				}
+			}
 
-	.hero-section {
-		height: 100%;
-		// flex-grow: 1;
-		
-		.container {
-			// padding-bottom: 80px;
-			display: flex;
-			flex-direction: column;
-		}
-	}
+			.headshot {
+				width: 120px;
+				height: 120px;
+				border-radius: 100%;
+				border: 1px solid $black;
+				margin-inline: auto;
+			}
 
-	.headshot {
-		width: 120px;
-		height: 120px;
-		border-radius: 100%;
-		border: 1px solid $black;
-		margin-inline: auto;
-	}
+			.text-block {
+				text-align: center;
+				p {
+					margin-block: 16px 0;
+					margin-inline: auto;
+					text-align: start;
+				}
+			}
 
-	.text-block {
-		text-align: center;
-		p {
-			margin-block: 16px 0;
-			margin-inline: auto;
-			text-align: start;
-		}
-	}
+			.copy-email {
+				@include pill-link;
+				font: inherit;
+				color: $black;
+				border: none;
+				cursor: pointer;
+				font-weight: 500;
+			}
 
-	.copy-email {
-		@include pill-link;
-		font: inherit;
-		color: $black;
-		border: none;
-		cursor: pointer;
-		font-weight: 500;
-	}
+			.build-link {
+				display: flex;
+				justify-content: center;
+				text-align: center;
+				margin: 40px auto 0;
+			}
 
-	.build-link {
-		display: flex;
-		justify-content: center;
-		text-align: center;
-		margin: 40px auto 0;
-	}
+			.webring {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+				gap: 16px;
+				padding: 16px;
+			}
 
-	.webring {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 16px;
-		padding: 16px;
-	}
+			.arrow {
+				@include pill-link;
+				display: inline-block;
+				padding-block: 4px;
+				padding-inline: 16px;
+				transition: all ease 0.2s;
+				&:hover {
+					transform: translateY(-2px);
+				}
+			}
 
-	.arrow {
-		@include pill-link;
-		display: inline-block;
-		padding-block: 4px;
-		padding-inline: 16px;
-		transition: all ease 0.2s;
-		&:hover {
-			transform: translateY(-2px);
-		}
-	}
-
-	.arrow-left {
-		img {
-			transform: rotate(-90deg)
-		}
-	}
-	.arrow-right {
-		img {
-			transform: rotate(90deg)
-		}
-	}
-</style>
+			.arrow-left {
+				img {
+					transform: rotate(-90deg);
+				}
+			}
+			.arrow-right {
+				img {
+					transform: rotate(90deg);
+				}
+			}
+		</style>
+	</section></BaseLayout
+>
