@@ -10,7 +10,11 @@ const currentPath = Astro.url.pathname;
 
 <section>
   <div class="link-list">
-    <a href='/' class:list={["font-mono", { selected: currentPath === '/' }]}>
+    <a
+      href='/'
+      data-portfolio-tag="all"
+      class:list={["font-mono", { selected: currentPath === '/' }]}
+    >
       <div class="dot">
         <div class="inner-dot"/>
       </div>
@@ -21,7 +25,11 @@ const currentPath = Astro.url.pathname;
       const href = `/tags/${tag}`;
       const isActive = currentPath.includes(href);
       return (
-        <a href={href} class:list={["font-mono", { selected: isActive }]}>
+        <a
+          href={href}
+          data-portfolio-tag={tag}
+          class:list={["font-mono", { selected: isActive }]}
+        >
           <div class="dot">
             <div class="inner-dot"/>
           </div>
@@ -31,6 +39,32 @@ const currentPath = Astro.url.pathname;
     })}
   </div>
 </section>
+
+<script>
+  function initPortfolioTagTracking() {
+    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-tag]").forEach((tag) => {
+      if (tag.dataset.analyticsBound) return;
+      tag.dataset.analyticsBound = "true";
+
+      tag.addEventListener("click", () => {
+        const selectedTag = tag.dataset.portfolioTag;
+
+        window.posthog?.logger?.info("Portfolio tag filtered", {
+          selected_tag: selectedTag,
+        });
+        window.posthog?.capture("portfolio_tag_filtered", {
+          selected_tag: selectedTag,
+        });
+        if (selectedTag === "experiments") {
+          window.posthog?.register_once({ visitor_intent: "inspiration" });
+        }
+      });
+    });
+  }
+
+  initPortfolioTagTracking();
+  document.addEventListener("astro:page-load", initPortfolioTagTracking);
+</script>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;

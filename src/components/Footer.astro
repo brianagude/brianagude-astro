@@ -50,6 +50,29 @@ const links = [
 	</div>
 </footer>
 
+<script>
+	const HIRING_PLATFORMS = ["email", "linkedin"];
+
+	function initSocialLinkTracking() {
+		document.querySelectorAll<HTMLAnchorElement>("footer .nav-link").forEach((link) => {
+			if (link.dataset.analyticsBound) return;
+			link.dataset.analyticsBound = "true";
+
+			link.addEventListener("click", () => {
+				const platform = link.textContent?.trim();
+
+				window.posthog?.capture("social_link_clicked", { platform });
+				if (platform && HIRING_PLATFORMS.includes(platform)) {
+					window.posthog?.register({ visitor_intent: "hiring_or_client" });
+				}
+			});
+		});
+	}
+
+	initSocialLinkTracking();
+	document.addEventListener("astro:page-load", initSocialLinkTracking);
+</script>
+
 <style lang="scss">
 	@use "@/styles/_variables.scss" as *;
 

@@ -23,6 +23,29 @@ import Mux from "./Mux.astro";
   </div>
 </Link>
 
+<script>
+  function initProjectCardTracking() {
+    document.querySelectorAll<HTMLAnchorElement>(".card-wrapper").forEach((card) => {
+      if (card.dataset.analyticsBound) return;
+      card.dataset.analyticsBound = "true";
+
+      card.addEventListener("click", () => {
+        const projectTitle = card.getAttribute("aria-label");
+
+        window.posthog?.logger?.info("Portfolio project opened", {
+          project_title: projectTitle,
+        });
+        window.posthog?.capture("portfolio_project_opened", {
+          project_title: projectTitle,
+        });
+      });
+    });
+  }
+
+  initProjectCardTracking();
+  document.addEventListener("astro:page-load", initProjectCardTracking);
+</script>
+
 <style lang="scss">
   @use "@/styles/_variables.scss" as *;
 

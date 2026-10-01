@@ -36,7 +36,13 @@ const nextIdx = currentIdx === sortedWork.length - 1
             <FormattedDate date={frontmatter.pubDate} format="month-year" />
             {frontmatter.endDate && <> &mdash; <FormattedDate date={frontmatter.endDate} format="month-year" /></>}
           </p>
-          <Link href={`${frontmatter.url}?utm_source=brianagude.com`}>View Project</Link>
+          <Link
+            href={`${frontmatter.url}?utm_source=brianagude.com`}
+            class="project-website-link"
+            data-project-title={frontmatter.title}
+          >
+            View Project
+          </Link>
         </div>
       </div>
       <div class="media">
@@ -54,15 +60,69 @@ const nextIdx = currentIdx === sortedWork.length - 1
     </div>
   </section>
   <div class="navigation">
-    <Link href={`/work/${prevIdx.id}`} class="arrow arrow-left" aria-label={`Previous project: ${prevIdx.data.title}`}>
+    <Link
+      href={`/work/${prevIdx.id}`}
+      class="arrow arrow-left"
+      aria-label={`Previous project: ${prevIdx.data.title}`}
+      data-project-nav="previous"
+      data-from-project={frontmatter.title}
+      data-to-project={prevIdx.data.title}
+    >
       <Image src={Arrow} alt="" width={24} height={24}  />
     </Link>
     <p class="body-sm">{currentIdx + 1} / {sortedWork.length}</p>
-    <Link href={`/work/${nextIdx.id}`} class="arrow arrow-right" aria-label={`Next project: ${nextIdx.data.title}`}>
+    <Link
+      href={`/work/${nextIdx.id}`}
+      class="arrow arrow-right"
+      aria-label={`Next project: ${nextIdx.data.title}`}
+      data-project-nav="next"
+      data-from-project={frontmatter.title}
+      data-to-project={nextIdx.data.title}
+    >
       <Image src={Arrow} alt="" width={24} height={24}  />
     </Link>
   </div>
 </BaseLayout>
+
+<script>
+  function initProjectWebsiteTracking() {
+    document.querySelectorAll<HTMLAnchorElement>(".project-website-link").forEach((link) => {
+      if (link.dataset.analyticsBound) return;
+      link.dataset.analyticsBound = "true";
+
+      link.addEventListener("click", () => {
+        const projectTitle = link.dataset.projectTitle;
+
+        window.posthog?.logger?.info("Portfolio project website opened", {
+          project_title: projectTitle,
+        });
+        window.posthog?.capture("project_website_visited", {
+          project_title: projectTitle,
+        });
+      });
+    });
+  }
+
+  function initProjectNavTracking() {
+    document.querySelectorAll<HTMLAnchorElement>("[data-project-nav]").forEach((link) => {
+      if (link.dataset.analyticsBound) return;
+      link.dataset.analyticsBound = "true";
+
+      link.addEventListener("click", () => {
+        window.posthog?.capture("project_navigated", {
+          direction: link.dataset.projectNav,
+          from_project: link.dataset.fromProject,
+          to_project: link.dataset.toProject,
+        });
+      });
+    });
+  }
+
+  initProjectWebsiteTracking();
+  initProjectNavTracking();
+  document.addEventListener("astro:page-load", initProjectWebsiteTracking);
+  document.addEventListener("astro:page-load", initProjectNavTracking);
+</script>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;

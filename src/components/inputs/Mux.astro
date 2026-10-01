@@ -17,6 +17,27 @@ const poster = `https://image.mux.com/${playbackId}/thumbnail.jpg?width=1200`;
   ></mux-player>
 </div>
 
+<script>
+  function initVideoTracking() {
+    document.querySelectorAll<HTMLMediaElement & HTMLElement>("mux-player").forEach((player) => {
+      if (player.dataset.analyticsBound) return;
+      player.dataset.analyticsBound = "true";
+
+      player.addEventListener("volumechange", () => {
+        if (player.muted || player.dataset.unmuteTracked) return;
+        player.dataset.unmuteTracked = "true";
+
+        window.posthog?.capture("project_video_unmuted", {
+          video_title: player.getAttribute("metadata-video-title"),
+        });
+      });
+    });
+  }
+
+  initVideoTracking();
+  document.addEventListener("astro:page-load", initVideoTracking);
+</script>
+
 <style>
   .mux-wrapper {
     position: relative;

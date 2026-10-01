@@ -46,7 +46,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 						type="button"
 						class="copy-email"
 						data-email="work@brianagude.com">work@brianagude.com</button
-					> or <Link href="https://tally.so/r/ODRGLY">send an inquiry</Link> and I'll
+					> or <Link href="https://tally.so/r/ODRGLY" class="inquiry-link">send an inquiry</Link> and I'll
 					be in touch soon (:
 				</p>
 
@@ -116,6 +116,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 						button.addEventListener("click", async () => {
 							await navigator.clipboard.writeText(email);
+							window.posthog?.capture("contact_email_copied");
+							window.posthog?.register({ visitor_intent: "hiring_or_client" });
 							clearTimeout(resetTimeout);
 							button.textContent = "copied!";
 							resetTimeout = setTimeout(() => {
@@ -125,8 +127,22 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 					});
 			}
 
+			function initInquiryTracking() {
+				document.querySelectorAll<HTMLAnchorElement>(".inquiry-link").forEach((link) => {
+					if (link.dataset.analyticsBound) return;
+					link.dataset.analyticsBound = "true";
+
+					link.addEventListener("click", () => {
+						window.posthog?.capture("inquiry_started");
+						window.posthog?.register({ visitor_intent: "hiring_or_client" });
+					});
+				});
+			}
+
 			initCopyEmail();
+			initInquiryTracking();
 			document.addEventListener("astro:page-load", initCopyEmail);
+			document.addEventListener("astro:page-load", initInquiryTracking);
 		</script>
 
 		<style lang="scss">

@@ -20,7 +20,7 @@ import SplitText from "@/components/inputs/SplitText.astro";
 					<li><Link href="https://brianagude.substack.com/">my blog</Link></li>
 				</ul>
 			</nav>
-			<nav aria-label="Resources">
+			<nav aria-label="Resources" data-resource-list>
 				<h2 class="caption-sm">resources</h2>
 				<ul>
 					<li><Link href="https://thebookofshaders.com">the book of shaders</Link></li>
@@ -33,6 +33,26 @@ import SplitText from "@/components/inputs/SplitText.astro";
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	function initResourceTracking() {
+		document.querySelectorAll<HTMLAnchorElement>("[data-resource-list] a").forEach((link) => {
+			if (link.dataset.analyticsBound) return;
+			link.dataset.analyticsBound = "true";
+
+			link.addEventListener("click", () => {
+				window.posthog?.capture("resource_clicked", {
+					resource: link.textContent?.replace("(opens in a new tab)", "").trim(),
+					url: link.href,
+				});
+				window.posthog?.register_once({ visitor_intent: "inspiration" });
+			});
+		});
+	}
+
+	initResourceTracking();
+	document.addEventListener("astro:page-load", initResourceTracking);
+</script>
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
