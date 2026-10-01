@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 
 const workPosts = await getCollection("work");
 
-const tags = [...new Set(workPosts.flatMap((post: any) => post.data.tags ?? []))].sort();
+const tags = [
+  ...new Set(workPosts.flatMap((post: any) => post.data.tags ?? [])),
+].sort();
 
 const currentPath = Astro.url.pathname;
 ---
@@ -11,55 +13,59 @@ const currentPath = Astro.url.pathname;
 <section>
   <div class="link-list">
     <a
-      href='/'
+      href="/"
       data-portfolio-tag="all"
-      class:list={["font-mono", { selected: currentPath === '/' }]}
+      class:list={["font-mono", { selected: currentPath === "/" }]}
     >
       <div class="dot">
-        <div class="inner-dot"/>
+        <div class="inner-dot"></div>
       </div>
       All
     </a>
 
-    {tags.map((tag) => {
-      const href = `/tags/${tag}`;
-      const isActive = currentPath.includes(href);
-      return (
-        <a
-          href={href}
-          data-portfolio-tag={tag}
-          class:list={["font-mono", { selected: isActive }]}
-        >
-          <div class="dot">
-            <div class="inner-dot"/>
-          </div>
-          {tag.replaceAll('-', ' ')}
-        </a>
-      );
-    })}
+    {
+      tags.map((tag) => {
+        const href = `/tags/${tag}`;
+        const isActive = currentPath.includes(href);
+        return (
+          <a
+            href={href}
+            data-portfolio-tag={tag}
+            class:list={["font-mono", { selected: isActive }]}
+          >
+            <div class="dot">
+              <div class="inner-dot" />
+            </div>
+            {tag.replaceAll("-", " ")}
+          </a>
+        );
+      })
+    }
   </div>
 </section>
 
 <script>
   function initPortfolioTagTracking() {
-    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-tag]").forEach((tag) => {
-      if (tag.dataset.analyticsBound) return;
-      tag.dataset.analyticsBound = "true";
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-portfolio-tag]")
+      .forEach((tag) => {
+        if (tag.dataset.analyticsBound) return;
+        tag.dataset.analyticsBound = "true";
 
-      tag.addEventListener("click", () => {
-        const selectedTag = tag.dataset.portfolioTag;
+        tag.addEventListener("click", () => {
+          const selectedTag = tag.dataset.portfolioTag;
 
-        window.posthog?.logger?.info("Portfolio tag filtered", {
-          selected_tag: selectedTag,
+          window.posthog?.logger?.info("Portfolio tag filtered", {
+            selected_tag: selectedTag,
+          });
+          window.posthog?.capture("portfolio_tag_filtered", {
+            selected_tag: selectedTag,
+          });
+          if (selectedTag === "Personal") {
+            window.posthog?.register_once({ visitor_intent: "inspiration" });
+          }
         });
-        window.posthog?.capture("portfolio_tag_filtered", {
-          selected_tag: selectedTag,
-        });
-        if (selectedTag === "experiments") {
-          window.posthog?.register_once({ visitor_intent: "inspiration" });
-        }
       });
-    });
   }
 
   initPortfolioTagTracking();
@@ -68,7 +74,7 @@ const currentPath = Astro.url.pathname;
 
 <style lang="scss">
   @use "@/styles/_components.scss" as *;
-	@use "@/styles/_variables.scss" as *;
+  @use "@/styles/_variables.scss" as *;
 
   section {
     margin-block-end: 40px;
@@ -100,13 +106,15 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     gap: 4px;
     text-transform: capitalize;
-    
-    &:hover, &.selected {
+
+    &:hover,
+    &.selected {
       font-weight: bold;
-      .inner-dot { opacity: 100% !important; }
+      .inner-dot {
+        opacity: 100% !important;
+      }
     }
   }
-
 
   .dot {
     width: 16px;
@@ -117,8 +125,6 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: center;
     padding: 2px;
-
-    
   }
 
   .inner-dot {
@@ -128,6 +134,4 @@ const currentPath = Astro.url.pathname;
     border-radius: 100%;
     opacity: 0;
   }
-
-
 </style>
