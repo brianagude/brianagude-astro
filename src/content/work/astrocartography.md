@@ -12,13 +12,9 @@ image:
 tags: ["personal"]
 ---
 
-I was first introduced to astrocartography a few years ago, when I started thinking about moving abroad. I had no idea where I should go, so a friend pulled up my astrocartography chart. It pointed to some places I'd secretly had in mind, and highlighted a few I already knew I loved.
+I was first introduced to astrocartography a few years ago, when I started thinking about moving abroad. I had no idea where I should go, so a friend pulled up my astrocartography chart. It pointed to some places I'd secretly had in mind, and highlighted a few I already knew I loved. I just never cared enough to dig into the astrological meaning behind each place, so I didn't go much further with it. 
 
-The thing is, I never cared enough to dig into the astrological meaning behind each place, so I didn't go much further with it. 
-
-Recently I've been experimenting with Claude to build out a bunch of small ideas, and this was one of them. It took a couple of hours of prompting, and it's exactly what I would have wanted back then.
-
-Hope it's helpful for you! 
+Recently I've been experimenting with Claude to build out a few small personal projects, and this was one of them. It took a couple of hours of prompting, but it's exactly what I would have wanted back then!
 
 [Claude Artifact](https://claude.ai/artifact/GuyNeknurkP4By3xA4zBcH) 
-[GitHub Repo](https://github.com/brianagude/astrocart) 
+[GitHub Repo](https://github.com/brianagude/astrocart)
