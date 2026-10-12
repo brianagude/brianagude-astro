@@ -37,17 +37,23 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 						href="/work/recurse/">sketchbook</Link
 					>. I also run a weekly creative coding group there.
 				</p>
+				<p>---</p>
 				<p>
+					I&apos;m fully booked through March 2027, but I&apos;m still happy to
+					hear about new projects.
+				</p>
+				<!-- <p>
 					I'm open to contract and select agency work right now. If something
 					feels like a fit:
-				</p>
+				</p> -->
 				<p>
 					Say hi at <button
 						type="button"
 						class="copy-email"
 						data-email="work@brianagude.com">work@brianagude.com</button
-					> or <Link href="https://tally.so/r/ODRGLY" class="inquiry-link">send an inquiry</Link> and I'll
-					be in touch soon (:
+					> or <Link href="https://tally.so/r/ODRGLY" class="inquiry-link"
+						>send an inquiry</Link
+					> and I'll be in touch soon (:
 				</p>
 
 				<!-- <div class="build-link">
@@ -128,15 +134,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 			}
 
 			function initInquiryTracking() {
-				document.querySelectorAll<HTMLAnchorElement>(".inquiry-link").forEach((link) => {
-					if (link.dataset.analyticsBound) return;
-					link.dataset.analyticsBound = "true";
+				document
+					.querySelectorAll<HTMLAnchorElement>(".inquiry-link")
+					.forEach((link) => {
+						if (link.dataset.analyticsBound) return;
+						link.dataset.analyticsBound = "true";
 
-					link.addEventListener("click", () => {
-						window.posthog?.capture("inquiry_started");
-						window.posthog?.register({ visitor_intent: "hiring_or_client" });
+						link.addEventListener("click", () => {
+							window.posthog?.capture("inquiry_started");
+							window.posthog?.register({ visitor_intent: "hiring_or_client" });
+						});
 					});
-				});
 			}
 
 			initCopyEmail();
