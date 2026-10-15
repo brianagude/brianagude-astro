@@ -27,20 +27,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 				<p>
 					For over five years I ran my own studio, taking projects from strategy
 					through launch for brands across health, wellness, beauty, and
-					culture. Before that and alongside it, I built conversion-focused <Link
-						href="/work/landing-pages">landing pages</Link
-					> and design systems for DTC brands.
+					culture. Before that and alongside it, I built conversion-focused
+					landing pages and paid ads for DTC brands.
 				</p>
 				<p>
-					I spent the winter at Recurse Center building fluency in Three.js,
-					R3F, motion design, and shaders. Some of that work now lives in my <Link
-						href="/work/recurse/">sketchbook</Link
-					>. I also run a weekly creative coding group there.
+					I spent last winter at Recurse Center building fluency in Three.js,
+					R3F, motion design, and shaders. I also run a weekly creative coding
+					group there.
 				</p>
 				<p>---</p>
 				<p>
-					I&apos;m fully booked through March 2027, but I&apos;m still happy to
-					hear about new projects.
+					I&apos;m fully booked through March 2027, but still happy to hear
+					about new projects!
 				</p>
 				<!-- <p>
 					I'm open to contract and select agency work right now. If something
@@ -64,180 +62,174 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 				</p>
 			</div> -->
 			</div>
-
-			<section class="webring">
-				<a
-					id="rc-ring-prev"
-					href="https://ring.recurse.com/prev?id=63"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="arrow arrow-left"
-					aria-label="Previous site in the Recurse Center webring (opens in a new tab)"
-				>
-					<Image src={Arrow} alt="" width={24} height={24} />
-				</a>
-
-				<a
-					href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="Recurse Center (opens in a new tab)"
-				>
-					<Image src={Recurse} alt="" width={32} height={40} />
-				</a>
-
-				<a
-					id="rc-ring-next"
-					href="https://ring.recurse.com/next?id=63"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="arrow arrow-right"
-					aria-label="Next site in the Recurse Center webring (opens in a new tab)"
-				>
-					<Image src={Arrow} alt="" width={24} height={24} />
-				</a>
-			</section>
-			<script
-				is:inline
-				defer
-				src="https://raw.githack.com/Qwuke/recurse-ring/main/static/ring.js"
-			></script>
 		</div>
+	</section>
+	<section class="webring mt-auto">
+		<a
+			id="rc-ring-prev"
+			href="https://ring.recurse.com/prev?id=63"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="arrow arrow-left"
+			aria-label="Previous site in the Recurse Center webring (opens in a new tab)"
+		>
+			<Image src={Arrow} alt="" width={24} height={24} />
+		</a>
 
-		<script>
-			function initCopyEmail() {
-				document
-					.querySelectorAll<HTMLButtonElement>(".copy-email")
-					.forEach((button) => {
-						if (button.dataset.bound) return;
-						button.dataset.bound = "true";
+		<a
+			href="https://www.recurse.com/scout/click?t=49255f4a45abaf728b468df6b7d6abf3"
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Recurse Center (opens in a new tab)"
+		>
+			<Image src={Recurse} alt="" width={32} height={40} />
+		</a>
 
-						const email = button.dataset.email ?? "";
-						let resetTimeout: ReturnType<typeof setTimeout>;
+		<a
+			id="rc-ring-next"
+			href="https://ring.recurse.com/next?id=63"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="arrow arrow-right"
+			aria-label="Next site in the Recurse Center webring (opens in a new tab)"
+		>
+			<Image src={Arrow} alt="" width={24} height={24} />
+		</a>
+	</section>
+	<script
+		is:inline
+		defer
+		src="https://raw.githack.com/Qwuke/recurse-ring/main/static/ring.js"
+	></script>
+</BaseLayout>
+<script>
+	function initCopyEmail() {
+		document
+			.querySelectorAll<HTMLButtonElement>(".copy-email")
+			.forEach((button) => {
+				if (button.dataset.bound) return;
+				button.dataset.bound = "true";
 
-						// Cloudflare's email obfuscation can rewrite the button's rendered
-						// text to a placeholder; data-email is untouched, so use it as the
-						// source of truth for display too.
+				const email = button.dataset.email ?? "";
+				let resetTimeout: ReturnType<typeof setTimeout>;
+
+				button.textContent = email;
+
+				button.addEventListener("click", async () => {
+					await navigator.clipboard.writeText(email);
+					window.posthog?.capture("contact_email_copied");
+					window.posthog?.register({ visitor_intent: "hiring_or_client" });
+					clearTimeout(resetTimeout);
+					button.textContent = "copied!";
+					resetTimeout = setTimeout(() => {
 						button.textContent = email;
+					}, 2000);
+				});
+			});
+	}
 
-						button.addEventListener("click", async () => {
-							await navigator.clipboard.writeText(email);
-							window.posthog?.capture("contact_email_copied");
-							window.posthog?.register({ visitor_intent: "hiring_or_client" });
-							clearTimeout(resetTimeout);
-							button.textContent = "copied!";
-							resetTimeout = setTimeout(() => {
-								button.textContent = email;
-							}, 2000);
-						});
-					});
-			}
+	function initInquiryTracking() {
+		document
+			.querySelectorAll<HTMLAnchorElement>(".inquiry-link")
+			.forEach((link) => {
+				if (link.dataset.analyticsBound) return;
+				link.dataset.analyticsBound = "true";
 
-			function initInquiryTracking() {
-				document
-					.querySelectorAll<HTMLAnchorElement>(".inquiry-link")
-					.forEach((link) => {
-						if (link.dataset.analyticsBound) return;
-						link.dataset.analyticsBound = "true";
+				link.addEventListener("click", () => {
+					window.posthog?.capture("inquiry_started");
+					window.posthog?.register({ visitor_intent: "hiring_or_client" });
+				});
+			});
+	}
 
-						link.addEventListener("click", () => {
-							window.posthog?.capture("inquiry_started");
-							window.posthog?.register({ visitor_intent: "hiring_or_client" });
-						});
-					});
-			}
+	initCopyEmail();
+	initInquiryTracking();
+	document.addEventListener("astro:page-load", initCopyEmail);
+	document.addEventListener("astro:page-load", initInquiryTracking);
+</script>
+<style lang="scss">
+	@use "@/styles/_components.scss" as *;
+	@use "@/styles/_variables.scss" as *;
 
-			initCopyEmail();
-			initInquiryTracking();
-			document.addEventListener("astro:page-load", initCopyEmail);
-			document.addEventListener("astro:page-load", initInquiryTracking);
-		</script>
+	.page-section {
+		// min-height: 90svh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-		<style lang="scss">
-			@use "@/styles/_components.scss" as *;
-			@use "@/styles/_variables.scss" as *;
+	.hero-section {
+		height: 100%;
+		// flex-grow: 1;
 
-			.page-section {
-				// min-height: 90svh;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
+		.container {
+			// padding-bottom: 80px;
+			display: flex;
+			flex-direction: column;
+		}
+	}
 
-			.hero-section {
-				height: 100%;
-				// flex-grow: 1;
+	.headshot {
+		width: 120px;
+		height: 120px;
+		border-radius: 100%;
+		border: 1px solid $black;
+		margin-inline: auto;
+	}
 
-				.container {
-					// padding-bottom: 80px;
-					display: flex;
-					flex-direction: column;
-				}
-			}
+	.text-block {
+		text-align: center;
+		p {
+			margin-block: 16px 0;
+			margin-inline: auto;
+			text-align: start;
+		}
+	}
 
-			.headshot {
-				width: 120px;
-				height: 120px;
-				border-radius: 100%;
-				border: 1px solid $black;
-				margin-inline: auto;
-			}
+	.copy-email {
+		@include pill-link;
+		font: inherit;
+		color: $black;
+		border: none;
+		cursor: pointer;
+		font-weight: 500;
+	}
 
-			.text-block {
-				text-align: center;
-				p {
-					margin-block: 16px 0;
-					margin-inline: auto;
-					text-align: start;
-				}
-			}
+	.build-link {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		margin: 40px auto 0;
+	}
 
-			.copy-email {
-				@include pill-link;
-				font: inherit;
-				color: $black;
-				border: none;
-				cursor: pointer;
-				font-weight: 500;
-			}
+	.webring {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		padding: 16px;
+	}
 
-			.build-link {
-				display: flex;
-				justify-content: center;
-				text-align: center;
-				margin: 40px auto 0;
-			}
+	.arrow {
+		@include pill-link;
+		display: inline-block;
+		padding-block: 4px;
+		padding-inline: 16px;
+		transition: all ease 0.2s;
+		&:hover {
+			transform: translateY(-2px);
+		}
+	}
 
-			.webring {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				justify-content: center;
-				gap: 16px;
-				padding: 16px;
-			}
-
-			.arrow {
-				@include pill-link;
-				display: inline-block;
-				padding-block: 4px;
-				padding-inline: 16px;
-				transition: all ease 0.2s;
-				&:hover {
-					transform: translateY(-2px);
-				}
-			}
-
-			.arrow-left {
-				img {
-					transform: rotate(-90deg);
-				}
-			}
-			.arrow-right {
-				img {
-					transform: rotate(90deg);
-				}
-			}
-		</style>
-	</section></BaseLayout
->
+	.arrow-left {
+		img {
+			transform: rotate(-90deg);
+		}
+	}
+	.arrow-right {
+		img {
+			transform: rotate(90deg);
+		}
+	}
+</style>
