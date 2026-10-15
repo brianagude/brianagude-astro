@@ -9,4 +9,4 @@ tags: ["personal"]
 
 A suuuuper simple list of to-do lists.
 
-I'd been keeping physical to-do lists for a while, but I kept losing them or rewriting the same few items everyday. I wanted something that I could easily just jot stuff down without having too much noise around it so I built this to solve that problem.
+I'd been keeping physical to-do lists for a while, but I kept losing them or rewriting the same few items everyday. I wanted something where I could easily just jot stuff down without having too much noise around it so I built this to solve that problem.
