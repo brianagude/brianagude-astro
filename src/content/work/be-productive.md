@@ -4,7 +4,7 @@ pubDate: 2026-03-01
 description: "A simple list of lists"
 url: "https://be-productive.brianagude.com/"
 mux_id: "021KZuhDOoDwIjhyVH8ehuQjQNBj00a1bb7eQc3W01FM9Y"
-tags: ["personal"]
+tags: ["projects"]
 ---
 
 A suuuuper simple list of to-do lists.

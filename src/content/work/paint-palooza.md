@@ -8,7 +8,7 @@ image:
     url: "/src/images/content/paint-palooza.webp",
     alt: "Screenshot of Paint Palooza desktop",
   }
-tags: ["personal"]
+tags: ["projects"]
 ---
 
 An ongoing project, and extension of [Color Palooza](/work/color-palooza). 

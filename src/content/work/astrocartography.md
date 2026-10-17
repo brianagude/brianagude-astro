@@ -9,7 +9,7 @@ image:
     url: "/src/images/content/astrocartography-reader.jpg",
     alt: "Astrocartography Reader showing a world map of planetary lines above a grid of illustrated planets",
   }
-tags: ["personal"]
+tags: ["projects"]
 ---
 
 I was first introduced to astrocartography a few years ago, when I started thinking about moving abroad. I had no idea where I should go, so a friend pulled up my astrocartography chart. It pointed to some places I'd secretly had in mind, and highlighted a few I already knew I loved. I just never cared enough to dig into the astrological meaning behind each place, so I didn't go much further with it. 
