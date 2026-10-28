@@ -61,7 +61,7 @@ const currentPath = Astro.url.pathname;
           window.posthog?.capture("portfolio_tag_filtered", {
             selected_tag: selectedTag,
           });
-          if (selectedTag === "Personal") {
+          if (selectedTag === "Projects") {
             window.posthog?.register_once({ visitor_intent: "inspiration" });
           }
         });
